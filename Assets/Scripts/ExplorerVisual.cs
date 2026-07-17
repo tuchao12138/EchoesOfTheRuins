@@ -9,6 +9,8 @@ namespace EchoesOfTheRuins
         {
             GameObject explorer = new GameObject("Explorer Visual");
             explorer.transform.SetParent(player, false);
+            // Keep the silhouette below one third of the 58-degree third-person frame.
+            explorer.transform.localScale = Vector3.one * .78f;
 
             CreateCloak(explorer.transform, cloak);
             CreatePrimitive("Torso", PrimitiveType.Cube, explorer.transform, new Vector3(0f, .94f, .03f), new Vector3(.45f, .52f, .26f), cloak);

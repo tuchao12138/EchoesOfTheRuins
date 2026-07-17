@@ -15,6 +15,7 @@ namespace EchoesOfTheRuins.Tests
             GameObject explorer = ExplorerVisual.Create(player.transform, cloak, trim);
 
             Assert.That(explorer.name, Is.EqualTo("Explorer Visual"));
+            Assert.That(explorer.transform.parent, Is.EqualTo(player.transform));
             Assert.That(explorer.transform.Find("Cloak"), Is.Not.Null);
             Assert.That(explorer.transform.Find("Torso"), Is.Not.Null);
             Assert.That(explorer.transform.Find("Head"), Is.Not.Null);
@@ -37,6 +38,23 @@ namespace EchoesOfTheRuins.Tests
 
             foreach (Collider collider in explorer.GetComponentsInChildren<Collider>())
                 Assert.That(collider.enabled, Is.False, collider.name + " should not block player movement");
+
+            Object.DestroyImmediate(explorer);
+            Object.DestroyImmediate(player);
+            Object.DestroyImmediate(cloak);
+            Object.DestroyImmediate(trim);
+        }
+
+        [Test]
+        public void Create_UsesCompactScaleForThirdPersonFraming()
+        {
+            GameObject player = new GameObject("Player");
+            Material cloak = new Material(Shader.Find("Standard"));
+            Material trim = new Material(Shader.Find("Standard"));
+
+            GameObject explorer = ExplorerVisual.Create(player.transform, cloak, trim);
+
+            Assert.That(explorer.transform.localScale.y, Is.LessThanOrEqualTo(.8f));
 
             Object.DestroyImmediate(explorer);
             Object.DestroyImmediate(player);

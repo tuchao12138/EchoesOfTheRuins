@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 namespace EchoesOfTheRuins
 {
@@ -22,7 +23,14 @@ namespace EchoesOfTheRuins
         public bool IsCrouching => crouching;
         public bool IsInShadow => inShadow;
         public int EchoStones => echoStones;
+        public int EchoStoneCount => echoStones;
         public float VisibilityMultiplier => (inShadow ? .45f : 1f) * (crouching ? .55f : 1f);
+        public event Action MovementStarted;
+        public event Action<bool> CrouchChanged;
+        public event Action<bool> ShadowChanged;
+        public event Action<int> EchoStoneCountChanged;
+        public event Action EchoStoneUsed;
+        private bool movementAnnounced;
 
         public void Configure(Transform pivot) => cameraPivot = pivot;
 
@@ -45,7 +53,9 @@ namespace EchoesOfTheRuins
                 cameraPivot.localRotation = Quaternion.Euler(pitch, 0f, 0f);
             }
 
-            crouching = Input.GetKey(KeyCode.C);
+            bool nextCrouching = Input.GetKey(KeyCode.C);
+            if (nextCrouching != crouching) CrouchChanged?.Invoke(nextCrouching);
+            crouching = nextCrouching;
             controller.height = crouching ? 1.15f : 1.8f;
             controller.center = new Vector3(0f, controller.height * .5f, 0f);
 
@@ -54,6 +64,8 @@ namespace EchoesOfTheRuins
                 echoStones--;
                 Vector3 throwPoint = transform.position + transform.forward * 5f + Vector3.up * .25f;
                 NoiseSystem.Emit(throwPoint, 11f);
+                EchoStoneCountChanged?.Invoke(echoStones);
+                EchoStoneUsed?.Invoke();
             }
 
             if (controller.isGrounded)
@@ -64,10 +76,20 @@ namespace EchoesOfTheRuins
             verticalVelocity += gravity * Time.deltaTime;
             float speed = crouching ? crouchSpeed : (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : moveSpeed);
             Vector3 movement = (transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized * speed;
+            if (!movementAnnounced && movement.sqrMagnitude > .01f)
+            {
+                movementAnnounced = true;
+                MovementStarted?.Invoke();
+            }
             movement.y = verticalVelocity;
             controller.Move(movement * Time.deltaTime);
         }
 
-        public void SetInShadow(bool value) => inShadow = value;
+        public void SetInShadow(bool value)
+        {
+            if (inShadow == value) return;
+            inShadow = value;
+            ShadowChanged?.Invoke(value);
+        }
     }
 }

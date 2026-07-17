@@ -17,6 +17,8 @@ namespace EchoesOfTheRuins
 
         public bool IsChasing => CurrentState == GuardianState.Chase;
         public GuardianState CurrentState { get; private set; } = GuardianState.Patrol;
+        public float AlertLevel { get; private set; }
+        public event System.Action<GuardianState, float> AlertStateChanged;
         private NavMeshAgent agent;
         private int waypointIndex;
         private float nextCaptureTime;
@@ -46,9 +48,9 @@ namespace EchoesOfTheRuins
             ResolvePlayer();
             if (player == null) return;
             float distance = Vector3.Distance(transform.position, player.position);
-            bool seesPlayer = CanSeePlayer(distance);
+            bool seesPlayer = (TutorialDirector.Active == null || TutorialDirector.Active.CanBeDetected) && CanSeePlayer(distance);
             bool capture = distance <= captureRange && seesPlayer && Time.time >= nextCaptureTime;
-            CurrentState = brain.Tick(Time.deltaTime, new GuardianPerception(seesPlayer, receivedNoise, capture));
+            SetState(brain.Tick(Time.deltaTime, new GuardianPerception(seesPlayer, receivedNoise, capture)));
             receivedNoise = false;
             if (CurrentState == GuardianState.Capture)
             {
@@ -82,6 +84,16 @@ namespace EchoesOfTheRuins
             investigationPoint = position;
             hasInvestigationPoint = true;
             receivedNoise = true;
+        }
+
+        private void SetState(GuardianState nextState)
+        {
+            float nextAlert = nextState == GuardianState.Chase || nextState == GuardianState.Capture ? 1f :
+                nextState == GuardianState.Investigate || nextState == GuardianState.Search ? .55f : 0f;
+            if (CurrentState == nextState && Mathf.Approximately(AlertLevel, nextAlert)) return;
+            CurrentState = nextState;
+            AlertLevel = nextAlert;
+            AlertStateChanged?.Invoke(CurrentState, AlertLevel);
         }
 
         private void ResolvePlayer()

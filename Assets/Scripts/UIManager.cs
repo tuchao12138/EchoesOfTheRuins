@@ -14,6 +14,10 @@ namespace EchoesOfTheRuins
         private float feedbackExpiresAt;
         private bool subscribed;
         private PlayerController player;
+        private TutorialDirector tutorial;
+        private GUIStyle titleStyle;
+        private GUIStyle labelStyle;
+        private GUIStyle promptStyle;
 
         public void Configure(GuardianAI patrolGuardian) => guardian = patrolGuardian;
 
@@ -29,6 +33,7 @@ namespace EchoesOfTheRuins
             if (!subscribed) Subscribe();
             if (player == null && GameManager.Instance != null && GameManager.Instance.PlayerTransform != null)
                 player = GameManager.Instance.PlayerTransform.GetComponent<PlayerController>();
+            if (tutorial == null) tutorial = TutorialDirector.Active;
             if (feedbackExpiresAt > 0f && Time.time >= feedbackExpiresAt)
             {
                 feedback = string.Empty;
@@ -42,12 +47,23 @@ namespace EchoesOfTheRuins
 
         private void OnGUI()
         {
-            GUI.Box(new Rect(16f, 16f, 390f, 118f), "ECHOES OF THE RUINS");
-            GUI.Label(new Rect(30f, 46f, 340f, 24f), coreCount);
-            GUI.Label(new Rect(30f, 70f, 360f, 24f), objective);
-            GUI.Label(new Rect(30f, 94f, 360f, 24f), feedback);
-            string stealth = player == null ? "" : (player.IsInShadow ? "SHADOW" : "EXPOSED") + (player.IsCrouching ? " | CROUCH" : "") + " | Echo: " + player.EchoStones;
-            GUI.Label(new Rect(16f, Screen.height - 46f, 520f, 26f), "C crouch  Shift sprint  Q echo stone  " + stealth);
+            EnsureStyles();
+            GUI.Box(new Rect(18f, 18f, 420f, 126f), GUIContent.none);
+            GUI.Label(new Rect(34f, 29f, 380f, 28f), "ECHOES OF THE RUINS  /  遗迹回响", titleStyle);
+            GUI.Label(new Rect(34f, 62f, 370f, 23f), coreCount, labelStyle);
+            GUI.Label(new Rect(34f, 87f, 380f, 23f), objective, labelStyle);
+            GUI.Label(new Rect(34f, 112f, 380f, 23f), feedback, labelStyle);
+
+            if (tutorial != null && tutorial.Stage != TutorialStage.Complete)
+            {
+                const float width = 620f;
+                GUI.Box(new Rect((Screen.width - width) * .5f, 32f, width, 86f), GUIContent.none);
+                GUI.Label(new Rect((Screen.width - width) * .5f + 18f, 45f, width - 36f, 62f), tutorial.Prompt, promptStyle);
+            }
+
+            string stealth = player == null ? "" : (player.IsInShadow ? "阴影 / SHADOW" : "暴露 / EXPOSED") + (player.IsCrouching ? "  |  蹲伏 / CROUCH" : "") + "  |  回响石 / ECHO: " + player.EchoStones;
+            GUI.Box(new Rect(18f, Screen.height - 57f, 650f, 38f), GUIContent.none);
+            GUI.Label(new Rect(30f, Screen.height - 49f, 620f, 26f), "C 蹲伏   Shift 疾跑   Q 回响石   " + stealth, labelStyle);
         }
 
         private void OnDisable()
@@ -96,6 +112,17 @@ namespace EchoesOfTheRuins
                 case GuardianState.Capture: return "CAUGHT - returning to checkpoint";
                 default: return "HIDDEN - observe the patrol";
             }
+        }
+
+        private void EnsureStyles()
+        {
+            if (titleStyle != null) return;
+            titleStyle = new GUIStyle(GUI.skin.label) { fontSize = 17, alignment = TextAnchor.MiddleLeft, fontStyle = FontStyle.Bold };
+            titleStyle.normal.textColor = new Color(.35f, .9f, 1f);
+            labelStyle = new GUIStyle(GUI.skin.label) { fontSize = 15, alignment = TextAnchor.MiddleLeft };
+            labelStyle.normal.textColor = Color.white;
+            promptStyle = new GUIStyle(GUI.skin.label) { fontSize = 18, alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold };
+            promptStyle.normal.textColor = new Color(.9f, .96f, 1f);
         }
     }
 }

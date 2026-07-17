@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
 
 namespace EchoesOfTheRuins
 {
     /// <summary>Builds the coursework graybox at runtime, so the default empty scene is playable.</summary>
     public static class RuinSceneBootstrap
     {
-        private static readonly Color Stone = new Color(.30f, .33f, .37f);
-        private static readonly Color DarkStone = new Color(.13f, .16f, .20f);
-        private static readonly Color Accent = new Color(.08f, .72f, .90f);
-        private static readonly Color Warning = new Color(.92f, .28f, .12f);
+        private static readonly Color Stone = new Color(.34f, .39f, .50f);
+        private static readonly Color DarkStone = new Color(.18f, .22f, .31f);
+        private static readonly Color Accent = new Color(.05f, .84f, 1f);
+        private static readonly Color Warning = new Color(1f, .52f, .18f);
         private static NavMeshData runtimeNavMesh;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
@@ -23,13 +24,16 @@ namespace EchoesOfTheRuins
             Material accent = MakeMaterial("Energy Cyan", Accent, true);
             Material warning = MakeMaterial("Gate Amber", Warning, true);
 
-            CreateBox("Ruin Floor", Vector3.zero, new Vector3(56f, 1f, 56f), darkStone);
+            ConfigureMoonlitAtmosphere();
+            CreateBox("Ruin Floor", new Vector3(0f, -.5f, 0f), new Vector3(56f, 1f, 56f), darkStone);
             CreateEnvironment(stone, darkStone, accent, warning);
 
-            Transform entryCheckpoint = CreateCheckpoint("Entry Checkpoint", new Vector3(0f, 1f, -22f), accent);
+            Transform entryCheckpoint = CreateCheckpoint("Entry Checkpoint", new Vector3(0f, 0f, -22f), accent);
             Transform player = CreatePlayer(entryCheckpoint.position);
             GameManager manager = new GameObject("Game Manager").AddComponent<GameManager>();
             manager.Configure(player, entryCheckpoint);
+            TutorialDirector tutorial = manager.gameObject.AddComponent<TutorialDirector>();
+            tutorial.Configure(player.GetComponent<PlayerController>());
 
             BuildNavMesh();
             GuardianAI guardian = CreateGuardian(player, warning);
@@ -37,10 +41,30 @@ namespace EchoesOfTheRuins
             CreateCore("Core 1 - Courtyard", new Vector3(0f, 1.2f, -3f), "courtyard-core", accent);
             CreateCore("Core 2 - Side Chamber", new Vector3(-17f, 1.2f, 3f), "side-chamber-core", accent);
             CreateCore("Core 3 - Altar Chamber", new Vector3(16f, 1.2f, 15f), "altar-chamber-core", accent);
-            CreateCheckpoint("Courtyard Checkpoint", new Vector3(0f, 1f, 5f), accent);
+            CreateCheckpoint("Courtyard Checkpoint", new Vector3(0f, 0f, 5f), accent);
             CreateExit(new Vector3(0f, 2f, 25f), warning, accent);
             CreateShadowZone("Side Chamber Shadow", new Vector3(-17f, 1.4f, 3f), new Vector3(9f, 2.5f, 10f));
             CreateShadowZone("Courtyard Pillar Shadow", new Vector3(-7f, 1.2f, -7f), new Vector3(3f, 2f, 5f));
+        }
+
+        private static void ConfigureMoonlitAtmosphere()
+        {
+            RenderSettings.ambientMode = AmbientMode.Trilight;
+            RenderSettings.ambientSkyColor = new Color(.22f, .28f, .42f);
+            RenderSettings.ambientEquatorColor = new Color(.14f, .18f, .28f);
+            RenderSettings.ambientGroundColor = new Color(.07f, .08f, .12f);
+            RenderSettings.ambientIntensity = .9f;
+            RenderSettings.fog = true;
+            RenderSettings.fogColor = new Color(.10f, .14f, .22f);
+            RenderSettings.fogDensity = .0045f;
+
+            Light moon = new GameObject("Moonlight").AddComponent<Light>();
+            moon.type = LightType.Directional;
+            moon.color = new Color(.62f, .72f, 1f);
+            moon.intensity = 1.05f;
+            moon.shadows = LightShadows.Soft;
+            moon.shadowStrength = .75f;
+            moon.transform.rotation = Quaternion.Euler(45f, -35f, 0f);
         }
 
         private static void BuildNavMesh()
@@ -74,54 +98,77 @@ namespace EchoesOfTheRuins
             CreateBox("Side Chamber North", new Vector3(-17f, 2.5f, 9f), new Vector3(10f, 5f, 1f), darkStone);
             CreateBox("Side Chamber South", new Vector3(-17f, 2.5f, -3f), new Vector3(10f, 5f, 1f), darkStone);
             CreateBox("Side Chamber Plinth", new Vector3(-17f, .5f, 3f), new Vector3(4f, 1f, 4f), stone);
-            CreateLight("Side Chamber Glow", new Vector3(-17f, 4f, 3f), Accent, 7f, 8f);
+            CreateLight("Side Chamber Glow", new Vector3(-17f, 4f, 3f), Accent, 9f, 5f);
 
             // Raised altar chamber in warm contrast.
             CreateBox("Altar Back Wall", new Vector3(22f, 2.5f, 12f), new Vector3(1f, 5f, 14f), darkStone);
             CreateBox("Altar North Wall", new Vector3(16f, 2.5f, 19f), new Vector3(12f, 5f, 1f), darkStone);
             CreateBox("Altar South Wall", new Vector3(16f, 2.5f, 5f), new Vector3(12f, 5f, 1f), darkStone);
             CreateBox("Altar", new Vector3(16f, 1f, 12f), new Vector3(5f, 2f, 5f), warning);
-            CreateLight("Altar Flame", new Vector3(16f, 5f, 12f), Warning, 8f, 10f);
+            CreateLight("Altar Flame", new Vector3(16f, 5f, 12f), Warning, 10f, 3f);
             CreateBox("Exit Approach Left", new Vector3(-7f, 2.5f, 23f), new Vector3(1f, 5f, 10f), stone);
             CreateBox("Exit Approach Right", new Vector3(7f, 2.5f, 23f), new Vector3(1f, 5f, 10f), stone);
-            CreateLight("Courtyard Moonlight", new Vector3(0f, 9f, 0f), new Color(.55f, .70f, 1f), 4f, 20f);
+            CreateLight("Entry Fill Light", new Vector3(0f, 4f, -19f), new Color(.45f, .62f, 1f), 15f, 2f);
+            CreateLight("Courtyard Moonlight", new Vector3(0f, 9f, 0f), new Color(.55f, .70f, 1f), 20f, 2f);
+            CreateBrazier("Entry Brazier Left", new Vector3(-3f, 0f, -17f), warning);
+            CreateBrazier("Entry Brazier Right", new Vector3(3f, 0f, -17f), warning);
+            CreateBrazier("Courtyard Brazier", new Vector3(-8f, 0f, -1f), warning);
         }
 
         private static Transform CreatePlayer(Vector3 spawn)
         {
             GameObject player = new GameObject("Player");
             player.tag = "Player";
-            player.transform.SetPositionAndRotation(spawn, Quaternion.identity);
+            player.transform.SetPositionAndRotation(new Vector3(spawn.x, 0f, spawn.z), Quaternion.identity);
             CharacterController controller = player.AddComponent<CharacterController>();
             controller.height = 1.8f;
             controller.center = new Vector3(0f, .9f, 0f);
+            GameObject explorer = CreateCapsule("Explorer Visual", new Vector3(0f, .9f, 0f), MakeMaterial("Explorer Cloak", new Color(.10f, .24f, .34f)));
+            explorer.transform.SetParent(player.transform, false);
+            explorer.transform.localPosition = new Vector3(0f, .9f, 0f);
+            explorer.transform.localScale = new Vector3(.75f, .9f, .75f);
+            explorer.GetComponent<Collider>().enabled = false;
+
             Transform pivot = new GameObject("Camera Pivot").transform;
             pivot.SetParent(player.transform, false);
             pivot.localPosition = new Vector3(0f, 1.6f, 0f);
             Camera camera = new GameObject("Player Camera").AddComponent<Camera>();
             camera.tag = "MainCamera";
             camera.transform.SetParent(pivot, false);
+            camera.transform.localPosition = new Vector3(.65f, .15f, -4.25f);
             camera.nearClipPlane = .05f;
+            camera.fieldOfView = 58f;
+            camera.clearFlags = CameraClearFlags.Skybox;
             PlayerController playerController = player.AddComponent<PlayerController>();
             playerController.Configure(pivot);
             CameraFollow follow = pivot.gameObject.AddComponent<CameraFollow>();
-            follow.Configure(player.transform, new Vector3(0f, 1.6f, 0f));
+            follow.Configure(player.transform, new Vector3(0f, 1.55f, 0f));
             return player.transform;
         }
 
         private static GuardianAI CreateGuardian(Transform player, Material material)
         {
-            GameObject guardian = CreateCapsule("Guardian", new Vector3(0f, .5f, 7f), material);
+            GameObject guardian = CreateCapsule("Guardian", new Vector3(6f, 1f, 1f), material);
             UnityEngine.AI.NavMeshAgent agent = guardian.AddComponent<UnityEngine.AI.NavMeshAgent>();
             agent.radius = .4f;
             agent.height = 1.8f;
             GuardianAI ai = guardian.AddComponent<GuardianAI>();
+            Light visionLight = new GameObject("Guardian Vision Light").AddComponent<Light>();
+            visionLight.type = LightType.Spot;
+            visionLight.color = new Color(1f, .80f, .25f);
+            visionLight.range = 10f;
+            visionLight.spotAngle = 75f;
+            visionLight.intensity = 4f;
+            visionLight.transform.SetParent(guardian.transform, false);
+            visionLight.transform.localPosition = new Vector3(0f, 1.1f, 0f);
+            visionLight.transform.localRotation = Quaternion.Euler(6f, 0f, 0f);
+            visionLight.gameObject.AddComponent<GuardianVisionLight>();
             Transform[] patrol =
             {
-                CreateMarker("Guardian Waypoint 1", new Vector3(-6f, 0f, 7f), material),
-                CreateMarker("Guardian Waypoint 2", new Vector3(6f, 0f, 7f), material),
-                CreateMarker("Guardian Waypoint 3", new Vector3(6f, 0f, -8f), material),
-                CreateMarker("Guardian Waypoint 4", new Vector3(-6f, 0f, -8f), material)
+                CreateMarker("Guardian Waypoint 1", new Vector3(-6f, 0f, 1f), material),
+                CreateMarker("Guardian Waypoint 2", new Vector3(6f, 0f, 1f), material),
+                CreateMarker("Guardian Waypoint 3", new Vector3(6f, 0f, 11f), material),
+                CreateMarker("Guardian Waypoint 4", new Vector3(-6f, 0f, 11f), material)
             };
             ai.Configure(player, patrol);
             return ai;
@@ -156,7 +203,10 @@ namespace EchoesOfTheRuins
             core.AddComponent<Rigidbody>().isKinematic = true;
             Collectible collectible = core.AddComponent<Collectible>();
             collectible.Configure(coreId);
-            CreateLight(name + " Glow", position, Accent, 3f, 4f);
+            core.AddComponent<RuneFloat>();
+            CreateLight(name + " Glow", position + Vector3.up, Accent, 7f, 4f);
+            GameObject beam = CreateCylinder(name + " Light Beam", position + Vector3.up * 3.5f, new Vector3(.22f, 3.5f, .22f), material);
+            beam.GetComponent<Collider>().enabled = false;
         }
 
         private static void CreateExit(Vector3 position, Material lockedMaterial, Material unlockedMaterial)
@@ -172,6 +222,12 @@ namespace EchoesOfTheRuins
             CreateLight("Exit Beacon", position + Vector3.up * 2f, Accent, 7f, 10f);
             ExitGate exit = gate.AddComponent<ExitGate>();
             exit.Configure(locked, opened);
+        }
+
+        private static void CreateBrazier(string name, Vector3 position, Material material)
+        {
+            CreateCylinder(name + " Base", position + Vector3.up * .35f, new Vector3(.45f, .35f, .45f), material);
+            CreateLight(name + " Flame", position + Vector3.up * 1.4f, Warning, 10f, 3f);
         }
 
         private static void CreateShadowZone(string name, Vector3 position, Vector3 size)

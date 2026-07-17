@@ -14,6 +14,8 @@ namespace EchoesOfTheRuins
         private float feedbackExpiresAt;
         private bool subscribed;
 
+        public void Configure(GuardianAI patrolGuardian) => guardian = patrolGuardian;
+
         private void Start()
         {
             Subscribe();

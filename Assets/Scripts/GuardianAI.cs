@@ -19,6 +19,12 @@ namespace EchoesOfTheRuins
         private int waypointIndex;
         private float nextCaptureTime;
 
+        public void Configure(Transform targetPlayer, Transform[] patrolWaypoints)
+        {
+            player = targetPlayer;
+            waypoints = patrolWaypoints;
+        }
+
         private void Awake()
         {
             agent = GetComponent<NavMeshAgent>();

@@ -8,6 +8,8 @@ namespace EchoesOfTheRuins
         [SerializeField] private string coreId;
         private bool collected;
 
+        public void Configure(string id) => coreId = id;
+
         private void Reset() => GetComponent<Collider>().isTrigger = true;
 
         private void Awake()

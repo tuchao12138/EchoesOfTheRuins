@@ -9,6 +9,12 @@ namespace EchoesOfTheRuins
         [SerializeField] private GameObject unlockedVisual;
         private bool unlocked;
 
+        public void Configure(GameObject lockedGate, GameObject openGate)
+        {
+            lockedVisual = lockedGate;
+            unlockedVisual = openGate;
+        }
+
         private void Reset() => GetComponent<Collider>().isTrigger = true;
 
         private void OnEnable()

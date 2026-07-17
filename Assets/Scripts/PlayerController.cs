@@ -14,6 +14,8 @@ namespace EchoesOfTheRuins
         private float verticalVelocity;
         private float pitch;
 
+        public void Configure(Transform pivot) => cameraPivot = pivot;
+
         private void Awake()
         {
             controller = GetComponent<CharacterController>();

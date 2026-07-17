@@ -22,6 +22,13 @@ namespace EchoesOfTheRuins
         private Transform currentCheckpoint;
         private bool exitWasUnlocked;
 
+        public void Configure(Transform playerTransform, Transform startingCheckpoint)
+        {
+            player = playerTransform;
+            initialCheckpoint = startingCheckpoint;
+            currentCheckpoint = startingCheckpoint;
+        }
+
         private void Awake()
         {
             if (Instance != null && Instance != this)

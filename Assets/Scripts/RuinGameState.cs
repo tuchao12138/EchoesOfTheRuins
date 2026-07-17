@@ -14,7 +14,8 @@ namespace EchoesOfTheRuins
         /// <returns>True only when this is the first collection of <paramref name="coreId"/>.</returns>
         public bool CollectCore(string coreId)
         {
-            return !string.IsNullOrWhiteSpace(coreId) && collectedCoreIds.Add(coreId);
+            if (string.IsNullOrWhiteSpace(coreId) || collectedCoreIds.Count >= RequiredCoreCount) return false;
+            return collectedCoreIds.Add(coreId);
         }
     }
 }

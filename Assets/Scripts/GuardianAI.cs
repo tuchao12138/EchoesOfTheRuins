@@ -11,31 +11,47 @@ namespace EchoesOfTheRuins
         [SerializeField, Min(0.1f)] private float chaseSpeed = 4f;
         [SerializeField, Min(0.1f)] private float detectionRange = 8f;
         [SerializeField, Min(0.1f)] private float captureRange = 1.25f;
+        [SerializeField, Min(0.1f)] private float captureCooldown = 1f;
         [SerializeField, Min(0.05f)] private float waypointReachDistance = .4f;
 
         public bool IsChasing { get; private set; }
         private NavMeshAgent agent;
         private int waypointIndex;
+        private float nextCaptureTime;
 
         private void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
-            if (player == null && GameManager.Instance != null) player = GameManager.Instance.PlayerTransform;
+            ResolvePlayer();
         }
 
         private void Update()
         {
+            ResolvePlayer();
             if (player == null) return;
             float distance = Vector3.Distance(transform.position, player.position);
             IsChasing = distance <= detectionRange;
-            if (distance <= captureRange)
+            if (distance <= captureRange && Time.time >= nextCaptureTime)
             {
                 GameManager.Instance?.ResetPlayerToCheckpoint();
+                nextCaptureTime = Time.time + captureCooldown;
+                IsChasing = false;
                 return;
             }
 
             Vector3 destination = IsChasing ? player.position : GetPatrolDestination();
             MoveTo(destination, IsChasing ? chaseSpeed : patrolSpeed);
+        }
+
+        private void ResolvePlayer()
+        {
+            if (player != null) return;
+            if (GameManager.Instance != null) player = GameManager.Instance.PlayerTransform;
+            if (player == null)
+            {
+                GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+                if (playerObject != null) player = playerObject.transform;
+            }
         }
 
         private Vector3 GetPatrolDestination()

@@ -47,5 +47,19 @@ namespace EchoesOfTheRuins.Tests
 
             Assert.That(gameState.IsExitUnlocked, Is.True);
         }
+
+        [Test]
+        public void CollectCore_RejectsANewFourthCore()
+        {
+            var gameState = new RuinGameState();
+
+            gameState.CollectCore("core-a");
+            gameState.CollectCore("core-b");
+            gameState.CollectCore("core-c");
+            var accepted = gameState.CollectCore("core-d");
+
+            Assert.That(accepted, Is.False);
+            Assert.That(gameState.CollectedCoreCount, Is.EqualTo(RuinGameState.RequiredCoreCount));
+        }
     }
 }

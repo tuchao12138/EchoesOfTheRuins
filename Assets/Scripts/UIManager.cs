@@ -1,51 +1,75 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace EchoesOfTheRuins
 {
+    /// <summary>Prototype HUD drawn without a UGUI package dependency.</summary>
     public sealed class UIManager : MonoBehaviour
     {
-        [SerializeField] private Text coreCountText;
-        [SerializeField] private Text objectiveText;
-        [SerializeField] private Text feedbackText;
         [SerializeField] private GuardianAI guardian;
+        [SerializeField, Min(0f)] private float feedbackDuration = 2f;
 
-        private void OnEnable()
-        {
-            if (GameManager.Instance == null) return;
-            GameManager.Instance.CoreCountChanged += UpdateCoreCount;
-            GameManager.Instance.ExitUnlocked += ShowExitUnlocked;
-            GameManager.Instance.PlayerReset += ShowReset;
-            GameManager.Instance.Victory += ShowVictory;
-        }
+        private string coreCount = "Cores: 0/3";
+        private string objective = "Find the remaining energy cores";
+        private string feedback;
+        private float feedbackExpiresAt;
+        private bool subscribed;
 
         private void Start()
         {
-            if (GameManager.Instance != null) UpdateCoreCount(GameManager.Instance.GameState.CollectedCoreCount, GameManager.Instance.RequiredCoreCount);
+            Subscribe();
+            if (GameManager.Instance != null)
+                UpdateCoreCount(GameManager.Instance.GameState.CollectedCoreCount, GameManager.Instance.RequiredCoreCount);
         }
 
         private void Update()
         {
-            if (guardian != null && GameManager.Instance != null && !GameManager.Instance.HasWon && feedbackText != null)
-                feedbackText.text = guardian.IsChasing ? "DETECTED — RUN!" : "Hidden";
+            if (!subscribed) Subscribe();
+            if (string.IsNullOrEmpty(feedback) && guardian != null && GameManager.Instance != null && !GameManager.Instance.HasWon)
+                feedback = guardian.IsChasing ? "DETECTED - RUN!" : "Hidden";
+            if (feedbackExpiresAt > 0f && Time.time >= feedbackExpiresAt) feedback = string.Empty;
+        }
+
+        private void OnGUI()
+        {
+            GUI.Label(new Rect(20f, 20f, 300f, 28f), coreCount);
+            GUI.Label(new Rect(20f, 48f, 500f, 28f), objective);
+            if (!string.IsNullOrEmpty(feedback)) GUI.Label(new Rect(20f, 76f, 500f, 28f), feedback);
         }
 
         private void OnDisable()
         {
-            if (GameManager.Instance == null) return;
+            if (GameManager.Instance == null || !subscribed) return;
             GameManager.Instance.CoreCountChanged -= UpdateCoreCount;
             GameManager.Instance.ExitUnlocked -= ShowExitUnlocked;
             GameManager.Instance.PlayerReset -= ShowReset;
             GameManager.Instance.Victory -= ShowVictory;
+            subscribed = false;
+        }
+
+        private void Subscribe()
+        {
+            if (subscribed || GameManager.Instance == null) return;
+            GameManager.Instance.CoreCountChanged += UpdateCoreCount;
+            GameManager.Instance.ExitUnlocked += ShowExitUnlocked;
+            GameManager.Instance.PlayerReset += ShowReset;
+            GameManager.Instance.Victory += ShowVictory;
+            subscribed = true;
         }
 
         private void UpdateCoreCount(int count, int required)
         {
-            if (coreCountText != null) coreCountText.text = "Cores: " + count + "/" + required;
-            if (objectiveText != null) objectiveText.text = count < required ? "Find the remaining energy cores" : "Reach the exit";
+            coreCount = "Cores: " + count + "/" + required;
+            objective = count < required ? "Find the remaining energy cores" : "Reach the exit";
         }
-        private void ShowExitUnlocked() { if (feedbackText != null) feedbackText.text = "EXIT UNLOCKED"; }
-        private void ShowReset(string reason) { if (feedbackText != null) feedbackText.text = reason; }
-        private void ShowVictory() { if (feedbackText != null) feedbackText.text = "ESCAPED THE RUINS"; }
+
+        private void ShowExitUnlocked() => ShowFeedback("EXIT UNLOCKED");
+        private void ShowReset(string reason) => ShowFeedback(reason);
+        private void ShowVictory() => ShowFeedback("ESCAPED THE RUINS", true);
+
+        private void ShowFeedback(string message, bool persistent = false)
+        {
+            feedback = message;
+            feedbackExpiresAt = persistent ? -1f : Time.time + feedbackDuration;
+        }
     }
 }

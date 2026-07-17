@@ -123,11 +123,9 @@ namespace EchoesOfTheRuins
             CharacterController controller = player.AddComponent<CharacterController>();
             controller.height = 1.8f;
             controller.center = new Vector3(0f, .9f, 0f);
-            GameObject explorer = CreateCapsule("Explorer Visual", new Vector3(0f, .9f, 0f), MakeMaterial("Explorer Cloak", new Color(.10f, .24f, .34f)));
-            explorer.transform.SetParent(player.transform, false);
-            explorer.transform.localPosition = new Vector3(0f, .9f, 0f);
-            explorer.transform.localScale = new Vector3(.75f, .9f, .75f);
-            explorer.GetComponent<Collider>().enabled = false;
+            Material cloak = MakeMaterial("Explorer Cloak", new Color(.07f, .18f, .28f));
+            Material trim = MakeMaterial("Explorer Trim", new Color(.24f, .68f, .78f), true);
+            ExplorerVisual.Create(player.transform, cloak, trim);
 
             Transform pivot = new GameObject("Camera Pivot").transform;
             pivot.SetParent(player.transform, false);

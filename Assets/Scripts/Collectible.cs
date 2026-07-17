@@ -17,6 +17,15 @@ namespace EchoesOfTheRuins
             if (string.IsNullOrWhiteSpace(coreId)) coreId = gameObject.name;
         }
 
+        private void Start()
+        {
+            if (GameManager.Instance != null && GameManager.Instance.GameState.HasCollectedCore(coreId))
+            {
+                collected = true;
+                gameObject.SetActive(false);
+            }
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (collected || !other.CompareTag("Player") || GameManager.Instance == null) return;

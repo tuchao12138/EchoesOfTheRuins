@@ -10,6 +10,18 @@ namespace EchoesOfTheRuins
 
         public int CollectedCoreCount => collectedCoreIds.Count;
         public bool IsExitUnlocked => CollectedCoreCount >= RequiredCoreCount;
+        public bool HasCollectedCore(string coreId) => !string.IsNullOrWhiteSpace(coreId) && collectedCoreIds.Contains(coreId);
+
+        public void RestoreCores(IEnumerable<string> coreIds)
+        {
+            collectedCoreIds.Clear();
+            if (coreIds == null) return;
+            foreach (string coreId in coreIds)
+            {
+                if (collectedCoreIds.Count >= RequiredCoreCount) break;
+                if (!string.IsNullOrWhiteSpace(coreId)) collectedCoreIds.Add(coreId);
+            }
+        }
 
         /// <returns>True only when this is the first collection of <paramref name="coreId"/>.</returns>
         public bool CollectCore(string coreId)

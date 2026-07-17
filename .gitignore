@@ -17,3 +17,4 @@ Recordings/
 *.booproj
 *.unityproj
 *.tmp
+.worktrees/

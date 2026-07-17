@@ -1,0 +1,13 @@
+{
+  "name": "EchoesOfTheRuins.EditModeTests",
+  "rootNamespace": "EchoesOfTheRuins.Tests",
+  "references": [
+    "EchoesOfTheRuins.Runtime"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}

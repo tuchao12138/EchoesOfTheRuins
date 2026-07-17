@@ -41,16 +41,30 @@ namespace EchoesOfTheRuins.Editor
         {
             const string resourcesFolder = "Assets/Resources";
             const string materialsFolder = "Assets/Resources/Materials";
-            const string materialPath = "Assets/Resources/Materials/RuinsRuntime.mat";
             if (!AssetDatabase.IsValidFolder(resourcesFolder)) AssetDatabase.CreateFolder("Assets", "Resources");
             if (!AssetDatabase.IsValidFolder(materialsFolder)) AssetDatabase.CreateFolder(resourcesFolder, "Materials");
-            if (AssetDatabase.LoadAssetAtPath<Material>(materialPath) != null) return;
-
-            Shader shader = Shader.Find("Standard") ?? Shader.Find("Sprites/Default");
-            if (shader == null) throw new System.InvalidOperationException("No build-safe shader was found for the runtime ruins material.");
-            var material = new Material(shader) { name = "Ruins Runtime Template" };
-            AssetDatabase.CreateAsset(material, materialPath);
+            Shader ruinsShader = Shader.Find("Standard") ?? Shader.Find("Sprites/Default");
+            Shader hudShader = Shader.Find("UI/Default") ?? Shader.Find("Sprites/Default");
+            if (ruinsShader == null || hudShader == null) throw new System.InvalidOperationException("No build-safe shader was found for a runtime material.");
+            CreateMaterialIfMissing("Assets/Resources/Materials/RuinsRuntime.mat", "Ruins Runtime Template", ruinsShader);
+            CreateMaterialIfMissing("Assets/Resources/Materials/HudRuntime.mat", "HUD Runtime Template", hudShader);
             AssetDatabase.SaveAssets();
+        }
+
+        private static void CreateMaterialIfMissing(string path, string materialName, Shader shader)
+        {
+            Material existing = AssetDatabase.LoadAssetAtPath<Material>(path);
+            if (existing != null)
+            {
+                if (existing.shader != shader)
+                {
+                    existing.shader = shader;
+                    EditorUtility.SetDirty(existing);
+                }
+                return;
+            }
+            var material = new Material(shader) { name = materialName };
+            AssetDatabase.CreateAsset(material, path);
         }
     }
 }

@@ -176,7 +176,7 @@ namespace EchoesOfTheRuins
 
         private static void CreateHud(GuardianAI guardian)
         {
-            UIManager ui = new GameObject("Status UI").AddComponent<UIManager>();
+            CanvasHud ui = new GameObject("Gameplay HUD").AddComponent<CanvasHud>();
             ui.Configure(guardian);
         }
 

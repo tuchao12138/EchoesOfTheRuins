@@ -10,14 +10,20 @@ namespace EchoesOfTheRuins
         [SerializeField, Min(0.1f)] private float patrolSpeed = 2f;
         [SerializeField, Min(0.1f)] private float chaseSpeed = 4f;
         [SerializeField, Min(0.1f)] private float detectionRange = 8f;
+        [SerializeField, Range(10f, 180f)] private float fieldOfView = 100f;
         [SerializeField, Min(0.1f)] private float captureRange = 1.25f;
         [SerializeField, Min(0.1f)] private float captureCooldown = 1f;
         [SerializeField, Min(0.05f)] private float waypointReachDistance = .4f;
 
-        public bool IsChasing { get; private set; }
+        public bool IsChasing => CurrentState == GuardianState.Chase;
+        public GuardianState CurrentState { get; private set; } = GuardianState.Patrol;
         private NavMeshAgent agent;
         private int waypointIndex;
         private float nextCaptureTime;
+        private GuardianBrain brain;
+        private Vector3 investigationPoint;
+        private bool hasInvestigationPoint;
+        private bool receivedNoise;
 
         public void Configure(Transform targetPlayer, Transform[] patrolWaypoints)
         {
@@ -28,25 +34,54 @@ namespace EchoesOfTheRuins
         private void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
+            brain = new GuardianBrain();
             ResolvePlayer();
         }
+
+        private void OnEnable() => NoiseSystem.NoiseCreated += OnNoiseCreated;
+        private void OnDisable() => NoiseSystem.NoiseCreated -= OnNoiseCreated;
 
         private void Update()
         {
             ResolvePlayer();
             if (player == null) return;
             float distance = Vector3.Distance(transform.position, player.position);
-            IsChasing = distance <= detectionRange;
-            if (distance <= captureRange && Time.time >= nextCaptureTime)
+            bool seesPlayer = CanSeePlayer(distance);
+            bool capture = distance <= captureRange && seesPlayer && Time.time >= nextCaptureTime;
+            CurrentState = brain.Tick(Time.deltaTime, new GuardianPerception(seesPlayer, receivedNoise, capture));
+            receivedNoise = false;
+            if (CurrentState == GuardianState.Capture)
             {
                 GameManager.Instance?.ResetPlayerToCheckpoint();
                 nextCaptureTime = Time.time + captureCooldown;
-                IsChasing = false;
                 return;
             }
 
-            Vector3 destination = IsChasing ? player.position : GetPatrolDestination();
-            MoveTo(destination, IsChasing ? chaseSpeed : patrolSpeed);
+            Vector3 destination = CurrentState == GuardianState.Chase ? player.position :
+                (CurrentState == GuardianState.Investigate || CurrentState == GuardianState.Search) && hasInvestigationPoint ? investigationPoint : GetPatrolDestination();
+            MoveTo(destination, CurrentState == GuardianState.Chase ? chaseSpeed : patrolSpeed);
+        }
+
+        private bool CanSeePlayer(float distance)
+        {
+            var stealth = player.GetComponent<PlayerController>();
+            float effectiveRange = detectionRange * (stealth != null ? stealth.VisibilityMultiplier : 1f);
+            if (distance > effectiveRange) return false;
+            Vector3 origin = transform.position + Vector3.up * 1.2f;
+            Vector3 target = player.position + Vector3.up * 1f;
+            Vector3 direction = target - origin;
+            if (Vector3.Angle(transform.forward, direction) > fieldOfView * .5f) return false;
+            if (Physics.Raycast(origin, direction.normalized, out RaycastHit hit, direction.magnitude, ~0, QueryTriggerInteraction.Ignore))
+                return hit.transform == player || hit.transform.IsChildOf(player);
+            return false;
+        }
+
+        private void OnNoiseCreated(Vector3 position, float radius)
+        {
+            if (Vector3.Distance(transform.position, position) > radius) return;
+            investigationPoint = position;
+            hasInvestigationPoint = true;
+            receivedNoise = true;
         }
 
         private void ResolvePlayer()

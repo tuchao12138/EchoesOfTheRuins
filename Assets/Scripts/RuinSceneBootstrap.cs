@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace EchoesOfTheRuins
 {
@@ -9,6 +11,7 @@ namespace EchoesOfTheRuins
         private static readonly Color DarkStone = new Color(.13f, .16f, .20f);
         private static readonly Color Accent = new Color(.08f, .72f, .90f);
         private static readonly Color Warning = new Color(.92f, .28f, .12f);
+        private static NavMeshData runtimeNavMesh;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void BuildIfNeeded()
@@ -28,6 +31,7 @@ namespace EchoesOfTheRuins
             GameManager manager = new GameObject("Game Manager").AddComponent<GameManager>();
             manager.Configure(player, entryCheckpoint);
 
+            BuildNavMesh();
             GuardianAI guardian = CreateGuardian(player, warning);
             CreateHud(guardian);
             CreateCore("Core 1 - Courtyard", new Vector3(0f, 1.2f, -3f), "courtyard-core", accent);
@@ -35,6 +39,17 @@ namespace EchoesOfTheRuins
             CreateCore("Core 3 - Altar Chamber", new Vector3(16f, 1.2f, 15f), "altar-chamber-core", accent);
             CreateCheckpoint("Courtyard Checkpoint", new Vector3(0f, 1f, 5f), accent);
             CreateExit(new Vector3(0f, 2f, 25f), warning, accent);
+            CreateShadowZone("Side Chamber Shadow", new Vector3(-17f, 1.4f, 3f), new Vector3(9f, 2.5f, 10f));
+            CreateShadowZone("Courtyard Pillar Shadow", new Vector3(-7f, 1.2f, -7f), new Vector3(3f, 2f, 5f));
+        }
+
+        private static void BuildNavMesh()
+        {
+            var sources = new List<NavMeshBuildSource>();
+            NavMeshBuilder.CollectSources(null, ~0, NavMeshCollectGeometry.PhysicsColliders, 0, new List<NavMeshBuildMarkup>(), sources);
+            var bounds = new Bounds(new Vector3(0f, 2f, 2f), new Vector3(58f, 8f, 58f));
+            runtimeNavMesh = NavMeshBuilder.BuildNavMeshData(NavMesh.GetSettingsByID(0), sources, bounds, Vector3.zero, Quaternion.identity);
+            if (runtimeNavMesh != null) NavMesh.AddNavMeshData(runtimeNavMesh);
         }
 
         private static void CreateEnvironment(Material stone, Material darkStone, Material accent, Material warning)
@@ -96,7 +111,7 @@ namespace EchoesOfTheRuins
 
         private static GuardianAI CreateGuardian(Transform player, Material material)
         {
-            GameObject guardian = CreateCapsule("Guardian", new Vector3(0f, 1f, 7f), material);
+            GameObject guardian = CreateCapsule("Guardian", new Vector3(0f, .5f, 7f), material);
             UnityEngine.AI.NavMeshAgent agent = guardian.AddComponent<UnityEngine.AI.NavMeshAgent>();
             agent.radius = .4f;
             agent.height = 1.8f;
@@ -157,6 +172,17 @@ namespace EchoesOfTheRuins
             CreateLight("Exit Beacon", position + Vector3.up * 2f, Accent, 7f, 10f);
             ExitGate exit = gate.AddComponent<ExitGate>();
             exit.Configure(locked, opened);
+        }
+
+        private static void CreateShadowZone(string name, Vector3 position, Vector3 size)
+        {
+            GameObject zone = new GameObject(name);
+            zone.transform.position = position;
+            BoxCollider collider = zone.AddComponent<BoxCollider>();
+            collider.isTrigger = true;
+            collider.size = size;
+            zone.AddComponent<Rigidbody>().isKinematic = true;
+            zone.AddComponent<ShadowZone>();
         }
 
         private static Material MakeMaterial(string name, Color color, bool emissive = false)

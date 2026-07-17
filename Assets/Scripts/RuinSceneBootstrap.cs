@@ -187,14 +187,7 @@ namespace EchoesOfTheRuins
 
         private static Material MakeMaterial(string name, Color color, bool emissive = false)
         {
-            Shader shader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard");
-            Material material = new Material(shader) { name = name, color = color };
-            if (emissive)
-            {
-                material.EnableKeyword("_EMISSION");
-                material.SetColor("_EmissionColor", color * 1.5f);
-            }
-            return material;
+            return RuntimeMaterialLibrary.Create(name, color, emissive);
         }
 
         private static GameObject CreateBox(string name, Vector3 position, Vector3 scale, Material material)

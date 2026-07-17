@@ -1,0 +1,34 @@
+using UnityEngine;
+
+namespace EchoesOfTheRuins
+{
+    /// <summary>Keeps a shader-referencing material inside Resources so player builds never rely on stripped Shader.Find calls.</summary>
+    public static class RuntimeMaterialLibrary
+    {
+        private const string TemplatePath = "Materials/RuinsRuntime";
+
+        public static Material Create(string materialName, Color color, bool emissive)
+        {
+            Material template = Resources.Load<Material>(TemplatePath);
+            Material material;
+            if (template != null)
+            {
+                material = Object.Instantiate(template);
+            }
+            else
+            {
+                Shader shader = Shader.Find("Standard") ?? Shader.Find("Sprites/Default") ?? Shader.Find("Hidden/InternalErrorShader");
+                material = new Material(shader);
+            }
+
+            material.name = materialName;
+            material.color = color;
+            if (emissive && material.HasProperty("_EmissionColor"))
+            {
+                material.EnableKeyword("_EMISSION");
+                material.SetColor("_EmissionColor", color * 1.5f);
+            }
+            return material;
+        }
+    }
+}

@@ -17,6 +17,8 @@ namespace EchoesOfTheRuins.Editor
                 return;
             }
 
+            EnsureRuntimeMaterial();
+
             Directory.CreateDirectory("Builds");
             BuildReport report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
             {
@@ -33,6 +35,22 @@ namespace EchoesOfTheRuins.Editor
             }
 
             Debug.Log("Windows build complete: " + report.summary.outputPath);
+        }
+
+        private static void EnsureRuntimeMaterial()
+        {
+            const string resourcesFolder = "Assets/Resources";
+            const string materialsFolder = "Assets/Resources/Materials";
+            const string materialPath = "Assets/Resources/Materials/RuinsRuntime.mat";
+            if (!AssetDatabase.IsValidFolder(resourcesFolder)) AssetDatabase.CreateFolder("Assets", "Resources");
+            if (!AssetDatabase.IsValidFolder(materialsFolder)) AssetDatabase.CreateFolder(resourcesFolder, "Materials");
+            if (AssetDatabase.LoadAssetAtPath<Material>(materialPath) != null) return;
+
+            Shader shader = Shader.Find("Standard") ?? Shader.Find("Sprites/Default");
+            if (shader == null) throw new System.InvalidOperationException("No build-safe shader was found for the runtime ruins material.");
+            var material = new Material(shader) { name = "Ruins Runtime Template" };
+            AssetDatabase.CreateAsset(material, materialPath);
+            AssetDatabase.SaveAssets();
         }
     }
 }

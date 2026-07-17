@@ -32,7 +32,7 @@ namespace EchoesOfTheRuins
             CreateHud(guardian);
             CreateCore("Core 1 - Courtyard", new Vector3(0f, 1.2f, -3f), "courtyard-core", accent);
             CreateCore("Core 2 - Side Chamber", new Vector3(-17f, 1.2f, 3f), "side-chamber-core", accent);
-            CreateCore("Core 3 - Altar Chamber", new Vector3(16f, 1.2f, 12f), "altar-chamber-core", accent);
+            CreateCore("Core 3 - Altar Chamber", new Vector3(16f, 1.2f, 15f), "altar-chamber-core", accent);
             CreateCheckpoint("Courtyard Checkpoint", new Vector3(0f, 1f, 5f), accent);
             CreateExit(new Vector3(0f, 2f, 25f), warning, accent);
         }
@@ -80,13 +80,16 @@ namespace EchoesOfTheRuins
             CharacterController controller = player.AddComponent<CharacterController>();
             controller.height = 1.8f;
             controller.center = new Vector3(0f, .9f, 0f);
+            Transform pivot = new GameObject("Camera Pivot").transform;
+            pivot.SetParent(player.transform, false);
+            pivot.localPosition = new Vector3(0f, 1.6f, 0f);
             Camera camera = new GameObject("Player Camera").AddComponent<Camera>();
             camera.tag = "MainCamera";
-            camera.transform.position = spawn + Vector3.up * 1.6f;
+            camera.transform.SetParent(pivot, false);
             camera.nearClipPlane = .05f;
             PlayerController playerController = player.AddComponent<PlayerController>();
-            playerController.Configure(camera.transform);
-            CameraFollow follow = camera.gameObject.AddComponent<CameraFollow>();
+            playerController.Configure(pivot);
+            CameraFollow follow = pivot.gameObject.AddComponent<CameraFollow>();
             follow.Configure(player.transform, new Vector3(0f, 1.6f, 0f));
             return player.transform;
         }
@@ -94,13 +97,16 @@ namespace EchoesOfTheRuins
         private static GuardianAI CreateGuardian(Transform player, Material material)
         {
             GameObject guardian = CreateCapsule("Guardian", new Vector3(0f, 1f, 7f), material);
+            UnityEngine.AI.NavMeshAgent agent = guardian.AddComponent<UnityEngine.AI.NavMeshAgent>();
+            agent.radius = .4f;
+            agent.height = 1.8f;
             GuardianAI ai = guardian.AddComponent<GuardianAI>();
             Transform[] patrol =
             {
-                CreateMarker("Guardian Waypoint 1", new Vector3(-6f, 0f, 7f)),
-                CreateMarker("Guardian Waypoint 2", new Vector3(6f, 0f, 7f)),
-                CreateMarker("Guardian Waypoint 3", new Vector3(6f, 0f, -8f)),
-                CreateMarker("Guardian Waypoint 4", new Vector3(-6f, 0f, -8f))
+                CreateMarker("Guardian Waypoint 1", new Vector3(-6f, 0f, 7f), material),
+                CreateMarker("Guardian Waypoint 2", new Vector3(6f, 0f, 7f), material),
+                CreateMarker("Guardian Waypoint 3", new Vector3(6f, 0f, -8f), material),
+                CreateMarker("Guardian Waypoint 4", new Vector3(-6f, 0f, -8f), material)
             };
             ai.Configure(player, patrol);
             return ai;
@@ -206,10 +212,15 @@ namespace EchoesOfTheRuins
 
         private static void CreatePillar(string name, Vector3 position, Material material) => CreateCylinder(name, position, new Vector3(1f, 2.5f, 1f), material);
 
-        private static Transform CreateMarker(string name, Vector3 position)
+        private static Transform CreateMarker(string name, Vector3 position, Material markerMaterial = null)
         {
             GameObject marker = new GameObject(name);
             marker.transform.position = position;
+            if (markerMaterial != null)
+            {
+                GameObject visibleMarker = CreateSphere(name + " Marker", position + Vector3.up * .35f, Vector3.one * .45f, markerMaterial);
+                visibleMarker.GetComponent<Collider>().enabled = false;
+            }
             return marker.transform;
         }
 

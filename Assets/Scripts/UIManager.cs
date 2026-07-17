@@ -26,9 +26,15 @@ namespace EchoesOfTheRuins
         private void Update()
         {
             if (!subscribed) Subscribe();
-            if (string.IsNullOrEmpty(feedback) && guardian != null && GameManager.Instance != null && !GameManager.Instance.HasWon)
+            if (feedbackExpiresAt > 0f && Time.time >= feedbackExpiresAt)
+            {
+                feedback = string.Empty;
+                feedbackExpiresAt = 0f;
+            }
+            // Detection is a live status, not a one-time message. Timed reset/unlock
+            // feedback keeps priority until it expires; victory remains persistent.
+            if (feedbackExpiresAt == 0f && guardian != null && GameManager.Instance != null && !GameManager.Instance.HasWon)
                 feedback = guardian.IsChasing ? "DETECTED - RUN!" : "Hidden";
-            if (feedbackExpiresAt > 0f && Time.time >= feedbackExpiresAt) feedback = string.Empty;
         }
 
         private void OnGUI()

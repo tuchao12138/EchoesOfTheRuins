@@ -6,6 +6,9 @@ namespace EchoesOfTheRuins
         Investigate,
         Search,
         Chase,
+        AttackTelegraph,
+        Strike,
+        Recovery,
         Capture
     }
 
@@ -13,13 +16,13 @@ namespace EchoesOfTheRuins
     {
         public readonly bool CanSeePlayer;
         public readonly bool HeardNoise;
-        public readonly bool InCaptureRange;
+        public readonly bool InAttackRange;
 
-        public GuardianPerception(bool canSeePlayer, bool heardNoise, bool inCaptureRange)
+        public GuardianPerception(bool canSeePlayer, bool heardNoise, bool inAttackRange)
         {
             CanSeePlayer = canSeePlayer;
             HeardNoise = heardNoise;
-            InCaptureRange = inCaptureRange;
+            InAttackRange = inAttackRange;
         }
     }
 
@@ -38,9 +41,9 @@ namespace EchoesOfTheRuins
 
         public GuardianState Tick(float deltaTime, GuardianPerception perception)
         {
-            if (perception.InCaptureRange)
+            if (State == GuardianState.Chase && perception.InAttackRange)
             {
-                State = GuardianState.Capture;
+                State = GuardianState.AttackTelegraph;
                 return State;
             }
 

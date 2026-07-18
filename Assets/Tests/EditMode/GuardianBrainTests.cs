@@ -35,13 +35,24 @@ namespace EchoesOfTheRuins.Tests
         }
 
         [Test]
-        public void Tick_CaptureRange_AlwaysTransitionsToCapture()
+        public void Tick_AttackRangeFromChase_TransitionsToTelegraphInsteadOfCapture()
         {
             var brain = new GuardianBrain();
+            brain.Tick(0.1f, new GuardianPerception(true, false, false));
 
             var state = brain.Tick(0.1f, new GuardianPerception(true, false, true));
 
-            Assert.That(state, Is.EqualTo(GuardianState.Capture));
+            Assert.That(state, Is.EqualTo(GuardianState.AttackTelegraph));
+        }
+
+        [Test]
+        public void Tick_AttackRangeFromPatrol_DoesNotSkipToCaptureOrTelegraph()
+        {
+            var brain = new GuardianBrain();
+
+            var state = brain.Tick(0.1f, new GuardianPerception(false, false, true));
+
+            Assert.That(state, Is.EqualTo(GuardianState.Patrol));
         }
     }
 }

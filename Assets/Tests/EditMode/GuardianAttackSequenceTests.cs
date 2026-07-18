@@ -30,6 +30,27 @@ namespace EchoesOfTheRuins.Tests
         }
 
         [Test]
+        public void TargetLostAfterHitQueryCommitsPermanentlyToRecovery()
+        {
+            var attack = new GuardianAttackSequence(.6f, .15f, .6f);
+            attack.Begin();
+
+            AttackFrame strike = attack.Tick(.61f, true);
+            AttackFrame lost = attack.Tick(.01f, false);
+            AttackFrame reacquired = attack.Tick(.1f, true);
+            AttackFrame finished = attack.Tick(.5f, true);
+
+            Assert.That(strike.ShouldQueryHit, Is.True);
+            Assert.That(lost.Phase, Is.EqualTo(GuardianAttackPhase.Recovery));
+            Assert.That(lost.ShouldQueryHit, Is.False);
+            Assert.That(reacquired.Phase, Is.EqualTo(GuardianAttackPhase.Recovery));
+            Assert.That(reacquired.ShouldQueryHit, Is.False);
+            Assert.That(finished.Phase, Is.EqualTo(GuardianAttackPhase.Recovery));
+            Assert.That(finished.ShouldQueryHit, Is.False);
+            Assert.That(finished.SequenceFinished, Is.True);
+        }
+
+        [Test]
         public void InvalidTargetDuringTelegraphProducesMiss()
         {
             var attack = new GuardianAttackSequence(.6f, .15f, .6f);

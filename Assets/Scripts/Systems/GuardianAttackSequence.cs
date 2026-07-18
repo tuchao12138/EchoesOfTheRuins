@@ -72,18 +72,15 @@ namespace EchoesOfTheRuins
                 return new AttackFrame(GuardianAttackPhase.Telegraph, false, false);
             }
 
-            if (!recovering && !queried)
+            if (!recovering && !targetValid)
             {
-                if (!targetValid)
-                {
-                    elapsed = System.Math.Max(elapsed, telegraph + strike);
-                    recovering = true;
-                }
-                else
-                {
-                    queried = true;
-                    return new AttackFrame(GuardianAttackPhase.Strike, true, false);
-                }
+                elapsed = System.Math.Max(elapsed, telegraph + strike);
+                recovering = true;
+            }
+            else if (!recovering && !queried)
+            {
+                queried = true;
+                return new AttackFrame(GuardianAttackPhase.Strike, true, false);
             }
 
             if (!recovering && !HasReached(telegraph + strike))

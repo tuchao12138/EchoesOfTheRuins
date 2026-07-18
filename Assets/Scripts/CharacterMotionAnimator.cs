@@ -69,7 +69,7 @@ namespace EchoesOfTheRuins
             if (inputs.TryGetValue(AnimationRole.Idle, out targetInput))
                 mixer.SetInputWeight(targetInput, 1f);
 
-            graph.Play();
+            if (isActiveAndEnabled) graph.Play();
         }
 
         // Compatibility for the pre-existing scene bootstrap while it migrates to CharacterAssetId.
@@ -110,8 +110,13 @@ namespace EchoesOfTheRuins
 
         private void Update()
         {
+            AdvanceBlend(Time.deltaTime);
+        }
+
+        private void AdvanceBlend(float deltaTime)
+        {
             if (!graph.IsValid() || blendDuration <= 0f || targetInput < 0) return;
-            blendElapsed += Time.deltaTime;
+            blendElapsed += Mathf.Max(0f, deltaTime);
             float progress = Mathf.Clamp01(blendElapsed / blendDuration);
             ApplyBlendWeights(progress);
             if (progress >= 1f) blendDuration = 0f;
@@ -124,6 +129,16 @@ namespace EchoesOfTheRuins
                 float desiredWeight = index == targetInput ? 1f : 0f;
                 mixer.SetInputWeight(index, Mathf.Lerp(blendStartWeights[index], desiredWeight, progress));
             }
+        }
+
+        private void OnEnable()
+        {
+            if (graph.IsValid()) graph.Play();
+        }
+
+        private void OnDisable()
+        {
+            if (graph.IsValid()) graph.Stop();
         }
 
         private void OnDestroy() => DestroyGraph();

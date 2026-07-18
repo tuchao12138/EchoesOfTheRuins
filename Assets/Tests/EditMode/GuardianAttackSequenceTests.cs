@@ -47,12 +47,71 @@ namespace EchoesOfTheRuins.Tests
             var attack = new GuardianAttackSequence(.6f, .15f, .6f);
             attack.Begin();
 
-            AttackFrame recovery = attack.Tick(.75f, true);
+            AttackFrame strike = attack.Tick(.75f, true);
             AttackFrame finished = attack.Tick(.6f, true);
 
-            Assert.That(recovery.Phase, Is.EqualTo(GuardianAttackPhase.Recovery));
-            Assert.That(recovery.SequenceFinished, Is.False);
+            Assert.That(strike.Phase, Is.EqualTo(GuardianAttackPhase.Strike));
+            Assert.That(strike.ShouldQueryHit, Is.True);
+            Assert.That(strike.SequenceFinished, Is.False);
+            Assert.That(finished.Phase, Is.EqualTo(GuardianAttackPhase.Recovery));
             Assert.That(finished.SequenceFinished, Is.True);
+        }
+
+        [Test]
+        public void HitchPastWholeSequenceStillQueriesExactlyOnce()
+        {
+            var attack = new GuardianAttackSequence(.6f, .15f, .6f);
+            attack.Begin();
+
+            AttackFrame hitch = attack.Tick(2f, true);
+            AttackFrame afterHitch = attack.Tick(0f, true);
+
+            Assert.That(hitch.Phase, Is.EqualTo(GuardianAttackPhase.Strike));
+            Assert.That(hitch.ShouldQueryHit, Is.True);
+            Assert.That(hitch.SequenceFinished, Is.False);
+            Assert.That(afterHitch.ShouldQueryHit, Is.False);
+            Assert.That(afterHitch.SequenceFinished, Is.True);
+        }
+
+        [Test]
+        public void JustBeforeTelegraphBoundaryRemainsTelegraph()
+        {
+            var attack = new GuardianAttackSequence(.6f, .15f, .6f);
+            attack.Begin();
+
+            AttackFrame before = attack.Tick(.599999f, true);
+            AttackFrame boundary = attack.Tick(.000001f, true);
+
+            Assert.That(before.Phase, Is.EqualTo(GuardianAttackPhase.Telegraph));
+            Assert.That(before.ShouldQueryHit, Is.False);
+            Assert.That(boundary.ShouldQueryHit, Is.True);
+        }
+
+        [Test]
+        public void JustBeforeStrikeBoundaryRemainsStrike()
+        {
+            var attack = new GuardianAttackSequence(.6f, .15f, .6f);
+            attack.Begin();
+            attack.Tick(.6f, true);
+
+            AttackFrame before = attack.Tick(.149999f, true);
+
+            Assert.That(before.Phase, Is.EqualTo(GuardianAttackPhase.Strike));
+            Assert.That(before.ShouldQueryHit, Is.False);
+        }
+
+        [Test]
+        public void JustBeforeRecoveryBoundaryDoesNotFinish()
+        {
+            var attack = new GuardianAttackSequence(.6f, .15f, .6f);
+            attack.Begin();
+            attack.Tick(.6f, true);
+            attack.Tick(.15f, true);
+
+            AttackFrame before = attack.Tick(.599999f, true);
+
+            Assert.That(before.Phase, Is.EqualTo(GuardianAttackPhase.Recovery));
+            Assert.That(before.SequenceFinished, Is.False);
         }
 
         [Test]

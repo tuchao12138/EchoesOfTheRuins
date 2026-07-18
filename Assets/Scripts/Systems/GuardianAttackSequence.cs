@@ -25,7 +25,7 @@ namespace EchoesOfTheRuins
 
     public sealed class GuardianAttackSequence
     {
-        private const float TimingEpsilon = .00001f;
+        private const float FloatMachineEpsilon = 1.1920929e-7f;
         private readonly float telegraph;
         private readonly float strike;
         private readonly float recovery;
@@ -67,28 +67,34 @@ namespace EchoesOfTheRuins
             }
 
             elapsed += System.Math.Max(0f, deltaTime);
-            if (!recovering && elapsed + TimingEpsilon < telegraph)
+            if (!recovering && !HasReached(telegraph))
             {
                 return new AttackFrame(GuardianAttackPhase.Telegraph, false, false);
             }
 
-            if (!recovering && !targetValid)
+            if (!recovering && !queried)
             {
-                elapsed = telegraph + strike;
-                recovering = true;
+                if (!targetValid)
+                {
+                    elapsed = System.Math.Max(elapsed, telegraph + strike);
+                    recovering = true;
+                }
+                else
+                {
+                    queried = true;
+                    return new AttackFrame(GuardianAttackPhase.Strike, true, false);
+                }
             }
 
-            if (!recovering && elapsed + TimingEpsilon < telegraph + strike)
+            if (!recovering && !HasReached(telegraph + strike))
             {
-                bool query = !queried;
-                queried = true;
                 return new AttackFrame(
                     hit ? GuardianAttackPhase.HitConfirmed : GuardianAttackPhase.Strike,
-                    query,
+                    false,
                     false);
             }
 
-            bool finished = elapsed + TimingEpsilon >= telegraph + strike + recovery;
+            bool finished = HasReached(telegraph + strike + recovery);
             if (finished)
             {
                 active = false;
@@ -98,6 +104,18 @@ namespace EchoesOfTheRuins
                 hit ? GuardianAttackPhase.HitConfirmed : GuardianAttackPhase.Recovery,
                 false,
                 finished);
+        }
+
+        private bool HasReached(float boundary)
+        {
+            if (elapsed >= boundary)
+            {
+                return true;
+            }
+
+            float representationTolerance =
+                FloatMachineEpsilon * System.Math.Max(1f, System.Math.Abs(boundary));
+            return boundary - elapsed <= representationTolerance;
         }
     }
 }

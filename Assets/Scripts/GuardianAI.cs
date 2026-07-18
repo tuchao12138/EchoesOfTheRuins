@@ -26,6 +26,7 @@ namespace EchoesOfTheRuins
         private Vector3 investigationPoint;
         private bool hasInvestigationPoint;
         private bool receivedNoise;
+        private CharacterMotionAnimator motionAnimator;
 
         public void Configure(Transform targetPlayer, Transform[] patrolWaypoints)
         {
@@ -51,6 +52,8 @@ namespace EchoesOfTheRuins
             bool seesPlayer = (TutorialDirector.Active == null || TutorialDirector.Active.CanBeDetected) && CanSeePlayer(distance);
             bool capture = distance <= captureRange && seesPlayer && Time.time >= nextCaptureTime;
             SetState(brain.Tick(Time.deltaTime, new GuardianPerception(seesPlayer, receivedNoise, capture)));
+            if (motionAnimator == null) motionAnimator = GetComponent<CharacterMotionAnimator>();
+            motionAnimator?.Play(ToAnimationRole(CurrentState));
             receivedNoise = false;
             if (CurrentState == GuardianState.Capture)
             {
@@ -95,6 +98,16 @@ namespace EchoesOfTheRuins
             AlertLevel = nextAlert;
             AlertStateChanged?.Invoke(CurrentState, AlertLevel);
         }
+
+        private static AnimationRole ToAnimationRole(GuardianState state) => state switch
+        {
+            GuardianState.Patrol => AnimationRole.Walk,
+            GuardianState.Investigate => AnimationRole.Walk,
+            GuardianState.Search => AnimationRole.Walk,
+            GuardianState.Chase => AnimationRole.Run,
+            GuardianState.Capture => AnimationRole.Attack,
+            _ => AnimationRole.Idle
+        };
 
         private void ResolvePlayer()
         {

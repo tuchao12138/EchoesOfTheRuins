@@ -12,6 +12,7 @@ namespace EchoesOfTheRuins
         [SerializeField] private float mouseSensitivity = 2f;
         private CharacterController controller;
         private PlayerLocomotionModel locomotion;
+        private CharacterMotionAnimator motionAnimator;
         private float verticalVelocity;
         private float pitch;
         private bool inShadow;
@@ -104,8 +105,23 @@ namespace EchoesOfTheRuins
             }
             velocity.y = verticalVelocity;
             controller.Move(velocity * Time.deltaTime);
+            if (motionAnimator == null) motionAnimator = GetComponent<CharacterMotionAnimator>();
+            motionAnimator?.Play(ToAnimationRole(frame.State));
             LocomotionChanged?.Invoke(frame);
         }
+
+        private static AnimationRole ToAnimationRole(LocomotionState state) => state switch
+        {
+            LocomotionState.Walk => AnimationRole.Walk,
+            LocomotionState.Run => AnimationRole.Run,
+            LocomotionState.Sprint => AnimationRole.Sprint,
+            LocomotionState.Crouch => AnimationRole.Crouch,
+            LocomotionState.Jump => AnimationRole.Jump,
+            LocomotionState.Fall => AnimationRole.Fall,
+            LocomotionState.Throw => AnimationRole.Throw,
+            LocomotionState.Hit => AnimationRole.Hit,
+            _ => AnimationRole.Idle
+        };
 
         public void SetInShadow(bool value)
         {

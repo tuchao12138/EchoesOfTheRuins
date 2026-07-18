@@ -88,16 +88,26 @@ namespace EchoesOfTheRuins
             CreateBox("Courtyard East Wall South", new Vector3(11f, 2.5f, -5f), new Vector3(1f, 5f, 12f), stone);
             CreateBox("Courtyard East Wall North", new Vector3(11f, 2.5f, 8f), new Vector3(1f, 5f, 6f), stone);
             CreateBox("Central Dais", new Vector3(0f, .75f, -3f), new Vector3(6f, 1.5f, 6f), stone);
+            CreateCastleProp("Central Altar Ruin", RuinsAssetId.Corner, new Vector3(0f, 0f, -3f), Quaternion.Euler(0f, 45f, 0f), new Vector3(2.2f, 1.25f, 2.2f), darkStone);
             CreatePillar("Courtyard Pillar A", new Vector3(-7f, 2.5f, -7f), stone);
             CreatePillar("Courtyard Pillar B", new Vector3(7f, 2.5f, -7f), stone);
             CreatePillar("Courtyard Pillar C", new Vector3(-7f, 2.5f, 10f), stone);
             CreatePillar("Courtyard Pillar D", new Vector3(7f, 2.5f, 10f), stone);
+            CreateCastleProp("Castle Entry Tower Left", RuinsAssetId.Tower, new Vector3(-4.5f, 0f, -22f), Quaternion.identity, new Vector3(2.2f, 2.2f, 2.2f), stone);
+            CreateCastleProp("Castle Entry Tower Right", RuinsAssetId.Tower, new Vector3(4.5f, 0f, -22f), Quaternion.identity, new Vector3(2.2f, 2.2f, 2.2f), stone);
+            CreateCastleProp("Castle Courtyard Wall", RuinsAssetId.Wall, new Vector3(0f, 0f, 18f), Quaternion.identity, new Vector3(3.1f, 2.2f, 2.2f), stone);
+            CreateCastleProp("Castle Pillar A", RuinsAssetId.Pillar, new Vector3(-7f, 0f, -7f), Quaternion.identity, new Vector3(1.8f, 2.2f, 1.8f), stone);
+            CreateCastleProp("Castle Pillar B", RuinsAssetId.Pillar, new Vector3(7f, 0f, -7f), Quaternion.identity, new Vector3(1.8f, 2.2f, 1.8f), stone);
+            CreateCastleProp("Castle Pillar C", RuinsAssetId.Pillar, new Vector3(-7f, 0f, 10f), Quaternion.identity, new Vector3(1.8f, 2.2f, 1.8f), stone);
+            CreateCastleProp("Castle Pillar D", RuinsAssetId.Pillar, new Vector3(7f, 0f, 10f), Quaternion.identity, new Vector3(1.8f, 2.2f, 1.8f), stone);
+            CreateCastleProp("Courtyard Rubble", RuinsAssetId.Rocks, new Vector3(-4f, 0f, 5f), Quaternion.Euler(0f, 35f, 0f), new Vector3(1.6f, 1.3f, 1.6f), darkStone);
 
             // Open side chamber, marked in cool color.
             CreateBox("Side Chamber Back", new Vector3(-22f, 2.5f, 3f), new Vector3(1f, 5f, 12f), darkStone);
             CreateBox("Side Chamber North", new Vector3(-17f, 2.5f, 9f), new Vector3(10f, 5f, 1f), darkStone);
             CreateBox("Side Chamber South", new Vector3(-17f, 2.5f, -3f), new Vector3(10f, 5f, 1f), darkStone);
             CreateBox("Side Chamber Plinth", new Vector3(-17f, .5f, 3f), new Vector3(4f, 1f, 4f), stone);
+            CreateCastleProp("Side Chamber Steps", RuinsAssetId.Stairs, new Vector3(-17f, 0f, -1f), Quaternion.identity, new Vector3(2.2f, 1.7f, 2.2f), stone);
             CreateLight("Side Chamber Glow", new Vector3(-17f, 4f, 3f), Accent, 9f, 5f);
 
             // Raised altar chamber in warm contrast.
@@ -217,6 +227,7 @@ namespace EchoesOfTheRuins
             gate.AddComponent<Rigidbody>().isKinematic = true;
             GameObject locked = CreateBox("Locked Gate Bars", position, new Vector3(5f, 4f, .5f), lockedMaterial);
             GameObject opened = CreateBox("Open Exit Beacon", position + Vector3.up * 3f, new Vector3(5f, .25f, .5f), unlockedMaterial);
+            CreateCastleProp("Sealed Castle Gate", RuinsAssetId.Gate, position, Quaternion.identity, new Vector3(2.1f, 2.1f, 2.1f), lockedMaterial);
             CreateLight("Exit Beacon", position + Vector3.up * 2f, Accent, 7f, 10f);
             ExitGate exit = gate.AddComponent<ExitGate>();
             exit.Configure(locked, opened);
@@ -284,6 +295,18 @@ namespace EchoesOfTheRuins
         }
 
         private static void CreatePillar(string name, Vector3 position, Material material) => CreateCylinder(name, position, new Vector3(1f, 2.5f, 1f), material);
+
+        private static GameObject CreateCastleProp(string name, RuinsAssetId assetId, Vector3 position, Quaternion rotation, Vector3 scale, Material material)
+        {
+            GameObject template = Resources.Load<GameObject>(RuinsAssetCatalog.GetPath(assetId));
+            if (template == null) return null;
+
+            GameObject prop = Object.Instantiate(template, position, rotation);
+            prop.name = name;
+            prop.transform.localScale = scale;
+            foreach (Renderer renderer in prop.GetComponentsInChildren<Renderer>()) renderer.material = material;
+            return prop;
+        }
 
         private static Transform CreateMarker(string name, Vector3 position, Material markerMaterial = null)
         {

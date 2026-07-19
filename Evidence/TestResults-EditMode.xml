@@ -1,0 +1,1116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="156" result="Passed" total="156" passed="156" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:44Z" duration="1.4217563">
+  <test-suite type="TestSuite" id="1000" name="EchoesOfTheRuins" fullname="EchoesOfTheRuins" runstate="Runnable" testcasecount="156" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:44Z" duration="1.421756" total="156" passed="156" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1208" name="EchoesOfTheRuins.EditModeTests.dll" fullname="C:/Users/HP/Desktop/3/.codex-unity-test-harness/Library/ScriptAssemblies/EchoesOfTheRuins.EditModeTests.dll" runstate="Runnable" testcasecount="156" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:44Z" duration="1.412930" total="156" passed="156" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="13512" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1209" name="EchoesOfTheRuins" fullname="EchoesOfTheRuins" runstate="Runnable" testcasecount="156" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:44Z" duration="1.412419" total="156" passed="156" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1210" name="Tests" fullname="EchoesOfTheRuins.Tests" runstate="Runnable" testcasecount="156" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:44Z" duration="1.412004" total="156" passed="156" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="CameraCollisionSolverTests" fullname="EchoesOfTheRuins.Tests.CameraCollisionSolverTests" classname="EchoesOfTheRuins.Tests.CameraCollisionSolverTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.044350" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1003" name="ResolveDistance_ReturnsDesiredDistanceWhenPathIsClear" fullname="EchoesOfTheRuins.Tests.CameraCollisionSolverTests.ResolveDistance_ReturnsDesiredDistanceWhenPathIsClear" methodname="ResolveDistance_ReturnsDesiredDistanceWhenPathIsClear" classname="EchoesOfTheRuins.Tests.CameraCollisionSolverTests" runstate="Runnable" seed="156330717" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.020694" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1002" name="ResolveDistance_StopsCameraBeforeWall" fullname="EchoesOfTheRuins.Tests.CameraCollisionSolverTests.ResolveDistance_StopsCameraBeforeWall" methodname="ResolveDistance_StopsCameraBeforeWall" classname="EchoesOfTheRuins.Tests.CameraCollisionSolverTests" runstate="Runnable" seed="758261263" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.007298" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1004" name="CharacterAnimationSetTests" fullname="EchoesOfTheRuins.Tests.CharacterAnimationSetTests" classname="EchoesOfTheRuins.Tests.CharacterAnimationSetTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.069691" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1007" name="ProductionCharacter_ResolvesEveryRequiredRole" fullname="EchoesOfTheRuins.Tests.CharacterAnimationSetTests.ProductionCharacter_ResolvesEveryRequiredRole" classname="EchoesOfTheRuins.Tests.CharacterAnimationSetTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.068674" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1005" name="ProductionCharacter_ResolvesEveryRequiredRole(Explorer)" fullname="EchoesOfTheRuins.Tests.CharacterAnimationSetTests.ProductionCharacter_ResolvesEveryRequiredRole(Explorer)" methodname="ProductionCharacter_ResolvesEveryRequiredRole" classname="EchoesOfTheRuins.Tests.CharacterAnimationSetTests" runstate="Runnable" seed="2056778085" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.040029" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1006" name="ProductionCharacter_ResolvesEveryRequiredRole(Guardian)" fullname="EchoesOfTheRuins.Tests.CharacterAnimationSetTests.ProductionCharacter_ResolvesEveryRequiredRole(Guardian)" methodname="ProductionCharacter_ResolvesEveryRequiredRole" classname="EchoesOfTheRuins.Tests.CharacterAnimationSetTests" runstate="Runnable" seed="965161095" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.027753" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1008" name="CharacterAssetCatalogTests" fullname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests" classname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.007368" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1014" name="EveryCharacterRole_HasAModelAndTexturePath" fullname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests.EveryCharacterRole_HasAModelAndTexturePath" classname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.003304" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1012" name="EveryCharacterRole_HasAModelAndTexturePath(Explorer)" fullname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests.EveryCharacterRole_HasAModelAndTexturePath(Explorer)" methodname="EveryCharacterRole_HasAModelAndTexturePath" classname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests" runstate="Runnable" seed="1206232456" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.002640" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1013" name="EveryCharacterRole_HasAModelAndTexturePath(Guardian)" fullname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests.EveryCharacterRole_HasAModelAndTexturePath(Guardian)" methodname="EveryCharacterRole_HasAModelAndTexturePath" classname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests" runstate="Runnable" seed="2092947979" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000155" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="ParameterizedMethod" id="1017" name="ProductionCharacter_ContainsAtLeastOneEmbeddedAnimation" fullname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests.ProductionCharacter_ContainsAtLeastOneEmbeddedAnimation" classname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.001988" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1015" name="ProductionCharacter_ContainsAtLeastOneEmbeddedAnimation(Explorer)" fullname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests.ProductionCharacter_ContainsAtLeastOneEmbeddedAnimation(Explorer)" methodname="ProductionCharacter_ContainsAtLeastOneEmbeddedAnimation" classname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests" runstate="Runnable" seed="315882593" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.001097" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1016" name="ProductionCharacter_ContainsAtLeastOneEmbeddedAnimation(Guardian)" fullname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests.ProductionCharacter_ContainsAtLeastOneEmbeddedAnimation(Guardian)" methodname="ProductionCharacter_ContainsAtLeastOneEmbeddedAnimation" classname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests" runstate="Runnable" seed="2135865870" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000251" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="ParameterizedMethod" id="1011" name="Resources_UseStablePathsForRiggedCharacters" fullname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests.Resources_UseStablePathsForRiggedCharacters" classname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.001305" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1009" name="Resources_UseStablePathsForRiggedCharacters(Explorer,&quot;Characters/Explorer&quot;)" fullname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests.Resources_UseStablePathsForRiggedCharacters(Explorer,&quot;Characters/Explorer&quot;)" methodname="Resources_UseStablePathsForRiggedCharacters" classname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests" runstate="Runnable" seed="258751796" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000533" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1010" name="Resources_UseStablePathsForRiggedCharacters(Guardian,&quot;Characters/Guardian&quot;)" fullname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests.Resources_UseStablePathsForRiggedCharacters(Guardian,&quot;Characters/Guardian&quot;)" methodname="Resources_UseStablePathsForRiggedCharacters" classname="EchoesOfTheRuins.Tests.CharacterAssetCatalogTests" runstate="Runnable" seed="379028564" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000124" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1018" name="CharacterMotionAnimatorTests" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" testcasecount="27" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.051965" total="27" passed="27" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1027" name="Configure_CanRebuildGraphAndRestartCurrentRole" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.Configure_CanRebuildGraphAndRestartCurrentRole" methodname="Configure_CanRebuildGraphAndRestartCurrentRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="1622841195" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.020810" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1024" name="Configure_DisablesRootMotionAndStartsIdle" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.Configure_DisablesRootMotionAndStartsIdle" methodname="Configure_DisablesRootMotionAndStartsIdle" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="1669636926" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.002239" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1023" name="Configure_ProvidesNamedRole" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.Configure_ProvidesNamedRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.007870" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1019" name="Configure_ProvidesNamedRole(Explorer,Idle)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.Configure_ProvidesNamedRole(Explorer,Idle)" methodname="Configure_ProvidesNamedRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="668670505" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.002186" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1020" name="Configure_ProvidesNamedRole(Explorer,Run)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.Configure_ProvidesNamedRole(Explorer,Run)" methodname="Configure_ProvidesNamedRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="1500763035" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.001268" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1021" name="Configure_ProvidesNamedRole(Explorer,Sprint)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.Configure_ProvidesNamedRole(Explorer,Sprint)" methodname="Configure_ProvidesNamedRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="735631330" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.001291" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1022" name="Configure_ProvidesNamedRole(Guardian,Attack)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.Configure_ProvidesNamedRole(Guardian,Attack)" methodname="Configure_ProvidesNamedRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="737554954" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.001804" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1026" name="DestroyingComponent_DestroysPlayableGraph" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.DestroyingComponent_DestroysPlayableGraph" methodname="DestroyingComponent_DestroysPlayableGraph" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="164890173" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.001645" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1031" name="DisableStopsGraphAndEnableResumesSameGraph" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.DisableStopsGraphAndEnableResumesSameGraph" methodname="DisableStopsGraphAndEnableResumesSameGraph" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="2039509243" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.001988" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1048" name="GuardianAI_MapsStateToSemanticRole" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.GuardianAI_MapsStateToSemanticRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.002265" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1043" name="GuardianAI_MapsStateToSemanticRole(Patrol,Walk)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.GuardianAI_MapsStateToSemanticRole(Patrol,Walk)" methodname="GuardianAI_MapsStateToSemanticRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="1687490589" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000687" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1044" name="GuardianAI_MapsStateToSemanticRole(Investigate,Walk)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.GuardianAI_MapsStateToSemanticRole(Investigate,Walk)" methodname="GuardianAI_MapsStateToSemanticRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="967812885" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000149" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1045" name="GuardianAI_MapsStateToSemanticRole(Search,Walk)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.GuardianAI_MapsStateToSemanticRole(Search,Walk)" methodname="GuardianAI_MapsStateToSemanticRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="1244906151" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000079" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1046" name="GuardianAI_MapsStateToSemanticRole(Chase,Run)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.GuardianAI_MapsStateToSemanticRole(Chase,Run)" methodname="GuardianAI_MapsStateToSemanticRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="884623794" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000078" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1047" name="GuardianAI_MapsStateToSemanticRole(Capture,Attack)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.GuardianAI_MapsStateToSemanticRole(Capture,Attack)" methodname="GuardianAI_MapsStateToSemanticRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="843921875" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000064" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1030" name="Play_RestartResetsCurrentPlayableTime" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.Play_RestartResetsCurrentPlayableTime" methodname="Play_RestartResetsCurrentPlayableTime" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="1180323423" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.002383" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1029" name="Play_ShortBlendCrossfadesAndCompletesAtTargetWeights" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.Play_ShortBlendCrossfadesAndCompletesAtTargetWeights" methodname="Play_ShortBlendCrossfadesAndCompletesAtTargetWeights" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="1915108045" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.003322" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1025" name="Play_UnavailableRoleKeepsCurrentRole" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.Play_UnavailableRoleKeepsCurrentRole" methodname="Play_UnavailableRoleKeepsCurrentRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="1670331813" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.001544" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1028" name="Play_ZeroBlendImmediatelySelectsTargetMixerInput" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.Play_ZeroBlendImmediatelySelectsTargetMixerInput" methodname="Play_ZeroBlendImmediatelySelectsTargetMixerInput" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="1954252260" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.001399" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1042" name="PlayerController_MapsLocomotionStateToSemanticRole" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.PlayerController_MapsLocomotionStateToSemanticRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.004074" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1032" name="PlayerController_MapsLocomotionStateToSemanticRole(Idle,Idle)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.PlayerController_MapsLocomotionStateToSemanticRole(Idle,Idle)" methodname="PlayerController_MapsLocomotionStateToSemanticRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="1397605736" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000825" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1033" name="PlayerController_MapsLocomotionStateToSemanticRole(Walk,Walk)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.PlayerController_MapsLocomotionStateToSemanticRole(Walk,Walk)" methodname="PlayerController_MapsLocomotionStateToSemanticRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="1546818611" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000248" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1034" name="PlayerController_MapsLocomotionStateToSemanticRole(Run,Run)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.PlayerController_MapsLocomotionStateToSemanticRole(Run,Run)" methodname="PlayerController_MapsLocomotionStateToSemanticRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="46289337" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000191" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1035" name="PlayerController_MapsLocomotionStateToSemanticRole(Sprint,Sprint)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.PlayerController_MapsLocomotionStateToSemanticRole(Sprint,Sprint)" methodname="PlayerController_MapsLocomotionStateToSemanticRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="1455993256" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000157" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1036" name="PlayerController_MapsLocomotionStateToSemanticRole(Crouch,Crouch)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.PlayerController_MapsLocomotionStateToSemanticRole(Crouch,Crouch)" methodname="PlayerController_MapsLocomotionStateToSemanticRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="1799261544" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000181" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1037" name="PlayerController_MapsLocomotionStateToSemanticRole(Jump,Jump)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.PlayerController_MapsLocomotionStateToSemanticRole(Jump,Jump)" methodname="PlayerController_MapsLocomotionStateToSemanticRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="1498508958" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000156" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1038" name="PlayerController_MapsLocomotionStateToSemanticRole(Fall,Fall)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.PlayerController_MapsLocomotionStateToSemanticRole(Fall,Fall)" methodname="PlayerController_MapsLocomotionStateToSemanticRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="1946041818" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000149" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1039" name="PlayerController_MapsLocomotionStateToSemanticRole(Throw,Throw)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.PlayerController_MapsLocomotionStateToSemanticRole(Throw,Throw)" methodname="PlayerController_MapsLocomotionStateToSemanticRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="1203717487" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000146" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1040" name="PlayerController_MapsLocomotionStateToSemanticRole(Hit,Hit)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.PlayerController_MapsLocomotionStateToSemanticRole(Hit,Hit)" methodname="PlayerController_MapsLocomotionStateToSemanticRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="246907010" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000146" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1041" name="PlayerController_MapsLocomotionStateToSemanticRole(Locked,Idle)" fullname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests.PlayerController_MapsLocomotionStateToSemanticRole(Locked,Idle)" methodname="PlayerController_MapsLocomotionStateToSemanticRole" classname="EchoesOfTheRuins.Tests.CharacterMotionAnimatorTests" runstate="Runnable" seed="1509250494" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.000166" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1049" name="CitadelBackdropBuilderTests" fullname="EchoesOfTheRuins.Tests.CitadelBackdropBuilderTests" classname="EchoesOfTheRuins.Tests.CitadelBackdropBuilderTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.041423" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1050" name="Create_BuildsContinuousCurtainWallsAndVariedSkyline" fullname="EchoesOfTheRuins.Tests.CitadelBackdropBuilderTests.Create_BuildsContinuousCurtainWallsAndVariedSkyline" methodname="Create_BuildsContinuousCurtainWallsAndVariedSkyline" classname="EchoesOfTheRuins.Tests.CitadelBackdropBuilderTests" runstate="Runnable" seed="1880027958" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:42Z" duration="0.040578" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1051" name="CourtyardSetDressingBuilderTests" fullname="EchoesOfTheRuins.Tests.CourtyardSetDressingBuilderTests" classname="EchoesOfTheRuins.Tests.CourtyardSetDressingBuilderTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:43Z" duration="0.010471" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1052" name="Create_AddsEightReadableRuinClustersWithoutBlockingNavigation" fullname="EchoesOfTheRuins.Tests.CourtyardSetDressingBuilderTests.Create_AddsEightReadableRuinClustersWithoutBlockingNavigation" methodname="Create_AddsEightReadableRuinClustersWithoutBlockingNavigation" classname="EchoesOfTheRuins.Tests.CourtyardSetDressingBuilderTests" runstate="Runnable" seed="557039638" result="Passed" start-time="2026-07-19 19:15:42Z" end-time="2026-07-19 19:15:43Z" duration="0.009126" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1053" name="DungeonAssetCatalogTests" fullname="EchoesOfTheRuins.Tests.DungeonAssetCatalogTests" classname="EchoesOfTheRuins.Tests.DungeonAssetCatalogTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.002683" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1058" name="Resources_UseStablePathsForDungeonModules" fullname="EchoesOfTheRuins.Tests.DungeonAssetCatalogTests.Resources_UseStablePathsForDungeonModules" classname="EchoesOfTheRuins.Tests.DungeonAssetCatalogTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001777" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1054" name="Resources_UseStablePathsForDungeonModules(Wall,&quot;KenneyDungeon/template-wall-detail-a&quot;)" fullname="EchoesOfTheRuins.Tests.DungeonAssetCatalogTests.Resources_UseStablePathsForDungeonModules(Wall,&quot;KenneyDungeon/template-wall-detail-a&quot;)" methodname="Resources_UseStablePathsForDungeonModules" classname="EchoesOfTheRuins.Tests.DungeonAssetCatalogTests" runstate="Runnable" seed="1956920544" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000501" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1055" name="Resources_UseStablePathsForDungeonModules(Corner,&quot;KenneyDungeon/template-wall-corner&quot;)" fullname="EchoesOfTheRuins.Tests.DungeonAssetCatalogTests.Resources_UseStablePathsForDungeonModules(Corner,&quot;KenneyDungeon/template-wall-corner&quot;)" methodname="Resources_UseStablePathsForDungeonModules" classname="EchoesOfTheRuins.Tests.DungeonAssetCatalogTests" runstate="Runnable" seed="1646289258" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000156" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1056" name="Resources_UseStablePathsForDungeonModules(Gate,&quot;KenneyDungeon/gate-door&quot;)" fullname="EchoesOfTheRuins.Tests.DungeonAssetCatalogTests.Resources_UseStablePathsForDungeonModules(Gate,&quot;KenneyDungeon/gate-door&quot;)" methodname="Resources_UseStablePathsForDungeonModules" classname="EchoesOfTheRuins.Tests.DungeonAssetCatalogTests" runstate="Runnable" seed="295122908" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000125" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1057" name="Resources_UseStablePathsForDungeonModules(Stairs,&quot;KenneyDungeon/stairs-wide&quot;)" fullname="EchoesOfTheRuins.Tests.DungeonAssetCatalogTests.Resources_UseStablePathsForDungeonModules(Stairs,&quot;KenneyDungeon/stairs-wide&quot;)" methodname="Resources_UseStablePathsForDungeonModules" classname="EchoesOfTheRuins.Tests.DungeonAssetCatalogTests" runstate="Runnable" seed="977923016" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000104" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestSuite" id="1211" name="EditMode" fullname="EchoesOfTheRuins.Tests.EditMode" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001664" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1206" name="HudThemeTests" fullname="EchoesOfTheRuins.Tests.EditMode.HudThemeTests" classname="EchoesOfTheRuins.Tests.EditMode.HudThemeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001333" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1207" name="ChaseAlert_UsesRedDetectedCopy" fullname="EchoesOfTheRuins.Tests.EditMode.HudThemeTests.ChaseAlert_UsesRedDetectedCopy" methodname="ChaseAlert_UsesRedDetectedCopy" classname="EchoesOfTheRuins.Tests.EditMode.HudThemeTests" runstate="Runnable" seed="1901218592" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000642" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1059" name="ExplorerVisualTests" fullname="EchoesOfTheRuins.Tests.ExplorerVisualTests" classname="EchoesOfTheRuins.Tests.ExplorerVisualTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.119796" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1060" name="Create_BuildsNamedExplorerSilhouette" fullname="EchoesOfTheRuins.Tests.ExplorerVisualTests.Create_BuildsNamedExplorerSilhouette" methodname="Create_BuildsNamedExplorerSilhouette" classname="EchoesOfTheRuins.Tests.ExplorerVisualTests" runstate="Runnable" seed="1976666798" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.116172" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1061" name="Create_DisablesPrimitiveColliders" fullname="EchoesOfTheRuins.Tests.ExplorerVisualTests.Create_DisablesPrimitiveColliders" methodname="Create_DisablesPrimitiveColliders" classname="EchoesOfTheRuins.Tests.ExplorerVisualTests" runstate="Runnable" seed="422143537" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001023" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1062" name="Create_UsesCompactScaleForThirdPersonFraming" fullname="EchoesOfTheRuins.Tests.ExplorerVisualTests.Create_UsesCompactScaleForThirdPersonFraming" methodname="Create_UsesCompactScaleForThirdPersonFraming" classname="EchoesOfTheRuins.Tests.ExplorerVisualTests" runstate="Runnable" seed="734793246" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001515" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1063" name="FirstMinuteExperienceTests" fullname="EchoesOfTheRuins.Tests.FirstMinuteExperienceTests" classname="EchoesOfTheRuins.Tests.FirstMinuteExperienceTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.003854" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1066" name="ObjectiveTracker_ChangesFromCoresToExitAtThreeOfThree" fullname="EchoesOfTheRuins.Tests.FirstMinuteExperienceTests.ObjectiveTracker_ChangesFromCoresToExitAtThreeOfThree" methodname="ObjectiveTracker_ChangesFromCoresToExitAtThreeOfThree" classname="EchoesOfTheRuins.Tests.FirstMinuteExperienceTests" runstate="Runnable" seed="1248168103" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000603" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1065" name="SpawnProtection_PreventsDetectionForEightSeconds" fullname="EchoesOfTheRuins.Tests.FirstMinuteExperienceTests.SpawnProtection_PreventsDetectionForEightSeconds" methodname="SpawnProtection_PreventsDetectionForEightSeconds" classname="EchoesOfTheRuins.Tests.FirstMinuteExperienceTests" runstate="Runnable" seed="1149338234" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000491" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1064" name="Tutorial_AdvancesOnlyWhenCurrentActionIsCompleted" fullname="EchoesOfTheRuins.Tests.FirstMinuteExperienceTests.Tutorial_AdvancesOnlyWhenCurrentActionIsCompleted" methodname="Tutorial_AdvancesOnlyWhenCurrentActionIsCompleted" classname="EchoesOfTheRuins.Tests.FirstMinuteExperienceTests" runstate="Runnable" seed="905315751" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000542" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1067" name="TutorialCopy_IsReadableEnglishForEveryStage" fullname="EchoesOfTheRuins.Tests.FirstMinuteExperienceTests.TutorialCopy_IsReadableEnglishForEveryStage" methodname="TutorialCopy_IsReadableEnglishForEveryStage" classname="EchoesOfTheRuins.Tests.FirstMinuteExperienceTests" runstate="Runnable" seed="972708464" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000664" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1068" name="GuardianAttackSequenceTests" fullname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests" classname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.003210" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1078" name="ConfirmedHitDoesNotRequestAnotherHitQuery" fullname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests.ConfirmedHitDoesNotRequestAnotherHitQuery" methodname="ConfirmedHitDoesNotRequestAnotherHitQuery" classname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests" runstate="Runnable" seed="15635501" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000662" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1074" name="HitchPastWholeSequenceStillQueriesExactlyOnce" fullname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests.HitchPastWholeSequenceStillQueriesExactlyOnce" methodname="HitchPastWholeSequenceStillQueriesExactlyOnce" classname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests" runstate="Runnable" seed="412452498" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000249" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1072" name="InvalidTargetDuringTelegraphProducesMiss" fullname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests.InvalidTargetDuringTelegraphProducesMiss" methodname="InvalidTargetDuringTelegraphProducesMiss" classname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests" runstate="Runnable" seed="2006138595" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000156" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1077" name="JustBeforeRecoveryBoundaryDoesNotFinish" fullname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests.JustBeforeRecoveryBoundaryDoesNotFinish" methodname="JustBeforeRecoveryBoundaryDoesNotFinish" classname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests" runstate="Runnable" seed="221348876" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000140" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1076" name="JustBeforeStrikeBoundaryRemainsStrike" fullname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests.JustBeforeStrikeBoundaryRemainsStrike" methodname="JustBeforeStrikeBoundaryRemainsStrike" classname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests" runstate="Runnable" seed="633873455" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000127" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1075" name="JustBeforeTelegraphBoundaryRemainsTelegraph" fullname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests.JustBeforeTelegraphBoundaryRemainsTelegraph" methodname="JustBeforeTelegraphBoundaryRemainsTelegraph" classname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests" runstate="Runnable" seed="392425898" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000142" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1073" name="RecoveryReportsWhenSequenceFinishes" fullname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests.RecoveryReportsWhenSequenceFinishes" methodname="RecoveryReportsWhenSequenceFinishes" classname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests" runstate="Runnable" seed="1079498439" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000160" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1070" name="StrikeQueriesHitExactlyOnce" fullname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests.StrikeQueriesHitExactlyOnce" methodname="StrikeQueriesHitExactlyOnce" classname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests" runstate="Runnable" seed="1785390017" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000107" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1071" name="TargetLostAfterHitQueryCommitsPermanentlyToRecovery" fullname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests.TargetLostAfterHitQueryCommitsPermanentlyToRecovery" methodname="TargetLostAfterHitQueryCommitsPermanentlyToRecovery" classname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests" runstate="Runnable" seed="1393629637" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000217" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1069" name="TelegraphCannotHitBeforePointSixSeconds" fullname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests.TelegraphCannotHitBeforePointSixSeconds" methodname="TelegraphCannotHitBeforePointSixSeconds" classname="EchoesOfTheRuins.Tests.GuardianAttackSequenceTests" runstate="Runnable" seed="77882469" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000114" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1079" name="GuardianBrainTests" fullname="EchoesOfTheRuins.Tests.GuardianBrainTests" classname="EchoesOfTheRuins.Tests.GuardianBrainTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.002529" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1083" name="Tick_AttackRangeFromChase_TransitionsToTelegraphInsteadOfCapture" fullname="EchoesOfTheRuins.Tests.GuardianBrainTests.Tick_AttackRangeFromChase_TransitionsToTelegraphInsteadOfCapture" methodname="Tick_AttackRangeFromChase_TransitionsToTelegraphInsteadOfCapture" classname="EchoesOfTheRuins.Tests.GuardianBrainTests" runstate="Runnable" seed="600954110" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000542" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1084" name="Tick_AttackRangeFromPatrol_DoesNotSkipToCaptureOrTelegraph" fullname="EchoesOfTheRuins.Tests.GuardianBrainTests.Tick_AttackRangeFromPatrol_DoesNotSkipToCaptureOrTelegraph" methodname="Tick_AttackRangeFromPatrol_DoesNotSkipToCaptureOrTelegraph" classname="EchoesOfTheRuins.Tests.GuardianBrainTests" runstate="Runnable" seed="594354236" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000129" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1080" name="Tick_HeardEcho_TransitionsFromPatrolToInvestigate" fullname="EchoesOfTheRuins.Tests.GuardianBrainTests.Tick_HeardEcho_TransitionsFromPatrolToInvestigate" methodname="Tick_HeardEcho_TransitionsFromPatrolToInvestigate" classname="EchoesOfTheRuins.Tests.GuardianBrainTests" runstate="Runnable" seed="285385754" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000114" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1082" name="Tick_LostSight_SearchesThenReturnsToPatrol" fullname="EchoesOfTheRuins.Tests.GuardianBrainTests.Tick_LostSight_SearchesThenReturnsToPatrol" methodname="Tick_LostSight_SearchesThenReturnsToPatrol" classname="EchoesOfTheRuins.Tests.GuardianBrainTests" runstate="Runnable" seed="573842119" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000141" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1086" name="Tick_LowerVisibilityBuildsSuspicionMoreSlowly" fullname="EchoesOfTheRuins.Tests.GuardianBrainTests.Tick_LowerVisibilityBuildsSuspicionMoreSlowly" methodname="Tick_LowerVisibilityBuildsSuspicionMoreSlowly" classname="EchoesOfTheRuins.Tests.GuardianBrainTests" runstate="Runnable" seed="274202957" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000192" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1087" name="Tick_NoVisualContactDecaysSuspicion" fullname="EchoesOfTheRuins.Tests.GuardianBrainTests.Tick_NoVisualContactDecaysSuspicion" methodname="Tick_NoVisualContactDecaysSuspicion" classname="EchoesOfTheRuins.Tests.GuardianBrainTests" runstate="Runnable" seed="1567309582" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000138" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1081" name="Tick_VisiblePlayer_TransitionsToChase" fullname="EchoesOfTheRuins.Tests.GuardianBrainTests.Tick_VisiblePlayer_TransitionsToChase" methodname="Tick_VisiblePlayer_TransitionsToChase" classname="EchoesOfTheRuins.Tests.GuardianBrainTests" runstate="Runnable" seed="672250204" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000121" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1085" name="Tick_VisualExposureBuildsSuspicionBeforeChase" fullname="EchoesOfTheRuins.Tests.GuardianBrainTests.Tick_VisualExposureBuildsSuspicionBeforeChase" methodname="Tick_VisualExposureBuildsSuspicionBeforeChase" classname="EchoesOfTheRuins.Tests.GuardianBrainTests" runstate="Runnable" seed="1763890774" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000173" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1088" name="GuardianNavigationTests" fullname="EchoesOfTheRuins.Tests.GuardianNavigationTests" classname="EchoesOfTheRuins.Tests.GuardianNavigationTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000983" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1089" name="NavigationReady_IsFalseWhenAgentIsNotOnBakedNavMesh" fullname="EchoesOfTheRuins.Tests.GuardianNavigationTests.NavigationReady_IsFalseWhenAgentIsNotOnBakedNavMesh" methodname="NavigationReady_IsFalseWhenAgentIsNotOnBakedNavMesh" classname="EchoesOfTheRuins.Tests.GuardianNavigationTests" runstate="Runnable" seed="742430727" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000574" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1090" name="GuardianVisionConeTests" fullname="EchoesOfTheRuins.Tests.GuardianVisionConeTests" classname="EchoesOfTheRuins.Tests.GuardianVisionConeTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.006168" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1095" name="BuildConeVertices_StaysInsideConfiguredAngleAndRange" fullname="EchoesOfTheRuins.Tests.GuardianVisionConeTests.BuildConeVertices_StaysInsideConfiguredAngleAndRange" methodname="BuildConeVertices_StaysInsideConfiguredAngleAndRange" classname="EchoesOfTheRuins.Tests.GuardianVisionConeTests" runstate="Runnable" seed="1454370094" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001380" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1094" name="ColorForState_MapsStealthStateToReadableConeColor" fullname="EchoesOfTheRuins.Tests.GuardianVisionConeTests.ColorForState_MapsStealthStateToReadableConeColor" classname="EchoesOfTheRuins.Tests.GuardianVisionConeTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001101" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1091" name="ColorForState_MapsStealthStateToReadableConeColor(Patrol,0.2f,0.18f,0.55f,1.0f)" fullname="EchoesOfTheRuins.Tests.GuardianVisionConeTests.ColorForState_MapsStealthStateToReadableConeColor(Patrol,0.2f,0.18f,0.55f,1.0f)" methodname="ColorForState_MapsStealthStateToReadableConeColor" classname="EchoesOfTheRuins.Tests.GuardianVisionConeTests" runstate="Runnable" seed="1396959574" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000408" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1092" name="ColorForState_MapsStealthStateToReadableConeColor(Investigate,0.6f,1.0f,0.58f,0.08f)" fullname="EchoesOfTheRuins.Tests.GuardianVisionConeTests.ColorForState_MapsStealthStateToReadableConeColor(Investigate,0.6f,1.0f,0.58f,0.08f)" methodname="ColorForState_MapsStealthStateToReadableConeColor" classname="EchoesOfTheRuins.Tests.GuardianVisionConeTests" runstate="Runnable" seed="2132291084" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000131" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1093" name="ColorForState_MapsStealthStateToReadableConeColor(Chase,1.0f,1.0f,0.12f,0.08f)" fullname="EchoesOfTheRuins.Tests.GuardianVisionConeTests.ColorForState_MapsStealthStateToReadableConeColor(Chase,1.0f,1.0f,0.12f,0.08f)" methodname="ColorForState_MapsStealthStateToReadableConeColor" classname="EchoesOfTheRuins.Tests.GuardianVisionConeTests" runstate="Runnable" seed="450733681" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000087" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1096" name="ConfigureTransparentMaterial_StandardShaderUsesFadeBlending" fullname="EchoesOfTheRuins.Tests.GuardianVisionConeTests.ConfigureTransparentMaterial_StandardShaderUsesFadeBlending" methodname="ConfigureTransparentMaterial_StandardShaderUsesFadeBlending" classname="EchoesOfTheRuins.Tests.GuardianVisionConeTests" runstate="Runnable" seed="1932987045" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001729" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1097" name="ConfigureTransparentMaterial_UrpShaderRetainsTransparentSurfaceContract" fullname="EchoesOfTheRuins.Tests.GuardianVisionConeTests.ConfigureTransparentMaterial_UrpShaderRetainsTransparentSurfaceContract" methodname="ConfigureTransparentMaterial_UrpShaderRetainsTransparentSurfaceContract" classname="EchoesOfTheRuins.Tests.GuardianVisionConeTests" runstate="Runnable" seed="1025608137" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001060" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1098" name="HudLayoutSpecTests" fullname="EchoesOfTheRuins.Tests.HudLayoutSpecTests" classname="EchoesOfTheRuins.Tests.HudLayoutSpecTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001497" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1100" name="HudUsesFourPersistentInformationZones" fullname="EchoesOfTheRuins.Tests.HudLayoutSpecTests.HudUsesFourPersistentInformationZones" methodname="HudUsesFourPersistentInformationZones" classname="EchoesOfTheRuins.Tests.HudLayoutSpecTests" runstate="Runnable" seed="766015806" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000251" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1099" name="RuntimeHud_UsesReadable1080pSizingWithoutLargeDebugPanels" fullname="EchoesOfTheRuins.Tests.HudLayoutSpecTests.RuntimeHud_UsesReadable1080pSizingWithoutLargeDebugPanels" methodname="RuntimeHud_UsesReadable1080pSizingWithoutLargeDebugPanels" classname="EchoesOfTheRuins.Tests.HudLayoutSpecTests" runstate="Runnable" seed="1402964534" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000513" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1101" name="LandmarkVisualBuilderTests" fullname="EchoesOfTheRuins.Tests.LandmarkVisualBuilderTests" classname="EchoesOfTheRuins.Tests.LandmarkVisualBuilderTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.005227" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1103" name="CreateCheckpoint_BuildsGroundRunesWithoutCylinderRenderer" fullname="EchoesOfTheRuins.Tests.LandmarkVisualBuilderTests.CreateCheckpoint_BuildsGroundRunesWithoutCylinderRenderer" methodname="CreateCheckpoint_BuildsGroundRunesWithoutCylinderRenderer" classname="EchoesOfTheRuins.Tests.LandmarkVisualBuilderTests" runstate="Runnable" seed="685359381" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.002537" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1102" name="CreateCore_BuildsCrystalAndRuneRingsWithoutPrimitiveShapes" fullname="EchoesOfTheRuins.Tests.LandmarkVisualBuilderTests.CreateCore_BuildsCrystalAndRuneRingsWithoutPrimitiveShapes" methodname="CreateCore_BuildsCrystalAndRuneRingsWithoutPrimitiveShapes" classname="EchoesOfTheRuins.Tests.LandmarkVisualBuilderTests" runstate="Runnable" seed="1626034558" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001235" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1104" name="CreateGateBarrier_UsesRuneLinesInsteadOfSolidDebugBox" fullname="EchoesOfTheRuins.Tests.LandmarkVisualBuilderTests.CreateGateBarrier_UsesRuneLinesInsteadOfSolidDebugBox" methodname="CreateGateBarrier_UsesRuneLinesInsteadOfSolidDebugBox" classname="EchoesOfTheRuins.Tests.LandmarkVisualBuilderTests" runstate="Runnable" seed="1070495194" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000797" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1105" name="MainMenuCopyTests" fullname="EchoesOfTheRuins.Tests.MainMenuCopyTests" classname="EchoesOfTheRuins.Tests.MainMenuCopyTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.002012" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1106" name="ControlsCopy_ExplainsEveryRequiredAction" fullname="EchoesOfTheRuins.Tests.MainMenuCopyTests.ControlsCopy_ExplainsEveryRequiredAction" methodname="ControlsCopy_ExplainsEveryRequiredAction" classname="EchoesOfTheRuins.Tests.MainMenuCopyTests" runstate="Runnable" seed="221917024" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000518" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1107" name="MenuHeroCopy_DoesNotExposeCourseworkPlaceholder" fullname="EchoesOfTheRuins.Tests.MainMenuCopyTests.MenuHeroCopy_DoesNotExposeCourseworkPlaceholder" methodname="MenuHeroCopy_DoesNotExposeCourseworkPlaceholder" classname="EchoesOfTheRuins.Tests.MainMenuCopyTests" runstate="Runnable" seed="1738729528" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000857" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1108" name="MasonryWallBuilderTests" fullname="EchoesOfTheRuins.Tests.MasonryWallBuilderTests" classname="EchoesOfTheRuins.Tests.MasonryWallBuilderTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.002240" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1109" name="Create_ProducesDetailedCombinedWallWithoutGameplayColliders" fullname="EchoesOfTheRuins.Tests.MasonryWallBuilderTests.Create_ProducesDetailedCombinedWallWithoutGameplayColliders" methodname="Create_ProducesDetailedCombinedWallWithoutGameplayColliders" classname="EchoesOfTheRuins.Tests.MasonryWallBuilderTests" runstate="Runnable" seed="1084785644" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001859" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1110" name="MoonlitLightingProfileTests" fullname="EchoesOfTheRuins.Tests.MoonlitLightingProfileTests" classname="EchoesOfTheRuins.Tests.MoonlitLightingProfileTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001361" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1112" name="ReadableProfile_KeepsCyanAndWarmNavigationContrast" fullname="EchoesOfTheRuins.Tests.MoonlitLightingProfileTests.ReadableProfile_KeepsCyanAndWarmNavigationContrast" methodname="ReadableProfile_KeepsCyanAndWarmNavigationContrast" classname="EchoesOfTheRuins.Tests.MoonlitLightingProfileTests" runstate="Runnable" seed="1927208386" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000458" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1111" name="ReadableProfile_PreservesMoonlitMoodWithoutCrushingShadows" fullname="EchoesOfTheRuins.Tests.MoonlitLightingProfileTests.ReadableProfile_PreservesMoonlitMoodWithoutCrushingShadows" methodname="ReadableProfile_PreservesMoonlitMoodWithoutCrushingShadows" classname="EchoesOfTheRuins.Tests.MoonlitLightingProfileTests" runstate="Runnable" seed="926391901" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000300" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1113" name="MoonlitPostProcessingTests" fullname="EchoesOfTheRuins.Tests.MoonlitPostProcessingTests" classname="EchoesOfTheRuins.Tests.MoonlitPostProcessingTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.006456" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1114" name="Configure_AddsProductionGradeUrpLook" fullname="EchoesOfTheRuins.Tests.MoonlitPostProcessingTests.Configure_AddsProductionGradeUrpLook" methodname="Configure_AddsProductionGradeUrpLook" classname="EchoesOfTheRuins.Tests.MoonlitPostProcessingTests" runstate="Runnable" seed="612011723" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.005907" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1115" name="ObjectiveRuntimeIntegrationTests" fullname="EchoesOfTheRuins.Tests.ObjectiveRuntimeIntegrationTests" classname="EchoesOfTheRuins.Tests.ObjectiveRuntimeIntegrationTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.011250" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1118" name="ObjectiveDirector_MissingWorldTargets_TracksObjectivesAndDisablesMarker" fullname="EchoesOfTheRuins.Tests.ObjectiveRuntimeIntegrationTests.ObjectiveDirector_MissingWorldTargets_TracksObjectivesAndDisablesMarker" methodname="ObjectiveDirector_MissingWorldTargets_TracksObjectivesAndDisablesMarker" classname="EchoesOfTheRuins.Tests.ObjectiveRuntimeIntegrationTests" runstate="Runnable" seed="1942892853" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.005687" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1117" name="TutorialDirector_ConfigurePlayerOnly_ResolvesTargetsBeforeDeferredObjectiveStartup" fullname="EchoesOfTheRuins.Tests.ObjectiveRuntimeIntegrationTests.TutorialDirector_ConfigurePlayerOnly_ResolvesTargetsBeforeDeferredObjectiveStartup" methodname="TutorialDirector_ConfigurePlayerOnly_ResolvesTargetsBeforeDeferredObjectiveStartup" classname="EchoesOfTheRuins.Tests.ObjectiveRuntimeIntegrationTests" runstate="Runnable" seed="137955689" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.003275" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1116" name="TutorialDirector_WiresObjectiveRuntimeToExistingSceneObjects" fullname="EchoesOfTheRuins.Tests.ObjectiveRuntimeIntegrationTests.TutorialDirector_WiresObjectiveRuntimeToExistingSceneObjects" methodname="TutorialDirector_WiresObjectiveRuntimeToExistingSceneObjects" classname="EchoesOfTheRuins.Tests.ObjectiveRuntimeIntegrationTests" runstate="Runnable" seed="1521139946" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001131" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1119" name="ObjectiveTrackerTests" fullname="EchoesOfTheRuins.Tests.ObjectiveTrackerTests" classname="EchoesOfTheRuins.Tests.ObjectiveTrackerTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.004865" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1121" name="IgnoreInvalidSignalsAndPublishOnlyOnValidAdvance" fullname="EchoesOfTheRuins.Tests.ObjectiveTrackerTests.IgnoreInvalidSignalsAndPublishOnlyOnValidAdvance" methodname="IgnoreInvalidSignalsAndPublishOnlyOnValidAdvance" classname="EchoesOfTheRuins.Tests.ObjectiveTrackerTests" runstate="Runnable" seed="2118141108" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000491" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1120" name="NewRunProgressesThroughFirstMinuteInOrder" fullname="EchoesOfTheRuins.Tests.ObjectiveTrackerTests.NewRunProgressesThroughFirstMinuteInOrder" methodname="NewRunProgressesThroughFirstMinuteInOrder" classname="EchoesOfTheRuins.Tests.ObjectiveTrackerTests" runstate="Runnable" seed="550997910" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000331" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1122" name="Tracker_ExposesOnlyTheChangedEventContract" fullname="EchoesOfTheRuins.Tests.ObjectiveTrackerTests.Tracker_ExposesOnlyTheChangedEventContract" methodname="Tracker_ExposesOnlyTheChangedEventContract" classname="EchoesOfTheRuins.Tests.ObjectiveTrackerTests" runstate="Runnable" seed="195707718" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001248" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1126" name="V3MigrationDerivesSafeObjective" fullname="EchoesOfTheRuins.Tests.ObjectiveTrackerTests.V3MigrationDerivesSafeObjective" classname="EchoesOfTheRuins.Tests.ObjectiveTrackerTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001781" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1123" name="V3MigrationDerivesSafeObjective(0,&quot;entrance&quot;,Briefing)" fullname="EchoesOfTheRuins.Tests.ObjectiveTrackerTests.V3MigrationDerivesSafeObjective(0,&quot;entrance&quot;,Briefing)" methodname="V3MigrationDerivesSafeObjective" classname="EchoesOfTheRuins.Tests.ObjectiveTrackerTests" runstate="Runnable" seed="1443906179" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001000" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1124" name="V3MigrationDerivesSafeObjective(1,&quot;courtyard&quot;,CollectCores)" fullname="EchoesOfTheRuins.Tests.ObjectiveTrackerTests.V3MigrationDerivesSafeObjective(1,&quot;courtyard&quot;,CollectCores)" methodname="V3MigrationDerivesSafeObjective" classname="EchoesOfTheRuins.Tests.ObjectiveTrackerTests" runstate="Runnable" seed="1557946111" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000142" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1125" name="V3MigrationDerivesSafeObjective(3,&quot;altar&quot;,ReachExit)" fullname="EchoesOfTheRuins.Tests.ObjectiveTrackerTests.V3MigrationDerivesSafeObjective(3,&quot;altar&quot;,ReachExit)" methodname="V3MigrationDerivesSafeObjective" classname="EchoesOfTheRuins.Tests.ObjectiveTrackerTests" runstate="Runnable" seed="1399562344" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000067" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1127" name="PlayerInteractorTests" fullname="EchoesOfTheRuins.Tests.PlayerInteractorTests" classname="EchoesOfTheRuins.Tests.PlayerInteractorTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.005372" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1128" name="TryInteract_ChoosesClosestRegisteredInteractable" fullname="EchoesOfTheRuins.Tests.PlayerInteractorTests.TryInteract_ChoosesClosestRegisteredInteractable" methodname="TryInteract_ChoosesClosestRegisteredInteractable" classname="EchoesOfTheRuins.Tests.PlayerInteractorTests" runstate="Runnable" seed="1825940493" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.002494" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1130" name="TryInteract_DiscoversNearbyColliderWithoutTriggerRegistration" fullname="EchoesOfTheRuins.Tests.PlayerInteractorTests.TryInteract_DiscoversNearbyColliderWithoutTriggerRegistration" methodname="TryInteract_DiscoversNearbyColliderWithoutTriggerRegistration" classname="EchoesOfTheRuins.Tests.PlayerInteractorTests" runstate="Runnable" seed="977142722" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000597" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1131" name="TryInteract_DoesNotBypassHoldRequirement" fullname="EchoesOfTheRuins.Tests.PlayerInteractorTests.TryInteract_DoesNotBypassHoldRequirement" methodname="TryInteract_DoesNotBypassHoldRequirement" classname="EchoesOfTheRuins.Tests.PlayerInteractorTests" runstate="Runnable" seed="91168621" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000963" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1129" name="Unregister_PreventsInteraction" fullname="EchoesOfTheRuins.Tests.PlayerInteractorTests.Unregister_PreventsInteraction" methodname="Unregister_PreventsInteraction" classname="EchoesOfTheRuins.Tests.PlayerInteractorTests" runstate="Runnable" seed="1643394163" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000449" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1132" name="PlayerLocomotionModelTests" fullname="EchoesOfTheRuins.Tests.PlayerLocomotionModelTests" classname="EchoesOfTheRuins.Tests.PlayerLocomotionModelTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.003651" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1133" name="CameraYawNinety_ForwardInputMovesWorldRight" fullname="EchoesOfTheRuins.Tests.PlayerLocomotionModelTests.CameraYawNinety_ForwardInputMovesWorldRight" methodname="CameraYawNinety_ForwardInputMovesWorldRight" classname="EchoesOfTheRuins.Tests.PlayerLocomotionModelTests" runstate="Runnable" seed="366874975" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001811" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1135" name="LateralInputFacesMovementDirection" fullname="EchoesOfTheRuins.Tests.PlayerLocomotionModelTests.LateralInputFacesMovementDirection" methodname="LateralInputFacesMovementDirection" classname="EchoesOfTheRuins.Tests.PlayerLocomotionModelTests" runstate="Runnable" seed="909724964" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000275" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1134" name="SpeedAcceleratesAndBrakesWithoutInstantChanges" fullname="EchoesOfTheRuins.Tests.PlayerLocomotionModelTests.SpeedAcceleratesAndBrakesWithoutInstantChanges" methodname="SpeedAcceleratesAndBrakesWithoutInstantChanges" classname="EchoesOfTheRuins.Tests.PlayerLocomotionModelTests" runstate="Runnable" seed="130958975" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000723" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1136" name="ProceduralAudioLibraryTests" fullname="EchoesOfTheRuins.Tests.ProceduralAudioLibraryTests" classname="EchoesOfTheRuins.Tests.ProceduralAudioLibraryTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.018855" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1137" name="GameplayCues_AreNonEmptyAndShort" fullname="EchoesOfTheRuins.Tests.ProceduralAudioLibraryTests.GameplayCues_AreNonEmptyAndShort" methodname="GameplayCues_AreNonEmptyAndShort" classname="EchoesOfTheRuins.Tests.ProceduralAudioLibraryTests" runstate="Runnable" seed="1323547232" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.018333" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1138" name="ProductionProjectSetupTests" fullname="EchoesOfTheRuins.Tests.ProductionProjectSetupTests" classname="EchoesOfTheRuins.Tests.ProductionProjectSetupTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.357471" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1139" name="Apply_CreatesAndAssignsUrpPipelineAsset" fullname="EchoesOfTheRuins.Tests.ProductionProjectSetupTests.Apply_CreatesAndAssignsUrpPipelineAsset" methodname="Apply_CreatesAndAssignsUrpPipelineAsset" classname="EchoesOfTheRuins.Tests.ProductionProjectSetupTests" runstate="Runnable" seed="492672439" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.228321" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1140" name="Apply_UsesStableD3D11ForWindowsCourseworkBuild" fullname="EchoesOfTheRuins.Tests.ProductionProjectSetupTests.Apply_UsesStableD3D11ForWindowsCourseworkBuild" methodname="Apply_UsesStableD3D11ForWindowsCourseworkBuild" classname="EchoesOfTheRuins.Tests.ProductionProjectSetupTests" runstate="Runnable" seed="1838499782" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.128459" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1141" name="ProductionRuinBuilderTests" fullname="EchoesOfTheRuins.Tests.ProductionRuinBuilderTests" classname="EchoesOfTheRuins.Tests.ProductionRuinBuilderTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.006525" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1142" name="CreateModule_CreatesAVisualOnlyRuinInstance" fullname="EchoesOfTheRuins.Tests.ProductionRuinBuilderTests.CreateModule_CreatesAVisualOnlyRuinInstance" methodname="CreateModule_CreatesAVisualOnlyRuinInstance" classname="EchoesOfTheRuins.Tests.ProductionRuinBuilderTests" runstate="Runnable" seed="3509603" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.005681" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1143" name="ProductionSceneLayoutTests" fullname="EchoesOfTheRuins.Tests.ProductionSceneLayoutTests" classname="EchoesOfTheRuins.Tests.ProductionSceneLayoutTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.005699" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1144" name="DefaultLayout_DefinesACompleteSixZoneJourney" fullname="EchoesOfTheRuins.Tests.ProductionSceneLayoutTests.DefaultLayout_DefinesACompleteSixZoneJourney" methodname="DefaultLayout_DefinesACompleteSixZoneJourney" classname="EchoesOfTheRuins.Tests.ProductionSceneLayoutTests" runstate="Runnable" seed="2117310048" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001008" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1145" name="DefaultLayout_HasThreeUniqueCoresAndThreeGuardians" fullname="EchoesOfTheRuins.Tests.ProductionSceneLayoutTests.DefaultLayout_HasThreeUniqueCoresAndThreeGuardians" methodname="DefaultLayout_HasThreeUniqueCoresAndThreeGuardians" classname="EchoesOfTheRuins.Tests.ProductionSceneLayoutTests" runstate="Runnable" seed="2146542545" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001235" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1147" name="DefaultLayout_KeepsGuardiansAwayFromProtectedSpawn" fullname="EchoesOfTheRuins.Tests.ProductionSceneLayoutTests.DefaultLayout_KeepsGuardiansAwayFromProtectedSpawn" methodname="DefaultLayout_KeepsGuardiansAwayFromProtectedSpawn" classname="EchoesOfTheRuins.Tests.ProductionSceneLayoutTests" runstate="Runnable" seed="1472125982" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000972" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1148" name="DefaultLayout_PresentsFirstCoreFromEntryApproach" fullname="EchoesOfTheRuins.Tests.ProductionSceneLayoutTests.DefaultLayout_PresentsFirstCoreFromEntryApproach" methodname="DefaultLayout_PresentsFirstCoreFromEntryApproach" classname="EchoesOfTheRuins.Tests.ProductionSceneLayoutTests" runstate="Runnable" seed="12503578" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000714" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1146" name="DefaultLayout_ProvidesAnExtendedRouteAndVisibleNorthExit" fullname="EchoesOfTheRuins.Tests.ProductionSceneLayoutTests.DefaultLayout_ProvidesAnExtendedRouteAndVisibleNorthExit" methodname="DefaultLayout_ProvidesAnExtendedRouteAndVisibleNorthExit" classname="EchoesOfTheRuins.Tests.ProductionSceneLayoutTests" runstate="Runnable" seed="181914273" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000441" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1149" name="QuaterniusRuinAssetCatalogTests" fullname="EchoesOfTheRuins.Tests.QuaterniusRuinAssetCatalogTests" classname="EchoesOfTheRuins.Tests.QuaterniusRuinAssetCatalogTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001551" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1154" name="Resources_UseStablePathsForProductionRuinModules" fullname="EchoesOfTheRuins.Tests.QuaterniusRuinAssetCatalogTests.Resources_UseStablePathsForProductionRuinModules" classname="EchoesOfTheRuins.Tests.QuaterniusRuinAssetCatalogTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001037" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1150" name="Resources_UseStablePathsForProductionRuinModules(Wall,&quot;QuaterniusRuins/Wall&quot;)" fullname="EchoesOfTheRuins.Tests.QuaterniusRuinAssetCatalogTests.Resources_UseStablePathsForProductionRuinModules(Wall,&quot;QuaterniusRuins/Wall&quot;)" methodname="Resources_UseStablePathsForProductionRuinModules" classname="EchoesOfTheRuins.Tests.QuaterniusRuinAssetCatalogTests" runstate="Runnable" seed="1972799566" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000220" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1151" name="Resources_UseStablePathsForProductionRuinModules(ArchGothic,&quot;QuaterniusRuins/Arch_Gothic&quot;)" fullname="EchoesOfTheRuins.Tests.QuaterniusRuinAssetCatalogTests.Resources_UseStablePathsForProductionRuinModules(ArchGothic,&quot;QuaterniusRuins/Arch_Gothic&quot;)" methodname="Resources_UseStablePathsForProductionRuinModules" classname="EchoesOfTheRuins.Tests.QuaterniusRuinAssetCatalogTests" runstate="Runnable" seed="2024204679" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000122" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1152" name="Resources_UseStablePathsForProductionRuinModules(BrokenWall,&quot;QuaterniusRuins/Wall_ArchRound_Broken&quot;)" fullname="EchoesOfTheRuins.Tests.QuaterniusRuinAssetCatalogTests.Resources_UseStablePathsForProductionRuinModules(BrokenWall,&quot;QuaterniusRuins/Wall_ArchRound_Broken&quot;)" methodname="Resources_UseStablePathsForProductionRuinModules" classname="EchoesOfTheRuins.Tests.QuaterniusRuinAssetCatalogTests" runstate="Runnable" seed="1231181413" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000054" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1153" name="Resources_UseStablePathsForProductionRuinModules(AnimatedExplorer,&quot;QuaterniusRuins/Character_Animated&quot;)" fullname="EchoesOfTheRuins.Tests.QuaterniusRuinAssetCatalogTests.Resources_UseStablePathsForProductionRuinModules(AnimatedExplorer,&quot;QuaterniusRuins/Character_Animated&quot;)" methodname="Resources_UseStablePathsForProductionRuinModules" classname="EchoesOfTheRuins.Tests.QuaterniusRuinAssetCatalogTests" runstate="Runnable" seed="1560394361" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000078" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1155" name="RuinFacadeBuilderTests" fullname="EchoesOfTheRuins.Tests.RuinFacadeBuilderTests" classname="EchoesOfTheRuins.Tests.RuinFacadeBuilderTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.004660" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1156" name="CreateFacade_CreatesVisibleRenderersWithoutEnabledNavigationColliders" fullname="EchoesOfTheRuins.Tests.RuinFacadeBuilderTests.CreateFacade_CreatesVisibleRenderersWithoutEnabledNavigationColliders" methodname="CreateFacade_CreatesVisibleRenderersWithoutEnabledNavigationColliders" classname="EchoesOfTheRuins.Tests.RuinFacadeBuilderTests" runstate="Runnable" seed="25567008" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.003979" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1157" name="RuinGameStateTests" fullname="EchoesOfTheRuins.Tests.RuinGameStateTests" classname="EchoesOfTheRuins.Tests.RuinGameStateTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.002186" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1158" name="CollectCore_AddsANewCoreToTheCount" fullname="EchoesOfTheRuins.Tests.RuinGameStateTests.CollectCore_AddsANewCoreToTheCount" methodname="CollectCore_AddsANewCoreToTheCount" classname="EchoesOfTheRuins.Tests.RuinGameStateTests" runstate="Runnable" seed="543396787" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000446" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1159" name="CollectCore_DoesNotCountTheSameCoreTwice" fullname="EchoesOfTheRuins.Tests.RuinGameStateTests.CollectCore_DoesNotCountTheSameCoreTwice" methodname="CollectCore_DoesNotCountTheSameCoreTwice" classname="EchoesOfTheRuins.Tests.RuinGameStateTests" runstate="Runnable" seed="542285675" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000210" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1162" name="CollectCore_RejectsANewFourthCore" fullname="EchoesOfTheRuins.Tests.RuinGameStateTests.CollectCore_RejectsANewFourthCore" methodname="CollectCore_RejectsANewFourthCore" classname="EchoesOfTheRuins.Tests.RuinGameStateTests" runstate="Runnable" seed="1457815463" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000177" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1160" name="ExitRemainsLockedUntilAllThreeUniqueCoresAreCollected" fullname="EchoesOfTheRuins.Tests.RuinGameStateTests.ExitRemainsLockedUntilAllThreeUniqueCoresAreCollected" methodname="ExitRemainsLockedUntilAllThreeUniqueCoresAreCollected" classname="EchoesOfTheRuins.Tests.RuinGameStateTests" runstate="Runnable" seed="1907873559" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000136" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1161" name="ExitUnlocksAfterTheThirdUniqueCoreIsCollected" fullname="EchoesOfTheRuins.Tests.RuinGameStateTests.ExitUnlocksAfterTheThirdUniqueCoreIsCollected" methodname="ExitUnlocksAfterTheThirdUniqueCoreIsCollected" classname="EchoesOfTheRuins.Tests.RuinGameStateTests" runstate="Runnable" seed="633184769" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000128" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1163" name="RuinPropVisualBuilderTests" fullname="EchoesOfTheRuins.Tests.RuinPropVisualBuilderTests" classname="EchoesOfTheRuins.Tests.RuinPropVisualBuilderTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.007017" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1165" name="Brazier_UsesSculptedBowlAndWarmLight" fullname="EchoesOfTheRuins.Tests.RuinPropVisualBuilderTests.Brazier_UsesSculptedBowlAndWarmLight" methodname="Brazier_UsesSculptedBowlAndWarmLight" classname="EchoesOfTheRuins.Tests.RuinPropVisualBuilderTests" runstate="Runnable" seed="140181442" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.005055" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1164" name="RitualDais_UsesLayeredOctagonalMeshes" fullname="EchoesOfTheRuins.Tests.RuinPropVisualBuilderTests.RitualDais_UsesLayeredOctagonalMeshes" methodname="RitualDais_UsesLayeredOctagonalMeshes" classname="EchoesOfTheRuins.Tests.RuinPropVisualBuilderTests" runstate="Runnable" seed="1962834375" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001331" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1166" name="RuinsAssetCatalogTests" fullname="EchoesOfTheRuins.Tests.RuinsAssetCatalogTests" classname="EchoesOfTheRuins.Tests.RuinsAssetCatalogTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.002852" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1173" name="CastleResources_UseStableResourcesPaths" fullname="EchoesOfTheRuins.Tests.RuinsAssetCatalogTests.CastleResources_UseStableResourcesPaths" classname="EchoesOfTheRuins.Tests.RuinsAssetCatalogTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001336" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1168" name="CastleResources_UseStableResourcesPaths(Wall,&quot;KenneyCastle/wall&quot;)" fullname="EchoesOfTheRuins.Tests.RuinsAssetCatalogTests.CastleResources_UseStableResourcesPaths(Wall,&quot;KenneyCastle/wall&quot;)" methodname="CastleResources_UseStableResourcesPaths" classname="EchoesOfTheRuins.Tests.RuinsAssetCatalogTests" runstate="Runnable" seed="1738012873" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000424" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1169" name="CastleResources_UseStableResourcesPaths(Corner,&quot;KenneyCastle/wall-corner&quot;)" fullname="EchoesOfTheRuins.Tests.RuinsAssetCatalogTests.CastleResources_UseStableResourcesPaths(Corner,&quot;KenneyCastle/wall-corner&quot;)" methodname="CastleResources_UseStableResourcesPaths" classname="EchoesOfTheRuins.Tests.RuinsAssetCatalogTests" runstate="Runnable" seed="1533147740" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000112" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1170" name="CastleResources_UseStableResourcesPaths(Pillar,&quot;KenneyCastle/wall-pillar&quot;)" fullname="EchoesOfTheRuins.Tests.RuinsAssetCatalogTests.CastleResources_UseStableResourcesPaths(Pillar,&quot;KenneyCastle/wall-pillar&quot;)" methodname="CastleResources_UseStableResourcesPaths" classname="EchoesOfTheRuins.Tests.RuinsAssetCatalogTests" runstate="Runnable" seed="1198113032" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000062" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1171" name="CastleResources_UseStableResourcesPaths(Tower,&quot;KenneyCastle/tower-square-mid-open&quot;)" fullname="EchoesOfTheRuins.Tests.RuinsAssetCatalogTests.CastleResources_UseStableResourcesPaths(Tower,&quot;KenneyCastle/tower-square-mid-open&quot;)" methodname="CastleResources_UseStableResourcesPaths" classname="EchoesOfTheRuins.Tests.RuinsAssetCatalogTests" runstate="Runnable" seed="351753758" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000085" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1172" name="CastleResources_UseStableResourcesPaths(Gate,&quot;KenneyCastle/gate&quot;)" fullname="EchoesOfTheRuins.Tests.RuinsAssetCatalogTests.CastleResources_UseStableResourcesPaths(Gate,&quot;KenneyCastle/gate&quot;)" methodname="CastleResources_UseStableResourcesPaths" classname="EchoesOfTheRuins.Tests.RuinsAssetCatalogTests" runstate="Runnable" seed="628811170" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000058" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1167" name="RequiredVisualAssets_ContainsTheSealedGate" fullname="EchoesOfTheRuins.Tests.RuinsAssetCatalogTests.RequiredVisualAssets_ContainsTheSealedGate" methodname="RequiredVisualAssets_ContainsTheSealedGate" classname="EchoesOfTheRuins.Tests.RuinsAssetCatalogTests" runstate="Runnable" seed="68474317" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000682" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1174" name="RunFlowAndClarityTests" fullname="EchoesOfTheRuins.Tests.RunFlowAndClarityTests" classname="EchoesOfTheRuins.Tests.RunFlowAndClarityTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.003454" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1178" name="CoreActivationResetsWhenGuardianChases" fullname="EchoesOfTheRuins.Tests.RunFlowAndClarityTests.CoreActivationResetsWhenGuardianChases" methodname="CoreActivationResetsWhenGuardianChases" classname="EchoesOfTheRuins.Tests.RunFlowAndClarityTests" runstate="Runnable" seed="1275170654" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000565" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1176" name="EscapeCanOnlyCompleteAfterAllCores" fullname="EchoesOfTheRuins.Tests.RunFlowAndClarityTests.EscapeCanOnlyCompleteAfterAllCores" methodname="EscapeCanOnlyCompleteAfterAllCores" classname="EchoesOfTheRuins.Tests.RunFlowAndClarityTests" runstate="Runnable" seed="1811709212" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000486" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1177" name="ExitPromptExplainsLockedAndUnlockedStates" fullname="EchoesOfTheRuins.Tests.RunFlowAndClarityTests.ExitPromptExplainsLockedAndUnlockedStates" methodname="ExitPromptExplainsLockedAndUnlockedStates" classname="EchoesOfTheRuins.Tests.RunFlowAndClarityTests" runstate="Runnable" seed="751726696" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000274" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1180" name="GuardianPressureEscalatesWithoutMakingEscapeAnInstantFailure" fullname="EchoesOfTheRuins.Tests.RunFlowAndClarityTests.GuardianPressureEscalatesWithoutMakingEscapeAnInstantFailure" methodname="GuardianPressureEscalatesWithoutMakingEscapeAnInstantFailure" classname="EchoesOfTheRuins.Tests.RunFlowAndClarityTests" runstate="Runnable" seed="420548785" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000381" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1179" name="MotionClarityDefaultsAvoidTemporalSmearing" fullname="EchoesOfTheRuins.Tests.RunFlowAndClarityTests.MotionClarityDefaultsAvoidTemporalSmearing" methodname="MotionClarityDefaultsAvoidTemporalSmearing" classname="EchoesOfTheRuins.Tests.RunFlowAndClarityTests" runstate="Runnable" seed="1403941880" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000201" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1181" name="RelicsAreOptionalAndOnlyCountOnce" fullname="EchoesOfTheRuins.Tests.RunFlowAndClarityTests.RelicsAreOptionalAndOnlyCountOnce" methodname="RelicsAreOptionalAndOnlyCountOnce" classname="EchoesOfTheRuins.Tests.RunFlowAndClarityTests" runstate="Runnable" seed="1317521228" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000329" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1175" name="ThreeCoresEnterEscapeButDoNotCompleteRun" fullname="EchoesOfTheRuins.Tests.RunFlowAndClarityTests.ThreeCoresEnterEscapeButDoNotCompleteRun" methodname="ThreeCoresEnterEscapeButDoNotCompleteRun" classname="EchoesOfTheRuins.Tests.RunFlowAndClarityTests" runstate="Runnable" seed="341952206" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000162" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1182" name="RunMetricsTrackerTests" fullname="EchoesOfTheRuins.Tests.RunMetricsTrackerTests" classname="EchoesOfTheRuins.Tests.RunMetricsTrackerTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.002389" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1184" name="EchoAndCaptureEvents_AreRecordedForScore" fullname="EchoesOfTheRuins.Tests.RunMetricsTrackerTests.EchoAndCaptureEvents_AreRecordedForScore" methodname="EchoAndCaptureEvents_AreRecordedForScore" classname="EchoesOfTheRuins.Tests.RunMetricsTrackerTests" runstate="Runnable" seed="72127536" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000506" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1183" name="GuardianState_CountsOnlyNewChaseTransitions" fullname="EchoesOfTheRuins.Tests.RunMetricsTrackerTests.GuardianState_CountsOnlyNewChaseTransitions" methodname="GuardianState_CountsOnlyNewChaseTransitions" classname="EchoesOfTheRuins.Tests.RunMetricsTrackerTests" runstate="Runnable" seed="757154521" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.001168" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1185" name="RuntimeMaterialLibraryTests" fullname="EchoesOfTheRuins.Tests.RuntimeMaterialLibraryTests" classname="EchoesOfTheRuins.Tests.RuntimeMaterialLibraryTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.005139" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1186" name="Create_ReturnsAUsableMaterialForTheRuntimeScene" fullname="EchoesOfTheRuins.Tests.RuntimeMaterialLibraryTests.Create_ReturnsAUsableMaterialForTheRuntimeScene" methodname="Create_ReturnsAUsableMaterialForTheRuntimeScene" classname="EchoesOfTheRuins.Tests.RuntimeMaterialLibraryTests" runstate="Runnable" seed="386664216" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000866" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1188" name="Create_UsesUrpLitWhenUrpIsInstalled" fullname="EchoesOfTheRuins.Tests.RuntimeMaterialLibraryTests.Create_UsesUrpLitWhenUrpIsInstalled" methodname="Create_UsesUrpLitWhenUrpIsInstalled" classname="EchoesOfTheRuins.Tests.RuntimeMaterialLibraryTests" runstate="Runnable" seed="311158131" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000674" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1187" name="CreateTextured_BindsTheProvidedTexture" fullname="EchoesOfTheRuins.Tests.RuntimeMaterialLibraryTests.CreateTextured_BindsTheProvidedTexture" methodname="CreateTextured_BindsTheProvidedTexture" classname="EchoesOfTheRuins.Tests.RuntimeMaterialLibraryTests" runstate="Runnable" seed="668406710" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.002762" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1189" name="SaveAndScoreServiceTests" fullname="EchoesOfTheRuins.Tests.SaveAndScoreServiceTests" classname="EchoesOfTheRuins.Tests.SaveAndScoreServiceTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.040236" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1196" name="CalculateFinalScore_RewardsQuietFastEscape" fullname="EchoesOfTheRuins.Tests.SaveAndScoreServiceTests.CalculateFinalScore_RewardsQuietFastEscape" methodname="CalculateFinalScore_RewardsQuietFastEscape" classname="EchoesOfTheRuins.Tests.SaveAndScoreServiceTests" runstate="Runnable" seed="1506799911" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.002889" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1194" name="Load_MigratesVersionThreeWithoutDiscardingProgressOrHistory" fullname="EchoesOfTheRuins.Tests.SaveAndScoreServiceTests.Load_MigratesVersionThreeWithoutDiscardingProgressOrHistory" methodname="Load_MigratesVersionThreeWithoutDiscardingProgressOrHistory" classname="EchoesOfTheRuins.Tests.SaveAndScoreServiceTests" runstate="Runnable" seed="1747340463" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.014048" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1193" name="Load_MigratesVersionTwoDataToCurrentSchema" fullname="EchoesOfTheRuins.Tests.SaveAndScoreServiceTests.Load_MigratesVersionTwoDataToCurrentSchema" methodname="Load_MigratesVersionTwoDataToCurrentSchema" classname="EchoesOfTheRuins.Tests.SaveAndScoreServiceTests" runstate="Runnable" seed="850100948" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.003146" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1192" name="Load_PreservesCorruptSaveAsRecoveryBackup" fullname="EchoesOfTheRuins.Tests.SaveAndScoreServiceTests.Load_PreservesCorruptSaveAsRecoveryBackup" methodname="Load_PreservesCorruptSaveAsRecoveryBackup" classname="EchoesOfTheRuins.Tests.SaveAndScoreServiceTests" runstate="Runnable" seed="1680044355" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.009762" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1190" name="Load_ReturnsDefaults_WhenNoSaveExists" fullname="EchoesOfTheRuins.Tests.SaveAndScoreServiceTests.Load_ReturnsDefaults_WhenNoSaveExists" methodname="Load_ReturnsDefaults_WhenNoSaveExists" classname="EchoesOfTheRuins.Tests.SaveAndScoreServiceTests" runstate="Runnable" seed="1237081017" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.000515" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1191" name="Load_ReturnsSafeDefaults_WhenSaveIsCorrupt" fullname="EchoesOfTheRuins.Tests.SaveAndScoreServiceTests.Load_ReturnsSafeDefaults_WhenSaveIsCorrupt" methodname="Load_ReturnsSafeDefaults_WhenSaveIsCorrupt" classname="EchoesOfTheRuins.Tests.SaveAndScoreServiceTests" runstate="Runnable" seed="2029498189" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.004090" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1195" name="SaveAndLoad_PreservesCheckpointProgressAndSettings" fullname="EchoesOfTheRuins.Tests.SaveAndScoreServiceTests.SaveAndLoad_PreservesCheckpointProgressAndSettings" methodname="SaveAndLoad_PreservesCheckpointProgressAndSettings" classname="EchoesOfTheRuins.Tests.SaveAndScoreServiceTests" runstate="Runnable" seed="1653028274" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.003694" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1197" name="StaticProductionSceneTests" fullname="EchoesOfTheRuins.Tests.StaticProductionSceneTests" classname="EchoesOfTheRuins.Tests.StaticProductionSceneTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:44Z" duration="0.530782" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1198" name="BuildProductionScene_CreatesCompletePlayableHierarchy" fullname="EchoesOfTheRuins.Tests.StaticProductionSceneTests.BuildProductionScene_CreatesCompletePlayableHierarchy" methodname="BuildProductionScene_CreatesCompletePlayableHierarchy" classname="EchoesOfTheRuins.Tests.StaticProductionSceneTests" runstate="Runnable" seed="1007078588" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:43Z" duration="0.155027" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1199" name="SavedProductionScene_HasNoMissingScriptsAndContainsBakedNavigation" fullname="EchoesOfTheRuins.Tests.StaticProductionSceneTests.SavedProductionScene_HasNoMissingScriptsAndContainsBakedNavigation" methodname="SavedProductionScene_HasNoMissingScriptsAndContainsBakedNavigation" classname="EchoesOfTheRuins.Tests.StaticProductionSceneTests" runstate="Runnable" seed="960099979" result="Passed" start-time="2026-07-19 19:15:43Z" end-time="2026-07-19 19:15:44Z" duration="0.374949" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1200" name="ThreatCoordinatorTests" fullname="EchoesOfTheRuins.Tests.ThreatCoordinatorTests" classname="EchoesOfTheRuins.Tests.ThreatCoordinatorTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-19 19:15:44Z" end-time="2026-07-19 19:15:44Z" duration="0.008682" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1202" name="AttackPriorityWinsBeforeAiPriorityAndSuspicion" fullname="EchoesOfTheRuins.Tests.ThreatCoordinatorTests.AttackPriorityWinsBeforeAiPriorityAndSuspicion" methodname="AttackPriorityWinsBeforeAiPriorityAndSuspicion" classname="EchoesOfTheRuins.Tests.ThreatCoordinatorTests" runstate="Runnable" seed="1139558544" result="Passed" start-time="2026-07-19 19:15:44Z" end-time="2026-07-19 19:15:44Z" duration="0.002483" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1201" name="HighestSuspicionGuardianWinsAndAttackBreaksTies" fullname="EchoesOfTheRuins.Tests.ThreatCoordinatorTests.HighestSuspicionGuardianWinsAndAttackBreaksTies" methodname="HighestSuspicionGuardianWinsAndAttackBreaksTies" classname="EchoesOfTheRuins.Tests.ThreatCoordinatorTests" runstate="Runnable" seed="530426715" result="Passed" start-time="2026-07-19 19:15:44Z" end-time="2026-07-19 19:15:44Z" duration="0.000359" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1205" name="RemovingLastGuardianClearsThreatSnapshot" fullname="EchoesOfTheRuins.Tests.ThreatCoordinatorTests.RemovingLastGuardianClearsThreatSnapshot" methodname="RemovingLastGuardianClearsThreatSnapshot" classname="EchoesOfTheRuins.Tests.ThreatCoordinatorTests" runstate="Runnable" seed="185354846" result="Passed" start-time="2026-07-19 19:15:44Z" end-time="2026-07-19 19:15:44Z" duration="0.000590" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1204" name="RemovingSelectedGuardianPublishesRemainingGuardian" fullname="EchoesOfTheRuins.Tests.ThreatCoordinatorTests.RemovingSelectedGuardianPublishesRemainingGuardian" methodname="RemovingSelectedGuardianPublishesRemainingGuardian" classname="EchoesOfTheRuins.Tests.ThreatCoordinatorTests" runstate="Runnable" seed="843410793" result="Passed" start-time="2026-07-19 19:15:44Z" end-time="2026-07-19 19:15:44Z" duration="0.000236" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1203" name="UpdateOnlyPublishesWhenVisibleThreatChanges" fullname="EchoesOfTheRuins.Tests.ThreatCoordinatorTests.UpdateOnlyPublishesWhenVisibleThreatChanges" methodname="UpdateOnlyPublishesWhenVisibleThreatChanges" classname="EchoesOfTheRuins.Tests.ThreatCoordinatorTests" runstate="Runnable" seed="229670395" result="Passed" start-time="2026-07-19 19:15:44Z" end-time="2026-07-19 19:15:44Z" duration="0.000444" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/HP/AppData/LocalLow/DefaultCompany/EchoesOfTheRuins\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

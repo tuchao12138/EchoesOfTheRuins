@@ -1,12 +1,23 @@
-# Echoes of the Ruins — Playtest
+# Echoes of the Ruins — Windows playtest
 
-Open the project with Unity 6.3 LTS (`6000.3.20f1`) and press Play in the default empty scene. The level builds automatically; no scene setup or external assets are required.
+Launch `Builds/EchoesOfTheRuins.exe`. Select **NEW GAME**, confirm **BEGIN**, and verify that the HUD starts at `CORES 0/3`. Use **CONTINUE** only for the save-resume test.
 
-Controls: **WASD** moves, **mouse** looks, and **Space** jumps. The HUD starts at `Cores: 0/3`.
+Controls: **WASD** move, **mouse** look, **Space** jump, **Shift** sprint, **C** crouch, **Q** throw one of three echo stones, **E** interact, and **Esc** pause.
 
-1. Walk through the entry checkpoint into the central courtyard.
-2. Collect the cyan core on the courtyard dais, then the cores in the blue-lit side chamber and orange-lit altar chamber. Confirm the HUD reaches `3/3` and says `EXIT UNLOCKED`.
-3. Let the orange guardian catch you in the courtyard. Confirm the player returns to the latest checkpoint and the HUD reports the capture.
-4. Reach the large visible gate at the north exit after all cores are collected. Crossing its opening displays `ESCAPED THE RUINS`.
+## Core route
 
-The guardian has four visible patrol waypoints around the courtyard and chases within its detection radius.
+1. Read the entrance objective and movement tutorial before leaving the protected spawn area.
+2. Observe the courtyard guardian, crouch in shadow, and interact with the cyan courtyard core using `E`.
+3. Collect the shadow-gallery core, use an echo stone to redirect a guardian, then collect the altar core.
+4. Confirm the HUD reaches `3/3`, the exit objective changes, and the rune seal changes from locked to open.
+5. Cross the exit and verify that the result screen displays time, alerts, captures, echo stones used and rank.
+
+## Required submission runs
+
+| Run | Scenario | Status | Evidence to record |
+| --- | --- | --- | --- |
+| 1 | New game, no capture, minimal alerts | Pending manual sign-off | Full video + result screen |
+| 2 | Deliberate capture, checkpoint recovery, then finish | Pending manual sign-off | Capture and respawn screenshots + result |
+| 3 | Collect a core, close the game, continue from save, then finish | Pending manual sign-off | Save/continue screenshots + result |
+
+Before recording, delete the current run through **NEW GAME > BEGIN**. A `3/3` HUD immediately after loading means **CONTINUE** restored an older completed save.

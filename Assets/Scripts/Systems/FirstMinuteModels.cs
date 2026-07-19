@@ -2,34 +2,36 @@ using System;
 
 namespace EchoesOfTheRuins
 {
-    public enum TutorialStage
+    public enum TutorialStage { Objective, Movement, Shadow, EchoStone, Awareness, Complete }
+
+    public static class TutorialCopy
     {
-        Objective,
-        Movement,
-        Shadow,
-        EchoStone,
-        Awareness,
-        Complete
+        public static string Get(TutorialStage stage) => stage switch
+        {
+            TutorialStage.Objective => "OBJECTIVE\nCOLLECT 3 ENERGY CORES AND ESCAPE.",
+            TutorialStage.Movement => "MOVE\nWASD TO MOVE. MOUSE TO LOOK. SPACE TO JUMP.",
+            TutorialStage.Shadow => "STEALTH\nHOLD C TO CROUCH IN DEEP SHADOW.",
+            TutorialStage.EchoStone => "ECHO STONE\nPRESS Q TO DISTRACT THE NEAREST GUARD.",
+            TutorialStage.Awareness => "WATCH THE GUARD\nBLUE IS SAFE. AMBER IS SUSPICIOUS. RED MEANS RUN.",
+            _ => "TUTORIAL COMPLETE\nFIND THE CORES AND REACH THE EXIT."
+        };
     }
 
     public sealed class TutorialProgress
     {
         public TutorialStage Stage { get; private set; } = TutorialStage.Objective;
         public event Action<TutorialStage> StageChanged;
-
         public void ContinueFromObjective() => Advance(TutorialStage.Objective, TutorialStage.Movement);
         public void NotifyMoved() => Advance(TutorialStage.Movement, TutorialStage.Shadow);
         public void NotifyCrouchedInShadow() => Advance(TutorialStage.Shadow, TutorialStage.EchoStone);
         public void NotifyEchoStoneUsed() => Advance(TutorialStage.EchoStone, TutorialStage.Awareness);
         public void ContinueFromAwareness() => Advance(TutorialStage.Awareness, TutorialStage.Complete);
-
         public void Skip()
         {
             if (Stage == TutorialStage.Complete) return;
             Stage = TutorialStage.Complete;
             StageChanged?.Invoke(Stage);
         }
-
         private void Advance(TutorialStage expected, TutorialStage next)
         {
             if (Stage != expected) return;
@@ -41,38 +43,22 @@ namespace EchoesOfTheRuins
     public sealed class SpawnProtection
     {
         private float remaining;
-
         public bool CanBeDetected => remaining <= 0f;
         public float RemainingSeconds => Math.Max(0f, remaining);
-
-        public SpawnProtection(float durationSeconds)
-        {
-            remaining = Math.Max(0f, durationSeconds);
-        }
-
-        public void Tick(float deltaTime)
-        {
-            remaining = Math.Max(0f, remaining - Math.Max(0f, deltaTime));
-        }
+        public SpawnProtection(float durationSeconds) => remaining = Math.Max(0f, durationSeconds);
+        public void Tick(float deltaTime) => remaining = Math.Max(0f, remaining - Math.Max(0f, deltaTime));
     }
 
     public sealed class ObjectiveTrackerModel
     {
         private readonly int requiredCores;
-
         public int CollectedCores { get; private set; }
         public bool ExitUnlocked => CollectedCores >= requiredCores;
         public string CurrentObjective => ExitUnlocked
-            ? "前往封印出口 / Reach the sealed exit"
-            : $"收集能量核心 {CollectedCores}/{requiredCores} / Collect energy cores";
-
+            ? "REACH THE UNSEALED EXIT"
+            : $"COLLECT ENERGY CORES  {CollectedCores} / {requiredCores}";
         public event Action<string> Changed;
-
-        public ObjectiveTrackerModel(int requiredCores)
-        {
-            this.requiredCores = Math.Max(1, requiredCores);
-        }
-
+        public ObjectiveTrackerModel(int requiredCores) => this.requiredCores = Math.Max(1, requiredCores);
         public void SetCollectedCores(int count)
         {
             int clamped = Math.Max(0, Math.Min(requiredCores, count));

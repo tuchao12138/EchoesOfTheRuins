@@ -14,6 +14,9 @@ namespace EchoesOfTheRuins
         public string Body;
         public int ProgressCurrent;
         public int ProgressRequired;
+        public int RemainingRequired;
+        public string TargetLabel;
+        public bool HighPriority;
         public Vector3 WorldPosition;
         public bool ShowDistance;
         public bool InputLocked;
@@ -66,8 +69,8 @@ namespace EchoesOfTheRuins
                 ObjectiveStage.Observe => new ObjectiveData { Stage = stage, Title = "OBSERVE", Body = "Watch the guardian before crossing.", ShowDistance = true, WorldPosition = worldPosition },
                 ObjectiveStage.Hide => new ObjectiveData { Stage = stage, Title = "HIDE", Body = "Crouch in deep shadow to stay hidden.", ShowDistance = true, WorldPosition = worldPosition },
                 ObjectiveStage.Distract => new ObjectiveData { Stage = stage, Title = "DISTRACT", Body = "Use an echo stone to draw the guardian away.", ShowDistance = true, WorldPosition = worldPosition },
-                ObjectiveStage.CollectCores => new ObjectiveData { Stage = stage, Title = "COLLECT CORES", Body = "Recover the energy cores.", ProgressCurrent = cores, ProgressRequired = RequiredCores, ShowDistance = true, WorldPosition = worldPosition },
-                ObjectiveStage.ReachExit => new ObjectiveData { Stage = stage, Title = "REACH EXIT", Body = "The exit is unsealed. Escape the ruins.", ShowDistance = true, WorldPosition = worldPosition },
+                ObjectiveStage.CollectCores => new ObjectiveData { Stage = stage, Title = "COLLECT 3 CORES", Body = "Collect 3 cores, then escape through the north gate.", ProgressCurrent = cores, ProgressRequired = RequiredCores, RemainingRequired = RequiredCores - cores, TargetLabel = "NEXT CORE", ShowDistance = true, WorldPosition = worldPosition },
+                ObjectiveStage.ReachExit => new ObjectiveData { Stage = stage, Title = "ESCAPE NORTH", Body = "All cores recovered. Reach the unsealed gate and press E.", ProgressCurrent = RequiredCores, ProgressRequired = RequiredCores, RemainingRequired = 0, TargetLabel = "EXIT", HighPriority = true, ShowDistance = true, WorldPosition = worldPosition },
                 _ => new ObjectiveData { Stage = ObjectiveStage.Complete, Title = "ESCAPED", Body = "You escaped the ruins." }
             };
         }

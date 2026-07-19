@@ -81,7 +81,8 @@ namespace EchoesOfTheRuins.Tests
             Assert.That(tutorial, Is.Not.Null);
             Assert.That(tutorial.SafeEntryRemaining, Is.GreaterThan(0f));
             Assert.That(GameObject.Find("Tutorial Strip").activeSelf, Is.True);
-            Assert.That(GameObject.Find("Objective").GetComponent<UnityEngine.UI.Text>().text, Is.EqualTo("YOUR ROUTE"));
+            Assert.That(GameObject.Find("Objective").GetComponent<UnityEngine.UI.Text>().text,
+                Does.Contain("MISSION"), "The production HUD must expose a visible mission heading during the briefing.");
         }
 
         [UnityTest]
@@ -93,7 +94,7 @@ namespace EchoesOfTheRuins.Tests
             Assert.That(Object.FindFirstObjectByType<GameManager>(), Is.Not.Null);
             Assert.That(Object.FindFirstObjectByType<PlayerController>(), Is.Not.Null);
             Assert.That(Camera.main, Is.Not.Null.And.Property("isActiveAndEnabled").True);
-            Assert.That(Object.FindObjectsByType<GuardianAI>(FindObjectsSortMode.None), Has.Length.EqualTo(2));
+            Assert.That(Object.FindObjectsByType<GuardianAI>(FindObjectsSortMode.None), Has.Length.EqualTo(3));
             Assert.That(Object.FindObjectsByType<Collectible>(FindObjectsInactive.Include, FindObjectsSortMode.None),
                 Has.Length.EqualTo(3));
             Assert.That(Object.FindFirstObjectByType<ExitGate>(), Is.Not.Null);
@@ -103,6 +104,7 @@ namespace EchoesOfTheRuins.Tests
         [UnityTest]
         public IEnumerator ProductionRuins_HudExplainsSafeEntryAndRestoredExitObjective()
         {
+            new SaveService().Delete();
             yield return SceneManager.LoadSceneAsync("ProductionRuins", LoadSceneMode.Single);
             yield return null;
 
@@ -111,17 +113,54 @@ namespace EchoesOfTheRuins.Tests
             Assert.That(tutorial.SafeEntryRemaining, Is.GreaterThan(0f));
             Assert.That(GameObject.Find("Tutorial Strip").activeSelf, Is.True);
 
-            tutorial.RuntimeDirector.Tracker.Advance(ObjectiveStage.ReachExit, 3);
+            GameManager manager = Object.FindFirstObjectByType<GameManager>();
+            Assert.That(manager.CollectCore("courtyard-core"), Is.True);
+            Assert.That(manager.CollectCore("shadow-gallery-core"), Is.True);
+            Assert.That(manager.CollectCore("altar-core"), Is.True);
             yield return null;
 
             Assert.That(GameObject.Find("Objective").GetComponent<UnityEngine.UI.Text>().text,
-                Is.EqualTo("REACH THE UNSEALED EXIT"));
+                Does.Contain("ESCAPE NORTH"));
             Assert.That(GameObject.Find("Core Progress").GetComponent<UnityEngine.UI.Text>().text,
                 Is.EqualTo("CORES  3 / 3"));
-            tutorial.RuntimeDirector.Tracker.Advance(ObjectiveStage.Complete, 3);
+            GameObject tutorialStrip = Object.FindObjectsByType<RectTransform>(FindObjectsInactive.Include, FindObjectsSortMode.None)
+                .First(rect => rect.name == "Tutorial Strip").gameObject;
+            Assert.That(tutorialStrip.activeSelf, Is.False,
+                "The tutorial must retire once the escape objective takes over.");
+        }
+
+        [UnityTest]
+        public IEnumerator ProductionRuins_ThreeCoresRequireExitInteractionBeforeVictory()
+        {
+            new SaveService().Delete();
+            yield return SceneManager.LoadSceneAsync("ProductionRuins", LoadSceneMode.Single);
             yield return null;
-            Assert.That(GameObject.Find("Tutorial Strip").activeSelf, Is.False,
-                "The tutorial must retire once the restored end-state is reached.");
+
+            GameManager manager = Object.FindFirstObjectByType<GameManager>();
+            ExitGate exitGate = Object.FindFirstObjectByType<ExitGate>();
+            Assert.That(manager, Is.Not.Null);
+            Assert.That(exitGate, Is.Not.Null);
+            Assert.That(manager.HasWon, Is.False);
+
+            Assert.That(manager.CollectCore("courtyard-core"), Is.True);
+            Assert.That(manager.CollectCore("shadow-gallery-core"), Is.True);
+            Assert.That(manager.CollectCore("altar-core"), Is.True);
+            yield return null;
+
+            Assert.That(manager.CurrentRunPhase, Is.EqualTo(RunPhase.Escape));
+            Assert.That(manager.HasWon, Is.False, "Collecting cores unlocks escape but must not auto-complete the run.");
+            Assert.That(exitGate.IsUnlocked, Is.True);
+            Assert.That(exitGate.InteractionPrompt, Does.Contain("ESCAPE"));
+
+            exitGate.Interact(null);
+            yield return null;
+
+            Assert.That(manager.HasWon, Is.True);
+            Assert.That(manager.CurrentRunPhase, Is.EqualTo(RunPhase.Complete));
+            Assert.That(manager.LastRunStats, Is.Not.Null);
+
+            yield return SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
+            new SaveService().Delete();
         }
     }
 }

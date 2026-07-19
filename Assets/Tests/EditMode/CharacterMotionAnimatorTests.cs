@@ -41,8 +41,10 @@ namespace EchoesOfTheRuins.Tests
             {
                 driver.Configure(visual.transform, CharacterAssetId.Explorer);
 
-                Animator animator = visual.GetComponent<Animator>();
+                Animator animator = visual.GetComponentInChildren<Animator>(true);
                 Assert.That(animator, Is.Not.Null);
+                Assert.That(driver.TargetAnimator, Is.SameAs(animator));
+                Assert.That(animator.avatar, Is.Not.Null, "The explorer must have a valid Avatar that can drive its skeleton.");
                 Assert.That(animator.applyRootMotion, Is.False);
                 Assert.That(driver.CurrentRole, Is.EqualTo(AnimationRole.Idle));
             }

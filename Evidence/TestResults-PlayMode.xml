@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="14" result="Passed" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-19 19:19:47Z" end-time="2026-07-19 19:19:58Z" duration="11.431817">
+  <test-suite type="TestSuite" id="1023" name="EchoesOfTheRuins" fullname="EchoesOfTheRuins" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-07-19 19:19:47Z" end-time="2026-07-19 19:19:58Z" duration="11.431817" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1018" name="EchoesOfTheRuins.PlayModeTests.dll" fullname="C:/Users/HP/Desktop/3/.codex-unity-test-harness/Library/ScriptAssemblies/EchoesOfTheRuins.PlayModeTests.dll" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-07-19 19:19:47Z" end-time="2026-07-19 19:19:58Z" duration="11.423157" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="35612" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1019" name="EchoesOfTheRuins" fullname="EchoesOfTheRuins" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-07-19 19:19:47Z" end-time="2026-07-19 19:19:58Z" duration="11.408699" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1020" name="Tests" fullname="EchoesOfTheRuins.Tests" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-07-19 19:19:47Z" end-time="2026-07-19 19:19:58Z" duration="11.391854" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="GuardianAttackPlayModeTests" fullname="EchoesOfTheRuins.Tests.GuardianAttackPlayModeTests" classname="EchoesOfTheRuins.Tests.GuardianAttackPlayModeTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-07-19 19:19:47Z" end-time="2026-07-19 19:19:51Z" duration="4.283862" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1003" name="GuardianAttack_ClearStrikeResetsPlayerExactlyOnceAfterHitDelay" fullname="EchoesOfTheRuins.Tests.GuardianAttackPlayModeTests.GuardianAttack_ClearStrikeResetsPlayerExactlyOnceAfterHitDelay" methodname="GuardianAttack_ClearStrikeResetsPlayerExactlyOnceAfterHitDelay" classname="EchoesOfTheRuins.Tests.GuardianAttackPlayModeTests" runstate="Runnable" seed="2114021735" result="Passed" start-time="2026-07-19 19:19:47Z" end-time="2026-07-19 19:19:49Z" duration="1.929462" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Test Guardian is not on the production NavMesh; movement is intentionally disabled to prevent wall clipping.
+]]></output>
+            </test-case>
+            <test-case id="1002" name="GuardianAttack_TelegraphsBeforePlayerReset" fullname="EchoesOfTheRuins.Tests.GuardianAttackPlayModeTests.GuardianAttack_TelegraphsBeforePlayerReset" methodname="GuardianAttack_TelegraphsBeforePlayerReset" classname="EchoesOfTheRuins.Tests.GuardianAttackPlayModeTests" runstate="Runnable" seed="1256110337" result="Passed" start-time="2026-07-19 19:19:49Z" end-time="2026-07-19 19:19:49Z" duration="0.399288" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Test Guardian is not on the production NavMesh; movement is intentionally disabled to prevent wall clipping.
+]]></output>
+            </test-case>
+            <test-case id="1004" name="GuardianAttack_WallObstructionProducesMiss" fullname="EchoesOfTheRuins.Tests.GuardianAttackPlayModeTests.GuardianAttack_WallObstructionProducesMiss" methodname="GuardianAttack_WallObstructionProducesMiss" classname="EchoesOfTheRuins.Tests.GuardianAttackPlayModeTests" runstate="Runnable" seed="1961796713" result="Passed" start-time="2026-07-19 19:19:49Z" end-time="2026-07-19 19:19:51Z" duration="1.933742" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Test Guardian is not on the production NavMesh; movement is intentionally disabled to prevent wall clipping.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1005" name="PlayerHitResponsePlayModeTests" fullname="EchoesOfTheRuins.Tests.PlayerHitResponsePlayModeTests" classname="EchoesOfTheRuins.Tests.PlayerHitResponsePlayModeTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-07-19 19:19:51Z" end-time="2026-07-19 19:19:56Z" duration="4.715519" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1008" name="DestroyDuringHit_StopsResetAndAlwaysClearsPlayerFeedback" fullname="EchoesOfTheRuins.Tests.PlayerHitResponsePlayModeTests.DestroyDuringHit_StopsResetAndAlwaysClearsPlayerFeedback" methodname="DestroyDuringHit_StopsResetAndAlwaysClearsPlayerFeedback" classname="EchoesOfTheRuins.Tests.PlayerHitResponsePlayModeTests" runstate="Runnable" seed="1606642084" result="Passed" start-time="2026-07-19 19:19:51Z" end-time="2026-07-19 19:19:53Z" duration="1.916582" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Test Guardian is not on the production NavMesh; movement is intentionally disabled to prevent wall clipping.
+]]></output>
+            </test-case>
+            <test-case id="1006" name="DisabledResponse_UnsubscribesAndPreventsNewHitHandling" fullname="EchoesOfTheRuins.Tests.PlayerHitResponsePlayModeTests.DisabledResponse_UnsubscribesAndPreventsNewHitHandling" methodname="DisabledResponse_UnsubscribesAndPreventsNewHitHandling" classname="EchoesOfTheRuins.Tests.PlayerHitResponsePlayModeTests" runstate="Runnable" seed="271711288" result="Passed" start-time="2026-07-19 19:19:53Z" end-time="2026-07-19 19:19:54Z" duration="0.832930" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Test Guardian is not on the production NavMesh; movement is intentionally disabled to prevent wall clipping.
+]]></output>
+            </test-case>
+            <test-case id="1007" name="DisableDuringHit_StopsResetAndAlwaysClearsPlayerFeedback" fullname="EchoesOfTheRuins.Tests.PlayerHitResponsePlayModeTests.DisableDuringHit_StopsResetAndAlwaysClearsPlayerFeedback" methodname="DisableDuringHit_StopsResetAndAlwaysClearsPlayerFeedback" classname="EchoesOfTheRuins.Tests.PlayerHitResponsePlayModeTests" runstate="Runnable" seed="525272363" result="Passed" start-time="2026-07-19 19:19:54Z" end-time="2026-07-19 19:19:56Z" duration="1.916578" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Test Guardian is not on the production NavMesh; movement is intentionally disabled to prevent wall clipping.
+]]></output>
+            </test-case>
+            <test-case id="1009" name="RepeatedEnableCycles_DoNotDuplicateGuardianSubscription" fullname="EchoesOfTheRuins.Tests.PlayerHitResponsePlayModeTests.RepeatedEnableCycles_DoNotDuplicateGuardianSubscription" methodname="RepeatedEnableCycles_DoNotDuplicateGuardianSubscription" classname="EchoesOfTheRuins.Tests.PlayerHitResponsePlayModeTests" runstate="Runnable" seed="1372019301" result="Passed" start-time="2026-07-19 19:19:56Z" end-time="2026-07-19 19:19:56Z" duration="0.033868" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Test Guardian is not on the production NavMesh; movement is intentionally disabled to prevent wall clipping.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1010" name="ProductionFlowPlayModeTests" fullname="EchoesOfTheRuins.Tests.ProductionFlowPlayModeTests" classname="EchoesOfTheRuins.Tests.ProductionFlowPlayModeTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-07-19 19:19:56Z" end-time="2026-07-19 19:19:58Z" duration="2.374207" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1013" name="MainMenu_ControlsButtonRespondsToPointerClick" fullname="EchoesOfTheRuins.Tests.ProductionFlowPlayModeTests.MainMenu_ControlsButtonRespondsToPointerClick" methodname="MainMenu_ControlsButtonRespondsToPointerClick" classname="EchoesOfTheRuins.Tests.ProductionFlowPlayModeTests" runstate="Runnable" seed="254025808" result="Passed" start-time="2026-07-19 19:19:56Z" end-time="2026-07-19 19:19:56Z" duration="0.315237" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1011" name="MainMenu_LoadsWithActiveCameraAndNavigationCanvas" fullname="EchoesOfTheRuins.Tests.ProductionFlowPlayModeTests.MainMenu_LoadsWithActiveCameraAndNavigationCanvas" methodname="MainMenu_LoadsWithActiveCameraAndNavigationCanvas" classname="EchoesOfTheRuins.Tests.ProductionFlowPlayModeTests" runstate="Runnable" seed="906972562" result="Passed" start-time="2026-07-19 19:19:56Z" end-time="2026-07-19 19:19:57Z" duration="0.258899" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1012" name="MainMenu_NavigationRemainsInsideSmallWindow" fullname="EchoesOfTheRuins.Tests.ProductionFlowPlayModeTests.MainMenu_NavigationRemainsInsideSmallWindow" methodname="MainMenu_NavigationRemainsInsideSmallWindow" classname="EchoesOfTheRuins.Tests.ProductionFlowPlayModeTests" runstate="Runnable" seed="1616811164" result="Passed" start-time="2026-07-19 19:19:57Z" end-time="2026-07-19 19:19:57Z" duration="0.258173" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1014" name="MainMenu_NewGameStartsTheProtectedBriefing" fullname="EchoesOfTheRuins.Tests.ProductionFlowPlayModeTests.MainMenu_NewGameStartsTheProtectedBriefing" methodname="MainMenu_NewGameStartsTheProtectedBriefing" classname="EchoesOfTheRuins.Tests.ProductionFlowPlayModeTests" runstate="Runnable" seed="614121130" result="Passed" start-time="2026-07-19 19:19:57Z" end-time="2026-07-19 19:19:57Z" duration="0.516728" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[GameObject (named 'Player Camera') references runtime script in scene file. Fixing!
+SAFE ENTRY: guardian detection is disabled for eight seconds.
+]]></output>
+            </test-case>
+            <test-case id="1016" name="ProductionRuins_HudExplainsSafeEntryAndRestoredExitObjective" fullname="EchoesOfTheRuins.Tests.ProductionFlowPlayModeTests.ProductionRuins_HudExplainsSafeEntryAndRestoredExitObjective" methodname="ProductionRuins_HudExplainsSafeEntryAndRestoredExitObjective" classname="EchoesOfTheRuins.Tests.ProductionFlowPlayModeTests" runstate="Runnable" seed="930846240" result="Passed" start-time="2026-07-19 19:19:57Z" end-time="2026-07-19 19:19:58Z" duration="0.280925" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[GameObject (named 'Player Camera') references runtime script in scene file. Fixing!
+SAFE ENTRY: guardian detection is disabled for eight seconds.
+]]></output>
+            </test-case>
+            <test-case id="1015" name="ProductionRuins_LoadsCompletePlayableVerticalSlice" fullname="EchoesOfTheRuins.Tests.ProductionFlowPlayModeTests.ProductionRuins_LoadsCompletePlayableVerticalSlice" methodname="ProductionRuins_LoadsCompletePlayableVerticalSlice" classname="EchoesOfTheRuins.Tests.ProductionFlowPlayModeTests" runstate="Runnable" seed="1859772070" result="Passed" start-time="2026-07-19 19:19:58Z" end-time="2026-07-19 19:19:58Z" duration="0.265917" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[GameObject (named 'Player Camera') references runtime script in scene file. Fixing!
+SAFE ENTRY: guardian detection is disabled for eight seconds.
+]]></output>
+            </test-case>
+            <test-case id="1017" name="ProductionRuins_ThreeCoresRequireExitInteractionBeforeVictory" fullname="EchoesOfTheRuins.Tests.ProductionFlowPlayModeTests.ProductionRuins_ThreeCoresRequireExitInteractionBeforeVictory" methodname="ProductionRuins_ThreeCoresRequireExitInteractionBeforeVictory" classname="EchoesOfTheRuins.Tests.ProductionFlowPlayModeTests" runstate="Runnable" seed="2133394499" result="Passed" start-time="2026-07-19 19:19:58Z" end-time="2026-07-19 19:19:58Z" duration="0.461453" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[GameObject (named 'Player Camera') references runtime script in scene file. Fixing!
+SAFE ENTRY: guardian detection is disabled for eight seconds.
+Saving results to: C:/Users/HP/AppData/LocalLow/DefaultCompany/EchoesOfTheRuins\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

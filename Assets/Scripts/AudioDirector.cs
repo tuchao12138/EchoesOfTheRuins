@@ -52,13 +52,19 @@ namespace EchoesOfTheRuins
             if (GameManager.Instance != null)
             {
                 GameManager.Instance.CoreCountChanged += OnCoreCountChanged;
+                GameManager.Instance.RelicCountChanged += OnRelicCountChanged;
                 GameManager.Instance.ExitUnlocked += OnExitUnlocked;
+                GameManager.Instance.EscapeStarted += OnEscapeStarted;
+                GameManager.Instance.Victory += OnVictory;
             }
             foreach (GuardianAI guardian in guardians) if (guardian != null) { guardian.AlertStateChanged += OnGuardianAlert; guardian.GuardianAttackChanged += OnGuardianAttack; guardian.PlayerStruck += OnPlayerStruck; }
         }
 
         private void OnCoreCountChanged(int _, int __) => cue.PlayOneShot(pickup);
+        private void OnRelicCountChanged(int _, int __) => cue.PlayOneShot(pickup, .7f);
         private void OnExitUnlocked() { cue.PlayOneShot(unlock); cue.PlayOneShot(objectivePulse, .55f); }
+        private void OnEscapeStarted() { cue.PlayOneShot(alert, .8f); cue.PlayOneShot(objectivePulse); }
+        private void OnVictory() => cue.PlayOneShot(unlock, 1f);
         private void OnGuardianAlert(GuardianState state, float _)
         {
             if (state != GuardianState.Chase || Time.unscaledTime < nextAlertCue) return;
@@ -79,7 +85,10 @@ namespace EchoesOfTheRuins
             if (GameManager.Instance != null)
             {
                 GameManager.Instance.CoreCountChanged -= OnCoreCountChanged;
+                GameManager.Instance.RelicCountChanged -= OnRelicCountChanged;
                 GameManager.Instance.ExitUnlocked -= OnExitUnlocked;
+                GameManager.Instance.EscapeStarted -= OnEscapeStarted;
+                GameManager.Instance.Victory -= OnVictory;
             }
             foreach (GuardianAI guardian in guardians) if (guardian != null) { guardian.AlertStateChanged -= OnGuardianAlert; guardian.GuardianAttackChanged -= OnGuardianAttack; guardian.PlayerStruck -= OnPlayerStruck; }
         }

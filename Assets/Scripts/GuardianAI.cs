@@ -37,6 +37,10 @@ namespace EchoesOfTheRuins
         private GuardianAttackSequence attackSequence;
         private GuardianVisionCone visionCone;
         private bool hitResponseRegistered;
+        private float basePatrolSpeed;
+        private float baseChaseSpeed;
+        private float baseDetectionRange;
+        private bool gameEventsBound;
 
         public void Configure(Transform targetPlayer, Transform[] patrolWaypoints)
         {
@@ -48,6 +52,9 @@ namespace EchoesOfTheRuins
         {
             agent = GetComponent<NavMeshAgent>();
             brain = new GuardianBrain();
+            basePatrolSpeed = patrolSpeed;
+            baseChaseSpeed = chaseSpeed;
+            baseDetectionRange = detectionRange;
             attackSequence = new GuardianAttackSequence();
             visionCone = GetComponent<GuardianVisionCone>();
             if (visionCone == null) visionCone = gameObject.AddComponent<GuardianVisionCone>();
@@ -62,9 +69,17 @@ namespace EchoesOfTheRuins
             LifecycleChanged?.Invoke(this, true);
         }
 
+        private void Start()
+        {
+            BindGameEvents();
+            ApplyDifficulty(GameManager.Instance == null ? RunPhase.Infiltration : GameManager.Instance.CurrentRunPhase,
+                GameManager.Instance == null ? 0 : GameManager.Instance.GameState.CollectedCoreCount);
+        }
+
         private void OnDisable()
         {
             NoiseSystem.NoiseCreated -= OnNoiseCreated;
+            UnbindGameEvents();
             LifecycleChanged?.Invoke(this, false);
         }
 
@@ -258,6 +273,54 @@ namespace EchoesOfTheRuins
                 warnedMissingNavigation = true;
                 Debug.LogWarning($"{name} is not on the production NavMesh; movement is intentionally disabled to prevent wall clipping.", this);
             }
+        }
+
+        private void BindGameEvents()
+        {
+            if (gameEventsBound || GameManager.Instance == null) return;
+            GameManager.Instance.CoreCountChanged += OnCoreCountChanged;
+            GameManager.Instance.RunPhaseChanged += OnRunPhaseChanged;
+            gameEventsBound = true;
+        }
+
+        private void UnbindGameEvents()
+        {
+            if (!gameEventsBound || GameManager.Instance == null) return;
+            GameManager.Instance.CoreCountChanged -= OnCoreCountChanged;
+            GameManager.Instance.RunPhaseChanged -= OnRunPhaseChanged;
+            gameEventsBound = false;
+        }
+
+        private void OnCoreCountChanged(int collected, int _)
+        {
+            ApplyDifficulty(GameManager.Instance.CurrentRunPhase, collected);
+            if (collected == 2)
+            {
+                investigationPoint = transform.position + transform.forward * 4f;
+                hasInvestigationPoint = true;
+                brain.ForceSearch();
+            }
+        }
+
+        private void OnRunPhaseChanged(RunPhase phase)
+        {
+            int cores = GameManager.Instance == null ? 0 : GameManager.Instance.GameState.CollectedCoreCount;
+            ApplyDifficulty(phase, cores);
+            if (phase != RunPhase.Escape) return;
+            Transform exit = ObjectiveDirector.Active == null ? null : ObjectiveDirector.Active.ExitTarget;
+            investigationPoint = exit == null ? transform.position + transform.forward * 6f : exit.position;
+            hasInvestigationPoint = true;
+            brain.ForceSearch();
+        }
+
+        private void ApplyDifficulty(RunPhase phase, int collectedCores)
+        {
+            GuardianDifficultyProfile profile = GuardianDifficultyProfile.For(phase, collectedCores);
+            patrolSpeed = basePatrolSpeed * profile.PatrolSpeedMultiplier;
+            chaseSpeed = baseChaseSpeed * profile.ChaseSpeedMultiplier;
+            detectionRange = baseDetectionRange * profile.DetectionRangeMultiplier;
+            brain.ConfigurePressure(profile.SuspicionGainMultiplier, profile.SuspicionDecayMultiplier);
+            visionCone?.Configure(detectionRange, fieldOfView, obstacleMask);
         }
     }
 }

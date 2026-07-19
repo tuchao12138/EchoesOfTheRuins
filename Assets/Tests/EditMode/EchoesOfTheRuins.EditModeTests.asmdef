@@ -2,7 +2,9 @@
   "name": "EchoesOfTheRuins.EditModeTests",
   "rootNamespace": "EchoesOfTheRuins.Tests",
   "references": [
-    "EchoesOfTheRuins.Runtime"
+    "EchoesOfTheRuins.Runtime",
+    "Unity.RenderPipelines.Core.Runtime",
+    "Unity.RenderPipelines.Universal.Runtime"
   ],
   "includePlatforms": [
     "Editor"

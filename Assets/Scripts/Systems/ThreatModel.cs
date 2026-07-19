@@ -63,7 +63,9 @@ namespace EchoesOfTheRuins
                     hasSelection = true;
                 }
             }
-            return selected;
+            return hasSelection
+                ? selected
+                : new ThreatSnapshot(string.Empty, GuardianState.Patrol, 0f, GuardianAttackPhase.None, Vector3.zero);
         }
 
         private static bool IsMoreDangerous(ThreatSnapshot candidate, ThreatSnapshot current)

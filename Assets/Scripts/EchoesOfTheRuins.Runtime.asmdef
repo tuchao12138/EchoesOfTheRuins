@@ -1,4 +1,9 @@
 {
   "name": "EchoesOfTheRuins.Runtime",
-  "rootNamespace": "EchoesOfTheRuins"
+  "rootNamespace": "EchoesOfTheRuins",
+  "references": [
+    "UnityEngine.AnimationModule",
+    "Unity.RenderPipelines.Core.Runtime",
+    "Unity.RenderPipelines.Universal.Runtime"
+  ]
 }

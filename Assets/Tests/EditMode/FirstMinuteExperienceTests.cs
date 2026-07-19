@@ -1,3 +1,4 @@
+using System.Linq;
 using NUnit.Framework;
 
 namespace EchoesOfTheRuins.Tests
@@ -43,9 +44,20 @@ namespace EchoesOfTheRuins.Tests
             var objectives = new ObjectiveTrackerModel(3);
 
             objectives.SetCollectedCores(2);
-            Assert.That(objectives.CurrentObjective, Does.Contain("2/3"));
+            Assert.That(objectives.CurrentObjective, Is.EqualTo("COLLECT ENERGY CORES  2 / 3"));
             objectives.SetCollectedCores(3);
-            Assert.That(objectives.CurrentObjective, Does.Contain("出口"));
+            Assert.That(objectives.CurrentObjective, Is.EqualTo("REACH THE UNSEALED EXIT"));
+        }
+
+        [Test]
+        public void TutorialCopy_IsReadableEnglishForEveryStage()
+        {
+            foreach (TutorialStage stage in System.Enum.GetValues(typeof(TutorialStage)))
+            {
+                string copy = TutorialCopy.Get(stage);
+                Assert.That(copy, Is.Not.Empty);
+                Assert.That(copy.All(character => character <= 127), Is.True, $"{stage} contains a broken font character");
+            }
         }
     }
 }

@@ -20,3 +20,6 @@ Assets/ThirdParty.meta
 *.unityproj
 *.tmp
 .worktrees/
+.superpowers/
+.codex-*
+Evidence/*.log

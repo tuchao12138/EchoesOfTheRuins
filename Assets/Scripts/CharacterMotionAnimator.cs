@@ -20,6 +20,7 @@ namespace EchoesOfTheRuins
         private float blendElapsed;
 
         public AnimationRole CurrentRole { get; private set; } = AnimationRole.Idle;
+        public Animator TargetAnimator { get; private set; }
 
         public void Configure(Transform targetVisual, CharacterAssetId assetId)
         {
@@ -32,9 +33,26 @@ namespace EchoesOfTheRuins
             CurrentRole = AnimationRole.Idle;
             if (targetVisual == null) return;
 
-            Animator animator = targetVisual.GetComponent<Animator>();
+            Animator animator = targetVisual.GetComponentInChildren<Animator>(true);
             if (animator == null) animator = targetVisual.gameObject.AddComponent<Animator>();
+            if (animator.avatar == null)
+            {
+                foreach (Avatar avatar in Resources.LoadAll<Avatar>(CharacterAssetCatalog.GetPath(assetId)))
+                {
+                    if (avatar == null || !avatar.isValid) continue;
+                    animator.avatar = avatar;
+                    break;
+                }
+                if (animator.avatar == null)
+                {
+                    string rootMotionBone = targetVisual.childCount > 0 ? targetVisual.GetChild(0).name : string.Empty;
+                    Avatar generatedAvatar = AvatarBuilder.BuildGenericAvatar(targetVisual.gameObject, rootMotionBone);
+                    if (generatedAvatar != null && generatedAvatar.isValid) animator.avatar = generatedAvatar;
+                }
+            }
             animator.applyRootMotion = false;
+            animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+            TargetAnimator = animator;
 
             string resourcesPath = CharacterAssetCatalog.GetPath(assetId);
             CharacterAnimationSet animationSet = CharacterAnimationSet.Create(
@@ -148,6 +166,7 @@ namespace EchoesOfTheRuins
             if (graph.IsValid()) graph.Destroy();
             graph = default;
             mixer = default;
+            TargetAnimator = null;
         }
     }
 }

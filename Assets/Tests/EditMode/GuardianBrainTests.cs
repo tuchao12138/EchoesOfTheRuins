@@ -54,5 +54,42 @@ namespace EchoesOfTheRuins.Tests
 
             Assert.That(state, Is.EqualTo(GuardianState.Patrol));
         }
+
+        [Test]
+        public void Tick_VisualExposureBuildsSuspicionBeforeChase()
+        {
+            var brain = new GuardianBrain(detectionSeconds: 2f);
+
+            GuardianState first = brain.Tick(1f, new GuardianPerception(.5f, false, false));
+            GuardianState second = brain.Tick(3f, new GuardianPerception(.5f, false, false));
+
+            Assert.That(first, Is.EqualTo(GuardianState.Investigate));
+            Assert.That(brain.Suspicion, Is.EqualTo(1f).Within(.001f));
+            Assert.That(second, Is.EqualTo(GuardianState.Chase));
+        }
+
+        [Test]
+        public void Tick_LowerVisibilityBuildsSuspicionMoreSlowly()
+        {
+            var exposed = new GuardianBrain(detectionSeconds: 2f);
+            var hidden = new GuardianBrain(detectionSeconds: 2f);
+
+            exposed.Tick(1f, new GuardianPerception(1f, false, false));
+            hidden.Tick(1f, new GuardianPerception(.25f, false, false));
+
+            Assert.That(exposed.Suspicion, Is.GreaterThan(hidden.Suspicion));
+        }
+
+        [Test]
+        public void Tick_NoVisualContactDecaysSuspicion()
+        {
+            var brain = new GuardianBrain(detectionSeconds: 2f, suspicionDecaySeconds: 1f);
+            brain.Tick(1f, new GuardianPerception(1f, false, false));
+            float before = brain.Suspicion;
+
+            brain.Tick(.25f, new GuardianPerception(0f, false, false));
+
+            Assert.That(brain.Suspicion, Is.LessThan(before));
+        }
     }
 }

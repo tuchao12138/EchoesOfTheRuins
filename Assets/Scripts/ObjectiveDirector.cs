@@ -96,6 +96,7 @@ namespace EchoesOfTheRuins
                 yield return null;
             }
             if (player != null) player.SetInputLocked(false);
+            GameManager.Instance?.BeginCoreHunt();
             Tracker.Notify(ObjectiveSignal.BriefingFinished, worldPosition: PositionOf(firstCoreTarget));
         }
 
@@ -104,9 +105,13 @@ namespace EchoesOfTheRuins
         private void TryAdvanceMovement() { if (moved && sprinted) Tracker.Notify(ObjectiveSignal.MovedAndSprinted, worldPosition: PositionOf(guardianObservationTarget)); }
         private void OnCrouchChanged(bool crouched) { if (crouched && player != null && player.IsInShadow) Tracker.Notify(ObjectiveSignal.CrouchedInShadow, worldPosition: PositionOf(firstCoreTarget)); }
         private void OnShadowChanged(bool shadowed) { if (shadowed && player != null && player.IsCrouching) Tracker.Notify(ObjectiveSignal.CrouchedInShadow, worldPosition: PositionOf(firstCoreTarget)); }
-        private void OnEchoStoneUsed() => Tracker.Notify(ObjectiveSignal.UsedEchoStone, worldPosition: PositionOf(firstCoreTarget));
-        private void OnCoreCountChanged(int count, int _) => Tracker.Notify(ObjectiveSignal.CoreCountChanged, count, PositionOf(firstCoreTarget));
-        private void OnExitUnlocked() => Tracker.Notify(ObjectiveSignal.ExitUnlocked, worldPosition: PositionOf(exitTarget));
+        private void OnEchoStoneUsed() => Tracker.Notify(ObjectiveSignal.UsedEchoStone, worldPosition: PositionOf(FindNextCoreTarget()));
+        private void OnCoreCountChanged(int count, int _) => Tracker.Notify(ObjectiveSignal.CoreCountChanged, count, PositionOf(FindNextCoreTarget()));
+        private void OnExitUnlocked()
+        {
+            if (Tracker == null) return;
+            Tracker.Advance(ObjectiveStage.ReachExit, RuinGameState.RequiredCoreCount, PositionOf(exitTarget));
+        }
         private void OnVictory() => Tracker.Notify(ObjectiveSignal.Escaped);
 
         private void OnObjectiveChanged(ObjectiveData objective)
@@ -117,7 +122,23 @@ namespace EchoesOfTheRuins
         }
 
         private Transform TargetFor(ObjectiveStage stage) => stage == ObjectiveStage.ReachExit ? exitTarget :
-            stage == ObjectiveStage.CollectCores || stage == ObjectiveStage.Distract || stage == ObjectiveStage.Hide ? firstCoreTarget : guardianObservationTarget;
+            stage == ObjectiveStage.CollectCores || stage == ObjectiveStage.Distract || stage == ObjectiveStage.Hide ? FindNextCoreTarget() : guardianObservationTarget;
+
+        private Transform FindNextCoreTarget()
+        {
+            Transform best = null;
+            float bestDistance = float.PositiveInfinity;
+            foreach (Collectible collectible in FindObjectsByType<Collectible>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+            {
+                if (collectible == null || !collectible.gameObject.activeInHierarchy) continue;
+                if (GameManager.Instance != null && GameManager.Instance.GameState.HasCollectedCore(collectible.CoreId)) continue;
+                float distance = player == null ? 0f : Vector3.SqrMagnitude(player.transform.position - collectible.transform.position);
+                if (distance >= bestDistance) continue;
+                bestDistance = distance;
+                best = collectible.transform;
+            }
+            return best != null ? best : firstCoreTarget;
+        }
 
         private ObjectiveStage ReadSavedStage()
         {

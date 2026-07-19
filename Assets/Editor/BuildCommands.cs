@@ -10,10 +10,10 @@ namespace EchoesOfTheRuins.Editor
         [MenuItem("Echoes/Build Windows Player")]
         public static void BuildWindowsPlayer()
         {
-            const string scene = "Assets/Scenes/ProductionRuins.unity";
-            if (!File.Exists(scene))
+            string[] scenes = { ProductionSceneGenerator.MainMenuScenePath, ProductionSceneGenerator.ProductionScenePath };
+            if (!File.Exists(scenes[0]) || !File.Exists(scenes[1]))
             {
-                Debug.LogError("Production scene is missing: " + scene);
+                Debug.LogError("Main menu or production scene is missing. Run Echoes/Generate Production Ruins Scene first.");
                 return;
             }
 
@@ -22,7 +22,7 @@ namespace EchoesOfTheRuins.Editor
             Directory.CreateDirectory("Builds");
             BuildReport report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
             {
-                scenes = new[] { scene },
+                scenes = scenes,
                 locationPathName = "Builds/EchoesOfTheRuins.exe",
                 target = BuildTarget.StandaloneWindows64,
                 options = BuildOptions.None
@@ -43,7 +43,7 @@ namespace EchoesOfTheRuins.Editor
             const string materialsFolder = "Assets/Resources/Materials";
             if (!AssetDatabase.IsValidFolder(resourcesFolder)) AssetDatabase.CreateFolder("Assets", "Resources");
             if (!AssetDatabase.IsValidFolder(materialsFolder)) AssetDatabase.CreateFolder(resourcesFolder, "Materials");
-            Shader ruinsShader = Shader.Find("Standard") ?? Shader.Find("Sprites/Default");
+            Shader ruinsShader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard") ?? Shader.Find("Sprites/Default");
             Shader hudShader = Shader.Find("UI/Default") ?? Shader.Find("Sprites/Default");
             if (ruinsShader == null || hudShader == null) throw new System.InvalidOperationException("No build-safe shader was found for a runtime material.");
             CreateMaterialIfMissing("Assets/Resources/Materials/RuinsRuntime.mat", "Ruins Runtime Template", ruinsShader);

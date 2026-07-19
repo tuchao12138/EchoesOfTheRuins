@@ -24,6 +24,7 @@ namespace EchoesOfTheRuins
         public event System.Action<GuardianState, float> AlertStateChanged;
         public event System.Action<string, GuardianAttackPhase> GuardianAttackChanged;
         public event System.Action<string> PlayerStruck;
+        public static event System.Action<GuardianAI, bool> LifecycleChanged;
         private NavMeshAgent agent;
         private int waypointIndex;
         private float nextCaptureTime;
@@ -31,6 +32,7 @@ namespace EchoesOfTheRuins
         private Vector3 investigationPoint;
         private bool hasInvestigationPoint;
         private bool receivedNoise;
+        private bool warnedMissingNavigation;
         private CharacterMotionAnimator motionAnimator;
         private GuardianAttackSequence attackSequence;
         private GuardianVisionCone visionCone;
@@ -54,8 +56,17 @@ namespace EchoesOfTheRuins
             ResolvePlayer();
         }
 
-        private void OnEnable() => NoiseSystem.NoiseCreated += OnNoiseCreated;
-        private void OnDisable() => NoiseSystem.NoiseCreated -= OnNoiseCreated;
+        private void OnEnable()
+        {
+            NoiseSystem.NoiseCreated += OnNoiseCreated;
+            LifecycleChanged?.Invoke(this, true);
+        }
+
+        private void OnDisable()
+        {
+            NoiseSystem.NoiseCreated -= OnNoiseCreated;
+            LifecycleChanged?.Invoke(this, false);
+        }
 
         private void Update()
         {
@@ -67,9 +78,11 @@ namespace EchoesOfTheRuins
                 return;
             }
             float distance = Vector3.Distance(transform.position, player.position);
-            bool seesPlayer = (TutorialDirector.Active == null || TutorialDirector.Active.CanBeDetected) && CanSeePlayer(distance);
-            bool capture = distance <= captureRange && seesPlayer && Time.time >= nextCaptureTime;
-            SetState(brain.Tick(Time.deltaTime, new GuardianPerception(seesPlayer, receivedNoise, capture)));
+            float exposure = TutorialDirector.Active == null || TutorialDirector.Active.CanBeDetected
+                ? GetVisualExposure(distance)
+                : 0f;
+            bool capture = distance <= captureRange && exposure > 0f && brain.Suspicion >= .85f && Time.time >= nextCaptureTime;
+            SetState(brain.Tick(Time.deltaTime, new GuardianPerception(exposure, receivedNoise, capture)), brain.Suspicion);
             if (motionAnimator == null) motionAnimator = GetComponent<CharacterMotionAnimator>();
             motionAnimator?.Play(ToAnimationRole(CurrentState));
             receivedNoise = false;
@@ -151,18 +164,22 @@ namespace EchoesOfTheRuins
             GuardianAttackChanged?.Invoke(gameObject.name, phase);
         }
 
-        private bool CanSeePlayer(float distance)
+        private float GetVisualExposure(float distance)
         {
             var stealth = player.GetComponent<PlayerController>();
-            float effectiveRange = detectionRange * (stealth != null ? stealth.VisibilityMultiplier : 1f);
-            if (distance > effectiveRange) return false;
+            if (distance > detectionRange) return 0f;
             Vector3 origin = transform.position + Vector3.up * 1.2f;
             Vector3 target = player.position + Vector3.up * 1f;
             Vector3 direction = target - origin;
-            if (Vector3.Angle(transform.forward, direction) > fieldOfView * .5f) return false;
+            if (Vector3.Angle(transform.forward, direction) > fieldOfView * .5f) return 0f;
             if (Physics.Raycast(origin, direction.normalized, out RaycastHit hit, direction.magnitude, ~0, QueryTriggerInteraction.Ignore))
-                return hit.transform == player || hit.transform.IsChildOf(player);
-            return false;
+            {
+                if (hit.transform != player && !hit.transform.IsChildOf(player)) return 0f;
+                float visibility = stealth != null ? stealth.VisibilityMultiplier : 1f;
+                float distanceFactor = Mathf.Lerp(1f, .6f, Mathf.Clamp01(distance / detectionRange));
+                return visibility * distanceFactor;
+            }
+            return 0f;
         }
 
         private void OnNoiseCreated(Vector3 position, float radius)
@@ -173,11 +190,11 @@ namespace EchoesOfTheRuins
             receivedNoise = true;
         }
 
-        private void SetState(GuardianState nextState)
+        private void SetState(GuardianState nextState, float suspicion)
         {
             float nextAlert = nextState == GuardianState.Chase || nextState == GuardianState.Capture ? 1f :
-                nextState == GuardianState.Investigate || nextState == GuardianState.Search ? .55f : 0f;
-            if (CurrentState == nextState && Mathf.Approximately(AlertLevel, nextAlert)) return;
+                nextState == GuardianState.Investigate || nextState == GuardianState.Search ? Mathf.Max(.35f, suspicion) : suspicion;
+            if (CurrentState == nextState && Mathf.Abs(AlertLevel - nextAlert) < .01f) return;
             CurrentState = nextState;
             AlertLevel = nextAlert;
             visionCone?.SetState(CurrentState, AlertLevel);
@@ -229,19 +246,17 @@ namespace EchoesOfTheRuins
 
         private void MoveTo(Vector3 destination, float speed)
         {
-            if (agent != null && agent.isActiveAndEnabled && agent.isOnNavMesh)
+            if (NavigationReady)
             {
                 agent.speed = speed;
                 agent.SetDestination(destination);
                 return;
             }
 
-            Vector3 flatDestination = new Vector3(destination.x, transform.position.y, destination.z);
-            Vector3 direction = flatDestination - transform.position;
-            if (direction.sqrMagnitude > .001f)
+            if (!warnedMissingNavigation)
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 10f * Time.deltaTime);
-                transform.position = Vector3.MoveTowards(transform.position, flatDestination, speed * Time.deltaTime);
+                warnedMissingNavigation = true;
+                Debug.LogWarning($"{name} is not on the production NavMesh; movement is intentionally disabled to prevent wall clipping.", this);
             }
         }
     }

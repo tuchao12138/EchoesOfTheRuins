@@ -66,6 +66,25 @@ namespace EchoesOfTheRuins.Tests
         }
 
         [UnityTest]
+        public IEnumerator MainMenu_NewGameStartsTheProtectedBriefing()
+        {
+            yield return SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
+            yield return null;
+
+            ExecuteEvents.Execute(GameObject.Find("NEW GAME Button"), new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
+            yield return null;
+            ExecuteEvents.Execute(GameObject.Find("BEGIN Button"), new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
+            yield return new WaitUntil(() => SceneManager.GetActiveScene().name == "ProductionRuins");
+            yield return null;
+
+            TutorialDirector tutorial = Object.FindFirstObjectByType<TutorialDirector>();
+            Assert.That(tutorial, Is.Not.Null);
+            Assert.That(tutorial.SafeEntryRemaining, Is.GreaterThan(0f));
+            Assert.That(GameObject.Find("Tutorial Strip").activeSelf, Is.True);
+            Assert.That(GameObject.Find("Objective").GetComponent<UnityEngine.UI.Text>().text, Is.EqualTo("YOUR ROUTE"));
+        }
+
+        [UnityTest]
         public IEnumerator ProductionRuins_LoadsCompletePlayableVerticalSlice()
         {
             yield return SceneManager.LoadSceneAsync("ProductionRuins", LoadSceneMode.Single);
@@ -99,6 +118,10 @@ namespace EchoesOfTheRuins.Tests
                 Is.EqualTo("REACH THE UNSEALED EXIT"));
             Assert.That(GameObject.Find("Core Progress").GetComponent<UnityEngine.UI.Text>().text,
                 Is.EqualTo("CORES  3 / 3"));
+            tutorial.RuntimeDirector.Tracker.Advance(ObjectiveStage.Complete, 3);
+            yield return null;
+            Assert.That(GameObject.Find("Tutorial Strip").activeSelf, Is.False,
+                "The tutorial must retire once the restored end-state is reached.");
         }
     }
 }

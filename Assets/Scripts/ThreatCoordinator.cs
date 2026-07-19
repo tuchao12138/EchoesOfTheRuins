@@ -24,14 +24,15 @@ namespace EchoesOfTheRuins
 
         private void OnEnable()
         {
+            GuardianAI.LifecycleChanged += OnGuardianLifecycleChanged;
             RefreshGuardians();
         }
 
-        private void LateUpdate()
+        private void OnDisable()
         {
-            RefreshGuardians();
+            GuardianAI.LifecycleChanged -= OnGuardianLifecycleChanged;
             foreach (GuardianAI guardian in new List<GuardianAI>(alertHandlers.Keys))
-                if (guardian == null || !guardian.isActiveAndEnabled) Unsubscribe(guardian);
+                Unsubscribe(guardian);
         }
 
         public void Register(GuardianAI guardian) => Subscribe(guardian);
@@ -42,6 +43,12 @@ namespace EchoesOfTheRuins
             if (guardians == null || guardians.Length == 0) guardians = FindObjectsByType<GuardianAI>(FindObjectsSortMode.None);
             if (player == null && GameManager.Instance != null) player = GameManager.Instance.PlayerTransform;
             foreach (GuardianAI guardian in FindObjectsByType<GuardianAI>(FindObjectsInactive.Exclude, FindObjectsSortMode.None)) Subscribe(guardian);
+        }
+
+        private void OnGuardianLifecycleChanged(GuardianAI guardian, bool enabled)
+        {
+            if (enabled) Subscribe(guardian);
+            else Unsubscribe(guardian);
         }
 
         private void Subscribe(GuardianAI guardian)

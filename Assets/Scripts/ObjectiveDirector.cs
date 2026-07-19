@@ -55,12 +55,13 @@ namespace EchoesOfTheRuins
 
         private void TryInitialize()
         {
-            if (!startReceived || Tracker != null || player == null || firstCoreTarget == null || exitTarget == null || guardianObservationTarget == null)
+            if (!startReceived || Tracker != null || player == null)
                 return;
 
             ObjectiveStage initial = ReadSavedStage();
             Tracker = new ObjectiveTracker(initial, GameManager.Instance == null ? 0 : GameManager.Instance.GameState.CollectedCoreCount);
             Tracker.Changed += OnObjectiveChanged;
+            worldMarker?.SetTarget(TargetFor(Tracker.Current.Stage));
             player.MovementStarted += OnMoved;
             player.LocomotionChanged += OnLocomotionChanged;
             player.CrouchChanged += OnCrouchChanged;

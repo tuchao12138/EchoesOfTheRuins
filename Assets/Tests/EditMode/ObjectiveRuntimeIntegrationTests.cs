@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -58,6 +59,33 @@ namespace EchoesOfTheRuins.Tests
             Object.DestroyImmediate(guardianObject);
             Object.DestroyImmediate(exitObject);
             Object.DestroyImmediate(coreObject);
+            Object.DestroyImmediate(playerObject);
+        }
+
+        [Test]
+        public void ObjectiveDirector_MissingWorldTargets_TracksObjectivesAndDisablesMarker()
+        {
+            var playerObject = new GameObject("Player");
+            var player = playerObject.AddComponent<PlayerController>();
+            var runtimeObject = new GameObject("Objective Runtime");
+            var marker = runtimeObject.AddComponent<WorldObjectiveMarker>();
+            var director = runtimeObject.AddComponent<ObjectiveDirector>();
+            var changes = new List<ObjectiveData>();
+            director.ObjectiveChanged += changes.Add;
+
+            typeof(ObjectiveDirector).GetMethod("Start", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(director, null);
+            director.Configure(player, null, null, null, marker);
+
+            Assert.That(director.Tracker, Is.Not.Null);
+            director.Tracker.Advance(ObjectiveStage.Move);
+
+            Assert.That(changes, Has.Count.EqualTo(1));
+            Assert.That(changes[0].Stage, Is.EqualTo(ObjectiveStage.Move));
+            Assert.That(marker.Target, Is.Null);
+            Assert.That(marker.DistanceVisible, Is.False);
+            Assert.That(marker.ArrowVisible, Is.False);
+
+            Object.DestroyImmediate(runtimeObject);
             Object.DestroyImmediate(playerObject);
         }
     }

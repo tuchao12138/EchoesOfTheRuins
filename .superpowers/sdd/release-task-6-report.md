@@ -50,3 +50,10 @@ Copy-Item -Path "$Source\Assets\*" -Destination "$Harness\Assets" -Recurse -Forc
 - `ObjectiveDirector` now waits for its `Start` lifecycle callback and valid player, core, exit, and guardian targets before creating its tracker or starting the briefing reveal. This makes an existing director safe when Unity runs it before `TutorialDirector.Start` configures the adapter.
 - Added an EditMode regression that invokes `ObjectiveDirector.Start` first, verifies no objective flow has begun, then calls the production `TutorialDirector.Configure(player)` overload. It verifies that null optional targets are resolved before the briefing tracker begins.
 - Static validation only: `git diff --check` was run for this corrective scope. Unity was not run for this final follow-up at the parent’s direction, so no Unity GREEN claim is made.
+
+## Missing-world-target corrective follow-up
+
+- `ObjectiveDirector` now requires only an initialized player before it creates the authoritative tracker. Core, exit, and guardian transforms remain optional world-guidance data, so unavailable or destroyed targets do not suppress objective tracking or `ObjectiveChanged` events.
+- After tracker initialization the director assigns the marker from the current stage. If that stage has no available transform, it explicitly clears the marker target; `WorldObjectiveMarker` consequently keeps both distance and arrow hidden without a null reference.
+- Added `ObjectiveDirector_MissingWorldTargets_TracksObjectivesAndDisablesMarker`, which starts an objective runtime with a real player and no world targets, advances the tracker, and asserts a published objective change plus an absent, hidden marker.
+- Static verification: scoped `git diff --check` completed with no whitespace errors, and the source audit confirms the initialization guard has no world-target requirements and initializes the marker through `TargetFor`. Unity was not run because no permitted Unity harness is available; no Unity GREEN claim is made.

@@ -34,5 +34,30 @@ namespace EchoesOfTheRuins.Tests
             model.Update("A", GuardianState.Patrol, .1f, GuardianAttackPhase.None, Vector3.forward);
             Assert.That(changes, Is.EqualTo(1));
         }
+
+        [Test]
+        public void RemovingSelectedGuardianPublishesRemainingGuardian()
+        {
+            var model = new ThreatModel();
+            model.Update("patrol", GuardianState.Patrol, .2f, GuardianAttackPhase.None, Vector3.forward);
+            model.Update("attacker", GuardianState.Chase, .8f, GuardianAttackPhase.Telegraph, Vector3.left);
+
+            model.Remove("attacker");
+
+            Assert.That(model.Current.GuardianId, Is.EqualTo("patrol"));
+            Assert.That(model.Current.AttackPhase, Is.EqualTo(GuardianAttackPhase.None));
+        }
+
+        [Test]
+        public void RemovingLastGuardianClearsThreatSnapshot()
+        {
+            var model = new ThreatModel();
+            model.Update("only", GuardianState.Chase, .9f, GuardianAttackPhase.None, Vector3.forward);
+
+            model.Remove("only");
+
+            Assert.That(model.Current.GuardianId, Is.Empty);
+            Assert.That(model.Current.Suspicion, Is.Zero);
+        }
     }
 }

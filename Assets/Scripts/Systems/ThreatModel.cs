@@ -42,6 +42,15 @@ namespace EchoesOfTheRuins
             Changed?.Invoke(Current);
         }
 
+        public void Remove(string guardianId)
+        {
+            if (string.IsNullOrWhiteSpace(guardianId) || !guardians.Remove(guardianId)) return;
+            ThreatSnapshot selected = SelectCurrent();
+            if (selected.Equals(Current)) return;
+            Current = selected;
+            Changed?.Invoke(Current);
+        }
+
         private ThreatSnapshot SelectCurrent()
         {
             ThreatSnapshot selected = default;

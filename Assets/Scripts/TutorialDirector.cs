@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace EchoesOfTheRuins
@@ -6,6 +7,7 @@ namespace EchoesOfTheRuins
     {
         [SerializeField, Min(0f)] private float protectionSeconds = 8f;
         private SpawnProtection protection;
+        private int lastReportedProtectionSecond = -1;
 
         public static TutorialDirector Active { get; private set; }
         public TutorialStage Stage => ToTutorialStage(ObjectiveDirector.Active?.Tracker?.Current.Stage ?? ObjectiveStage.Briefing);
@@ -13,6 +15,8 @@ namespace EchoesOfTheRuins
         public string Prompt => TutorialCopy.Get(Stage);
         public ObjectiveDirector RuntimeDirector { get; private set; }
         public WorldObjectiveMarker RuntimeMarker { get; private set; }
+        public float SafeEntryRemaining => protection == null ? 0f : protection.RemainingSeconds;
+        public event Action<TutorialStage, float> PresentationChanged;
 
         public void Configure(PlayerController configuredPlayer)
         {
@@ -33,6 +37,7 @@ namespace EchoesOfTheRuins
         {
             Active = this;
             protection = new SpawnProtection(protectionSeconds);
+            ReportPresentation(force: true);
         }
 
         private void Start()
@@ -44,10 +49,12 @@ namespace EchoesOfTheRuins
         private void Update()
         {
             protection.Tick(Time.deltaTime);
+            ReportPresentation();
         }
 
         private void OnDestroy()
         {
+            if (RuntimeDirector != null) RuntimeDirector.ObjectiveChanged -= OnObjectiveChanged;
             if (Active == this) Active = null;
         }
 
@@ -69,6 +76,19 @@ namespace EchoesOfTheRuins
             routeCamera ??= Camera.main;
 
             RuntimeDirector.Configure(configuredPlayer, firstCore, exit, guardian, RuntimeMarker, routeCamera);
+            RuntimeDirector.ObjectiveChanged -= OnObjectiveChanged;
+            RuntimeDirector.ObjectiveChanged += OnObjectiveChanged;
+            ReportPresentation(force: true);
+        }
+
+        private void OnObjectiveChanged(ObjectiveData _) => ReportPresentation(force: true);
+
+        private void ReportPresentation(bool force = false)
+        {
+            int remaining = Mathf.CeilToInt(SafeEntryRemaining);
+            if (!force && remaining == lastReportedProtectionSecond) return;
+            lastReportedProtectionSecond = remaining;
+            PresentationChanged?.Invoke(Stage, SafeEntryRemaining);
         }
 
         private static TutorialStage ToTutorialStage(ObjectiveStage stage) => stage switch

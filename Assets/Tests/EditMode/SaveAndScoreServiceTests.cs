@@ -135,27 +135,5 @@ namespace EchoesOfTheRuins.Tests
             Assert.That(noisyResult.Rank, Is.Not.EqualTo("S"));
         }
 
-        [Test]
-        public void RecordCompletedRun_UpdatesBestAndKeepsDetailedHistory()
-        {
-            SaveData data = SaveData.CreateDefault();
-            var stats = new RunStats
-            {
-                CompletionSeconds = 92f,
-                Alerts = 1,
-                Captures = 0,
-                EchoStonesUsed = 1,
-                RelicsCollected = 2
-            };
-
-            ScoreResult result = RunHistoryService.RecordCompletedRun(data, stats, "2026-07-18T00:00:00Z");
-
-            Assert.That(data.RecentRuns, Has.Count.EqualTo(1));
-            Assert.That(data.RecentRuns[0].Alerts, Is.EqualTo(1));
-            Assert.That(data.RecentRuns[0].EchoStonesUsed, Is.EqualTo(1));
-            Assert.That(data.BestScore, Is.EqualTo(result.Score));
-            Assert.That(data.BestCompletionSeconds, Is.EqualTo(92f));
-            Assert.That(data.BestRank, Is.EqualTo(result.Rank));
-        }
     }
 }

@@ -15,6 +15,7 @@ namespace EchoesOfTheRuins
         [SerializeField, Min(.1f)] private float routeRevealSeconds = 6f;
         private bool moved;
         private bool sprinted;
+        private bool startReceived;
 
         public static ObjectiveDirector Active { get; private set; }
         public ObjectiveTracker Tracker { get; private set; }
@@ -38,6 +39,7 @@ namespace EchoesOfTheRuins
             guardianObservationTarget = observationTarget;
             worldMarker = marker;
             revealCamera = routeCamera;
+            TryInitialize();
         }
 
         private void Awake()
@@ -47,19 +49,23 @@ namespace EchoesOfTheRuins
 
         private void Start()
         {
+            startReceived = true;
+            TryInitialize();
+        }
+
+        private void TryInitialize()
+        {
+            if (!startReceived || Tracker != null || player == null || firstCoreTarget == null || exitTarget == null || guardianObservationTarget == null)
+                return;
+
             ObjectiveStage initial = ReadSavedStage();
             Tracker = new ObjectiveTracker(initial, GameManager.Instance == null ? 0 : GameManager.Instance.GameState.CollectedCoreCount);
             Tracker.Changed += OnObjectiveChanged;
-            if (player == null && GameManager.Instance?.PlayerTransform != null)
-                player = GameManager.Instance.PlayerTransform.GetComponent<PlayerController>();
-            if (player != null)
-            {
-                player.MovementStarted += OnMoved;
-                player.LocomotionChanged += OnLocomotionChanged;
-                player.CrouchChanged += OnCrouchChanged;
-                player.ShadowChanged += OnShadowChanged;
-                player.EchoStoneUsed += OnEchoStoneUsed;
-            }
+            player.MovementStarted += OnMoved;
+            player.LocomotionChanged += OnLocomotionChanged;
+            player.CrouchChanged += OnCrouchChanged;
+            player.ShadowChanged += OnShadowChanged;
+            player.EchoStoneUsed += OnEchoStoneUsed;
             if (GameManager.Instance != null)
             {
                 GameManager.Instance.CoreCountChanged += OnCoreCountChanged;

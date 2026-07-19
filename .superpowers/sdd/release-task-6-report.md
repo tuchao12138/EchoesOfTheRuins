@@ -43,3 +43,10 @@ $Source = 'C:\Users\HP\Desktop\3\EchoesOfTheRuins\.worktrees\production-rebuild'
 Copy-Item -Path "$Source\Assets\*" -Destination "$Harness\Assets" -Recurse -Force
 & $Unity -batchmode -nographics -projectPath $Harness -runTests -testPlatform EditMode -testFilter EchoesOfTheRuins.Tests -testResults "$Harness\Evidence\task6-fix-tests.xml" -logFile "$Harness\Logs\task6-fix-tests.log"
 ```
+
+## Final corrective follow-up
+
+- Removed the `SaveAndScoreServiceTests` call to `RunHistoryService`; that service is not part of the Task 6 commit, so the test suite now depends only on tracked Task 6 save/score APIs.
+- `ObjectiveDirector` now waits for its `Start` lifecycle callback and valid player, core, exit, and guardian targets before creating its tracker or starting the briefing reveal. This makes an existing director safe when Unity runs it before `TutorialDirector.Start` configures the adapter.
+- Added an EditMode regression that invokes `ObjectiveDirector.Start` first, verifies no objective flow has begun, then calls the production `TutorialDirector.Configure(player)` overload. It verifies that null optional targets are resolved before the briefing tracker begins.
+- Static validation only: `git diff --check` was run for this corrective scope. Unity was not run for this final follow-up at the parent’s direction, so no Unity GREEN claim is made.

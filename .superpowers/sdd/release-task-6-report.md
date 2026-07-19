@@ -24,3 +24,22 @@ Copy-Item -Path "$Source\Assets\*" -Destination "$Harness\Assets" -Recurse -Forc
 ```
 
 Expected evidence: ordered first-minute progression and all v3/v4 migration cases pass without settings or run-history loss.
+
+## Repair follow-up
+
+- Repaired `SaveService.Load` so invalid and exception paths return safe defaults, preserve the corrupt file, and keep objective-stage sanitization inside the class. EditMode coverage now exercises missing-save defaults, corrupt data recovery, and a real v3 JSON file migrated through `SaveService.Load` while preserving checkpoint, cores, relics, best score/rank, history, and settings.
+- `TutorialDirector` is the clean committed runtime adapter: its existing bootstrap lifecycle creates `ObjectiveDirector` and `WorldObjectiveMarker`, resolves the already-shipped player/core/exit/guardian/camera objects after scene startup, and configures the director. `ObjectiveRuntimeIntegrationTests` asserts this wiring without depending on the unrelated production-scene builder.
+- `ObjectiveTracker` now has only the brief's `Changed` event. The regression test asserts the duplicate `ObjectiveChanged` event is absent.
+- Safe static validation: `git diff --check` reported no whitespace errors for the scoped Task 6 repair files. This is not a Unity compilation result.
+
+### Unity verification status
+
+The specified batch EditMode command was attempted against `C:\Users\HP\Desktop\3\.codex-unity-test-harness`, but it did not produce the requested XML result or log artifact. No Unity GREEN claim is made from this session. Re-run manually:
+
+```powershell
+$Unity = 'E:\Unity\Editor\Unity.exe'
+$Harness = 'C:\Users\HP\Desktop\3\.codex-unity-test-harness'
+$Source = 'C:\Users\HP\Desktop\3\EchoesOfTheRuins\.worktrees\production-rebuild'
+Copy-Item -Path "$Source\Assets\*" -Destination "$Harness\Assets" -Recurse -Force
+& $Unity -batchmode -nographics -projectPath $Harness -runTests -testPlatform EditMode -testFilter EchoesOfTheRuins.Tests -testResults "$Harness\Evidence\task6-fix-tests.xml" -logFile "$Harness\Logs\task6-fix-tests.log"
+```

@@ -35,6 +35,13 @@ namespace EchoesOfTheRuins.Tests
             Assert.That(changes, Is.EqualTo(1));
         }
 
+        [Test]
+        public void Tracker_ExposesOnlyTheChangedEventContract()
+        {
+            Assert.That(typeof(ObjectiveTracker).GetEvent("Changed"), Is.Not.Null);
+            Assert.That(typeof(ObjectiveTracker).GetEvent("ObjectiveChanged"), Is.Null);
+        }
+
         [TestCase(0, "entrance", ObjectiveStage.Briefing)]
         [TestCase(1, "courtyard", ObjectiveStage.CollectCores)]
         [TestCase(3, "altar", ObjectiveStage.ReachExit)]

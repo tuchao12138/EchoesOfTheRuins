@@ -19,12 +19,24 @@ namespace EchoesOfTheRuins
         public static ObjectiveDirector Active { get; private set; }
         public ObjectiveTracker Tracker { get; private set; }
         public event Action<ObjectiveData> ObjectiveChanged;
+        public PlayerController Player => player;
+        public Transform FirstCoreTarget => firstCoreTarget;
+        public Transform ExitTarget => exitTarget;
+        public Transform GuardianObservationTarget => guardianObservationTarget;
 
-        public void Configure(PlayerController configuredPlayer, Transform firstCore, Transform exit, Camera routeCamera = null)
+        public void Configure(
+            PlayerController configuredPlayer,
+            Transform firstCore,
+            Transform exit,
+            Transform observationTarget,
+            WorldObjectiveMarker marker,
+            Camera routeCamera = null)
         {
             player = configuredPlayer;
             firstCoreTarget = firstCore;
             exitTarget = exit;
+            guardianObservationTarget = observationTarget;
+            worldMarker = marker;
             revealCamera = routeCamera;
         }
 

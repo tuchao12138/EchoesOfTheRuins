@@ -24,7 +24,6 @@ namespace EchoesOfTheRuins
         private const int RequiredCores = 3;
         public ObjectiveData Current { get; private set; }
         public event Action<ObjectiveData> Changed;
-        public event Action<ObjectiveData> ObjectiveChanged;
 
         public ObjectiveTracker(ObjectiveStage initialStage = ObjectiveStage.Briefing, int collectedCores = 0)
         {
@@ -55,7 +54,6 @@ namespace EchoesOfTheRuins
         {
             Current = Create(stage, coreCount, worldPosition);
             Changed?.Invoke(Current);
-            ObjectiveChanged?.Invoke(Current);
         }
 
         private static ObjectiveData Create(ObjectiveStage stage, int coreCount, Vector3 worldPosition = default)

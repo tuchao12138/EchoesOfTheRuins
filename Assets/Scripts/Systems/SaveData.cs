@@ -27,10 +27,25 @@ namespace EchoesOfTheRuins
         public string ObjectiveStage = EchoesOfTheRuins.ObjectiveStage.Briefing.ToString();
         public string LastPlayedUtc = "";
         public int BestScore;
+        public string BestRank = "C";
         public float BestCompletionSeconds;
+        public List<RunRecord> RecentRuns = new List<RunRecord>();
         public GameSettings Settings = new GameSettings();
 
         public static SaveData CreateDefault() => new SaveData();
+    }
+
+    [Serializable]
+    public sealed class RunRecord
+    {
+        public int Score;
+        public string Rank = "C";
+        public float CompletionSeconds;
+        public int Alerts;
+        public int Captures;
+        public int EchoStonesUsed;
+        public int RelicsCollected;
+        public string CompletedUtc = "";
     }
 
     [Serializable]

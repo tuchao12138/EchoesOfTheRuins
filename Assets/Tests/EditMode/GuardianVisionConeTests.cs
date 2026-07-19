@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace EchoesOfTheRuins.Tests
 {
@@ -35,6 +36,53 @@ namespace EchoesOfTheRuins.Tests
                 Vector3 ray = vertices[index];
                 Assert.That(ray.magnitude, Is.LessThanOrEqualTo(range + .001f));
                 Assert.That(Vector3.Angle(Vector3.forward, ray), Is.LessThanOrEqualTo(angle * .5f + .001f));
+            }
+        }
+
+        [Test]
+        public void ConfigureTransparentMaterial_StandardShaderUsesFadeBlending()
+        {
+            Shader shader = Shader.Find("Standard");
+            Assert.That(shader, Is.Not.Null, "The editor must provide Unity's built-in Standard shader.");
+            var material = new Material(shader);
+            try
+            {
+                GuardianVisionCone.ConfigureTransparentMaterial(material);
+
+                Assert.That(material.GetFloat("_Mode"), Is.EqualTo(2f));
+                Assert.That(material.GetInt("_SrcBlend"), Is.EqualTo((int)BlendMode.SrcAlpha));
+                Assert.That(material.GetInt("_DstBlend"), Is.EqualTo((int)BlendMode.OneMinusSrcAlpha));
+                Assert.That(material.GetInt("_ZWrite"), Is.Zero);
+                Assert.That(material.GetTag("RenderType", false), Is.EqualTo("Transparent"));
+                Assert.That(material.renderQueue, Is.EqualTo((int)RenderQueue.Transparent));
+            }
+            finally
+            {
+                Object.DestroyImmediate(material);
+            }
+        }
+
+        [Test]
+        public void ConfigureTransparentMaterial_UrpShaderRetainsTransparentSurfaceContract()
+        {
+            Shader shader = Shader.Find("Universal Render Pipeline/Lit");
+            Assert.That(shader, Is.Not.Null, "The production renderer requires URP/Lit.");
+            var material = new Material(shader);
+            try
+            {
+                GuardianVisionCone.ConfigureTransparentMaterial(material);
+
+                Assert.That(material.GetFloat("_Surface"), Is.EqualTo(1f));
+                Assert.That(material.GetFloat("_Blend"), Is.Zero);
+                Assert.That(material.GetInt("_SrcBlend"), Is.EqualTo((int)BlendMode.SrcAlpha));
+                Assert.That(material.GetInt("_DstBlend"), Is.EqualTo((int)BlendMode.OneMinusSrcAlpha));
+                Assert.That(material.GetInt("_ZWrite"), Is.Zero);
+                Assert.That(material.IsKeywordEnabled("_SURFACE_TYPE_TRANSPARENT"), Is.True);
+                Assert.That(material.renderQueue, Is.EqualTo((int)RenderQueue.Transparent));
+            }
+            finally
+            {
+                Object.DestroyImmediate(material);
             }
         }
     }

@@ -8,10 +8,12 @@ namespace EchoesOfTheRuins
     public sealed class PlayerHitResponse : MonoBehaviour
     {
         private readonly HashSet<GuardianAI> guardians = new HashSet<GuardianAI>();
+        private readonly HashSet<GuardianAI> subscribedGuardians = new HashSet<GuardianAI>();
         private PlayerController player;
         private GameManager gameManager;
         private Image vignette;
         private bool handlingHit;
+        private Coroutine hitRoutine;
 
         public void Configure(PlayerController controller, GameManager manager)
         {
@@ -22,7 +24,7 @@ namespace EchoesOfTheRuins
         public void TrackGuardian(GuardianAI guardian)
         {
             if (guardian == null || !guardians.Add(guardian)) return;
-            guardian.PlayerStruck += OnPlayerStruck;
+            Subscribe(guardian);
         }
 
         private void Awake()
@@ -45,10 +47,23 @@ namespace EchoesOfTheRuins
             vignette.enabled = false;
         }
 
+        private void OnEnable()
+        {
+            foreach (GuardianAI guardian in guardians) Subscribe(guardian);
+        }
+
+        private void OnDisable()
+        {
+            if (hitRoutine != null) StopCoroutine(hitRoutine);
+            hitRoutine = null;
+            ClearHitState();
+            UnsubscribeAll();
+        }
+
         private void OnPlayerStruck(string guardianId)
         {
-            if (handlingHit) return;
-            StartCoroutine(HandleHit(guardianId));
+            if (!isActiveAndEnabled || handlingHit) return;
+            hitRoutine = StartCoroutine(HandleHit(guardianId));
         }
 
         private IEnumerator HandleHit(string guardianId)
@@ -59,15 +74,35 @@ namespace EchoesOfTheRuins
             if (vignette != null) vignette.enabled = true;
             yield return new WaitForSecondsRealtime(1f);
             gameManager?.ResetPlayerToCheckpoint($"Struck by {guardianId}");
-            player?.SetInputLocked(false);
-            if (vignette != null) vignette.enabled = false;
-            handlingHit = false;
+            hitRoutine = null;
+            ClearHitState();
         }
 
         private void OnDestroy()
         {
-            foreach (GuardianAI guardian in guardians)
+            if (hitRoutine != null) StopCoroutine(hitRoutine);
+            ClearHitState();
+            UnsubscribeAll();
+        }
+
+        private void Subscribe(GuardianAI guardian)
+        {
+            if (!isActiveAndEnabled || guardian == null || !subscribedGuardians.Add(guardian)) return;
+            guardian.PlayerStruck += OnPlayerStruck;
+        }
+
+        private void UnsubscribeAll()
+        {
+            foreach (GuardianAI guardian in subscribedGuardians)
                 if (guardian != null) guardian.PlayerStruck -= OnPlayerStruck;
+            subscribedGuardians.Clear();
+        }
+
+        private void ClearHitState()
+        {
+            player?.SetInputLocked(false);
+            if (vignette != null) vignette.enabled = false;
+            handlingHit = false;
         }
     }
 }

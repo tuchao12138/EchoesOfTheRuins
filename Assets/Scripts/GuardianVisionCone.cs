@@ -33,7 +33,7 @@ namespace EchoesOfTheRuins
             coneMesh = new Mesh { name = "Guardian Vision Cone" };
             filter.sharedMesh = coneMesh;
             coneMaterial = RuntimeMaterialLibrary.Create("Guardian Vision Cone", ColorForState(GuardianState.Patrol, 0f), false);
-            ConfigureTransparency(coneMaterial);
+            ConfigureTransparentMaterial(coneMaterial);
             renderer.sharedMaterial = coneMaterial;
             renderer.shadowCastingMode = ShadowCastingMode.Off;
             renderer.receiveShadows = false;
@@ -108,12 +108,20 @@ namespace EchoesOfTheRuins
             return vertices;
         }
 
-        private static void ConfigureTransparency(Material material)
+        public static void ConfigureTransparentMaterial(Material material)
         {
+            if (material == null) return;
             material.renderQueue = (int)RenderQueue.Transparent;
             material.SetOverrideTag("RenderType", "Transparent");
             if (material.HasProperty("_Surface")) material.SetFloat("_Surface", 1f);
+            if (material.HasProperty("_Blend")) material.SetFloat("_Blend", 0f);
+            if (material.HasProperty("_Mode")) material.SetFloat("_Mode", 2f);
+            if (material.HasProperty("_SrcBlend")) material.SetInt("_SrcBlend", (int)BlendMode.SrcAlpha);
+            if (material.HasProperty("_DstBlend")) material.SetInt("_DstBlend", (int)BlendMode.OneMinusSrcAlpha);
             if (material.HasProperty("_ZWrite")) material.SetFloat("_ZWrite", 0f);
+            material.DisableKeyword("_ALPHATEST_ON");
+            material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+            material.EnableKeyword("_ALPHABLEND_ON");
             material.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");
         }
 

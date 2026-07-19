@@ -1,0 +1,10 @@
+{
+  "name": "EchoesOfTheRuins.PlayModeTests",
+  "rootNamespace": "EchoesOfTheRuins.Tests",
+  "references": [
+    "EchoesOfTheRuins.Runtime"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}

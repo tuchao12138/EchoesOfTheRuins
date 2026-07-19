@@ -110,22 +110,7 @@ namespace EchoesOfTheRuins.Editor
         /// <summary>Ensures the generated scene carries all release-only runtime bindings.</summary>
         public static void BindReleaseComponents()
         {
-            GameManager manager = Object.FindFirstObjectByType<GameManager>();
-            PlayerController player = Object.FindFirstObjectByType<PlayerController>();
-            GuardianAI[] guardians = Object.FindObjectsByType<GuardianAI>(FindObjectsSortMode.None);
-            if (manager == null || player == null) return;
-
-            foreach (GuardianAI guardian in guardians)
-                if (guardian != null && guardian.GetComponent<GuardianVisionCone>() == null)
-                    guardian.gameObject.AddComponent<GuardianVisionCone>();
-
-            if (manager.GetComponent<ThreatCoordinator>() == null) manager.gameObject.AddComponent<ThreatCoordinator>();
-            if (Object.FindFirstObjectByType<ObjectiveDirector>() == null) manager.gameObject.AddComponent<ObjectiveDirector>();
-            if (Object.FindFirstObjectByType<WorldObjectiveMarker>() == null) new GameObject("World Objective Marker").AddComponent<WorldObjectiveMarker>();
-
-            PlayerHitResponse hitResponse = player.GetComponent<PlayerHitResponse>() ?? player.gameObject.AddComponent<PlayerHitResponse>();
-            hitResponse.Configure(player, manager);
-            foreach (GuardianAI guardian in guardians) hitResponse.TrackGuardian(guardian);
+            ReleaseSceneBindings.Ensure(Object.FindFirstObjectByType<GameManager>());
         }
 
         private static void BakeNavigation()

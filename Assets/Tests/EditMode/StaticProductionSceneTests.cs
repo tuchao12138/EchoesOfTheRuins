@@ -1,6 +1,5 @@
 using NUnit.Framework;
 using System.Linq;
-using EchoesOfTheRuins.Editor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,7 +14,7 @@ namespace EchoesOfTheRuins.Tests
             Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
 
             GameObject manager = RuinSceneBootstrap.BuildProductionScene();
-            ProductionSceneGenerator.BindReleaseComponents();
+            ReleaseSceneBindings.Ensure(manager.GetComponent<GameManager>());
 
             Assert.That(manager, Is.Not.Null);
             Assert.That(scene.GetRootGameObjects().Length, Is.GreaterThan(20));

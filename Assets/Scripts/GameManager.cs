@@ -17,6 +17,7 @@ namespace EchoesOfTheRuins
         public int RequiredCoreCount => RuinGameState.RequiredCoreCount;
         public bool HasWon { get; private set; }
         public Transform PlayerTransform => player;
+        public string ObjectiveStage => saveData == null ? EchoesOfTheRuins.ObjectiveStage.Briefing.ToString() : saveData.ObjectiveStage;
 
         [SerializeField] private Transform player;
         [SerializeField] private Transform initialCheckpoint;
@@ -87,6 +88,15 @@ namespace EchoesOfTheRuins
             if (checkpoint == null) return;
             currentCheckpoint = checkpoint;
             saveData.CheckpointId = checkpoint.name;
+            saveService.Save(saveData);
+        }
+
+        public void SetObjectiveStage(ObjectiveStage stage)
+        {
+            if (saveData == null) return;
+            string value = stage.ToString();
+            if (saveData.ObjectiveStage == value) return;
+            saveData.ObjectiveStage = value;
             saveService.Save(saveData);
         }
 

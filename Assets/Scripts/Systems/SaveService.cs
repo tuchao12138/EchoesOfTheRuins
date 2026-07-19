@@ -27,7 +27,7 @@ namespace EchoesOfTheRuins
             {
                 if (!File.Exists(SavePath)) return SaveData.CreateDefault();
                 var data = JsonUtility.FromJson<SaveData>(File.ReadAllText(SavePath));
-                return IsValid(data) ? Sanitize(data) : SaveData.CreateDefault();
+                if (IsValid(data)) return Sanitize(SaveDataMigrator.Migrate(data));
             }
             catch (Exception)
             {
@@ -65,3 +65,4 @@ namespace EchoesOfTheRuins
         }
     }
 }
+            if (string.IsNullOrWhiteSpace(data.ObjectiveStage)) data.ObjectiveStage = ObjectiveStage.Briefing.ToString();

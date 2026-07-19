@@ -17,13 +17,14 @@ namespace EchoesOfTheRuins
     [Serializable]
     public sealed class SaveData
     {
-        public const int CurrentVersion = 1;
+        public const int CurrentVersion = 4;
         public const string StartCheckpointId = "entrance";
 
         public int Version = CurrentVersion;
         public string CheckpointId = StartCheckpointId;
         public List<string> CollectedCoreIds = new List<string>();
         public List<string> CollectedRelicIds = new List<string>();
+        public string ObjectiveStage = EchoesOfTheRuins.ObjectiveStage.Briefing.ToString();
         public string LastPlayedUtc = "";
         public int BestScore;
         public float BestCompletionSeconds;

@@ -69,10 +69,10 @@ namespace EchoesOfTheRuins
             RuntimeMarker ??= GetComponent<WorldObjectiveMarker>() ?? gameObject.AddComponent<WorldObjectiveMarker>();
 
             configuredPlayer ??= GameManager.Instance?.PlayerTransform?.GetComponent<PlayerController>()
-                ?? Object.FindFirstObjectByType<PlayerController>();
-            firstCore ??= Object.FindFirstObjectByType<Collectible>()?.transform;
-            exit ??= Object.FindFirstObjectByType<ExitGate>()?.transform;
-            guardian ??= Object.FindFirstObjectByType<GuardianAI>()?.transform;
+                ?? UnityEngine.Object.FindFirstObjectByType<PlayerController>();
+            firstCore ??= UnityEngine.Object.FindFirstObjectByType<Collectible>()?.transform;
+            exit ??= UnityEngine.Object.FindFirstObjectByType<ExitGate>()?.transform;
+            guardian ??= UnityEngine.Object.FindFirstObjectByType<GuardianAI>()?.transform;
             routeCamera ??= Camera.main;
 
             RuntimeDirector.Configure(configuredPlayer, firstCore, exit, guardian, RuntimeMarker, routeCamera);

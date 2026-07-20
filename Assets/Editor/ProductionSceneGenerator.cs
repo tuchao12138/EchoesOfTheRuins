@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 
 namespace EchoesOfTheRuins.Editor
 {
-    /// <summary>Turns the verified runtime layout into a directly editable production scene.</summary>
+    /// <summary>Creates release scenes. Gameplay is assembled at runtime to keep the player scene build-safe.</summary>
     public static class ProductionSceneGenerator
     {
         public const string ProductionScenePath = "Assets/Scenes/ProductionRuins.unity";
@@ -25,16 +25,11 @@ namespace EchoesOfTheRuins.Editor
             EnsureFolder("Assets/Scenes");
             EnsureFolder(MaterialFolder);
 
-            Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
-            RuinSceneBootstrap.BuildProductionScene();
-            BindReleaseComponents();
-            PersistGeneratedMaterials();
-            PersistSkybox();
-            PersistVolumeProfile();
-            BakeNavigation();
-
-            EditorSceneManager.MarkSceneDirty(scene);
-            if (!EditorSceneManager.SaveScene(scene, ProductionScenePath))
+            // Do not serialize the generated hierarchy into level1. Unity 6 can produce an unreadable
+            // player data file for this large, dynamically-created scene. RuinSceneBootstrap builds the
+            // same hierarchy after this intentionally empty scene has loaded in the player.
+            Scene gameplayBootstrap = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+            if (!EditorSceneManager.SaveScene(gameplayBootstrap, ProductionScenePath))
                 throw new IOException($"Could not save {ProductionScenePath}");
 
             GenerateMainMenuScene();
@@ -45,7 +40,7 @@ namespace EchoesOfTheRuins.Editor
             };
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-            Debug.Log($"Generated editable production scene: {ProductionScenePath}");
+            Debug.Log($"Generated build-safe runtime gameplay bootstrap: {ProductionScenePath}");
         }
 
         private static void GenerateMainMenuScene()
@@ -105,21 +100,6 @@ namespace EchoesOfTheRuins.Editor
         public static void GenerateFromCommandLine()
         {
             Generate();
-        }
-
-        /// <summary>Ensures the generated scene carries all release-only runtime bindings.</summary>
-        public static void BindReleaseComponents()
-        {
-            ReleaseSceneBindings.Ensure(Object.FindFirstObjectByType<GameManager>());
-        }
-
-        private static void BakeNavigation()
-        {
-            GameObject navigation = new GameObject("Production Navigation");
-            NavMeshSurface surface = navigation.AddComponent<NavMeshSurface>();
-            surface.collectObjects = CollectObjects.All;
-            surface.useGeometry = UnityEngine.AI.NavMeshCollectGeometry.PhysicsColliders;
-            surface.BuildNavMesh();
         }
 
         private static void PersistGeneratedMaterials()

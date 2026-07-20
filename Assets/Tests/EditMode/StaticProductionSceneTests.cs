@@ -39,22 +39,15 @@ namespace EchoesOfTheRuins.Tests
 
 
         [Test]
-        public void SavedProductionScene_HasNoMissingScriptsAndContainsBakedNavigation()
+        public void SavedProductionScene_IsAnEmptyRuntimeBootstrap()
         {
             Scene scene = EditorSceneManager.OpenScene("Assets/Scenes/ProductionRuins.unity", OpenSceneMode.Single);
             int missingScripts = scene.GetRootGameObjects()
                 .Sum(root => GameObjectUtility.GetMonoBehavioursWithMissingScriptCount(root));
-            MonoBehaviour surface = Object.FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None)
-                .FirstOrDefault(component => component != null && component.GetType().Name == "NavMeshSurface");
 
-            Assert.That(missingScripts, Is.Zero, "ProductionRuins contains stale script GUID references.");
-            Assert.That(Object.FindFirstObjectByType<PlayerController>(), Is.Not.Null);
-            Assert.That(Object.FindFirstObjectByType<PlayerInteractor>(), Is.Not.Null);
-            Assert.That(Object.FindObjectsByType<GuardianAI>(FindObjectsSortMode.None), Has.Length.EqualTo(3));
-            Assert.That(surface, Is.Not.Null);
-            SerializedProperty navMeshData = new SerializedObject(surface).FindProperty("m_NavMeshData");
-            Assert.That(navMeshData, Is.Not.Null);
-            Assert.That(navMeshData.objectReferenceValue, Is.Not.Null, "Production scene must persist baked NavMesh data.");
+            Assert.That(missingScripts, Is.Zero, "The runtime bootstrap scene must not contain stale script references.");
+            Assert.That(scene.GetRootGameObjects(), Is.Empty,
+                "Gameplay must be generated after loading so Windows level1 remains small and readable.");
         }
     }
 }

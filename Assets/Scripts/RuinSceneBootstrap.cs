@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 namespace EchoesOfTheRuins
 {
@@ -14,6 +15,13 @@ namespace EchoesOfTheRuins
         private static readonly Color Warning = new Color(1f, .52f, .18f);
         private static NavMeshData runtimeNavMesh;
 
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void RegisterSceneLoadHandler()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void BuildIfNeeded()
         {
@@ -24,6 +32,11 @@ namespace EchoesOfTheRuins
                 return;
             }
             BuildProductionScene();
+        }
+
+        private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            BuildIfNeeded();
         }
 
         private static void UpgradeExistingProductionScene()

@@ -109,7 +109,7 @@ namespace EchoesOfTheRuins.Tests
         }
 
         [UnityTest]
-        public IEnumerator ProductionRuins_AdvancesWorldMarkerFromEachCoreToTheNorthGate()
+        public IEnumerator ProductionRuins_CoreCollectionForcesRouteObjectiveAndAdvancesMarkerToNorthGate()
         {
             new SaveService().Delete();
             yield return SceneManager.LoadSceneAsync("ProductionRuins", LoadSceneMode.Single);
@@ -122,12 +122,12 @@ namespace EchoesOfTheRuins.Tests
             Assert.That(director, Is.Not.Null);
             Assert.That(marker, Is.Not.Null);
 
-            director.Tracker.Advance(ObjectiveStage.CollectCores, 0);
+            director.Tracker.Advance(ObjectiveStage.Observe, 0);
             yield return null;
-            Assert.That(marker.Target.name, Does.Contain("Courtyard"));
 
             Assert.That(manager.CollectCore("courtyard-core"), Is.True);
             yield return null;
+            Assert.That(director.Tracker.Current.Stage, Is.EqualTo(ObjectiveStage.CollectCores));
             Assert.That(marker.Target.name, Does.Contain("ShadowGallery"));
 
             Assert.That(manager.CollectCore("shadow-gallery-core"), Is.True);
@@ -157,13 +157,12 @@ namespace EchoesOfTheRuins.Tests
             GameManager manager = Object.FindFirstObjectByType<GameManager>();
             Assert.That(manager.CollectCore("courtyard-core"), Is.True);
             Assert.That(manager.CollectCore("shadow-gallery-core"), Is.True);
-            Assert.That(manager.CollectCore("altar-core"), Is.True);
             yield return null;
 
             Assert.That(GameObject.Find("Objective").GetComponent<UnityEngine.UI.Text>().text,
-                Does.Contain("ESCAPE NORTH"));
+                Does.Contain("CORE III"));
             Assert.That(GameObject.Find("Core Progress").GetComponent<UnityEngine.UI.Text>().text,
-                Is.EqualTo("CORES  3 / 3"));
+                Is.EqualTo("CORES  2 / 3"));
             GameObject tutorialStrip = Object.FindObjectsByType<RectTransform>(FindObjectsInactive.Include, FindObjectsSortMode.None)
                 .First(rect => rect.name == "Tutorial Strip").gameObject;
             Assert.That(tutorialStrip.activeSelf, Is.False,

@@ -57,14 +57,14 @@ namespace EchoesOfTheRuins.Tests
         }
 
         [Test]
-        public void DefaultLayout_PlacesAltarCoreGroundedOnTheMainRoute()
+        public void DefaultLayout_PlacesAltarCoreGroundedInsideTheReachableAltarRoom()
         {
             ProductionSceneLayout layout = ProductionSceneLayout.CreateDefault();
             CorePlacement altarCore = layout.Cores.Single(core => core.Zone == RuinZone.Altar);
 
             Assert.That(altarCore.Position.y, Is.LessThanOrEqualTo(1.25f));
-            Assert.That(Mathf.Abs(altarCore.Position.x), Is.LessThanOrEqualTo(2f));
-            Assert.That(altarCore.Position.z, Is.InRange(28f, 36f));
+            Assert.That(altarCore.Position.x, Is.EqualTo(16f));
+            Assert.That(altarCore.Position.z, Is.EqualTo(12f));
         }
     }
 }

@@ -138,6 +138,8 @@ namespace EchoesOfTheRuins
             objectiveText.text = HudCopy.Objective(data);
             if (data.ProgressRequired > 0)
                 coreText.text = "CORES  " + data.ProgressCurrent + " / " + data.ProgressRequired;
+            if (data.Stage == ObjectiveStage.CollectCores || data.Stage == ObjectiveStage.ReachExit || data.Stage == ObjectiveStage.Complete)
+                tutorialPanel.SetActive(false);
         }
 
         private void Update()

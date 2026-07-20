@@ -32,7 +32,7 @@ namespace EchoesOfTheRuins
         private static string DeriveObjectiveStage(int cores, string checkpoint, bool completed)
         {
             if (completed) return ObjectiveStage.Complete.ToString();
-            if (cores >= 3) return ObjectiveStage.ReachExit.ToString();
+            if (cores >= RuinGameState.RequiredCoreCount) return ObjectiveStage.ReachExit.ToString();
             if (cores == 0 && (checkpoint == SaveData.StartCheckpointId || checkpoint == "Start Checkpoint")) return ObjectiveStage.Briefing.ToString();
             return ObjectiveStage.CollectCores.ToString();
         }

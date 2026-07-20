@@ -93,7 +93,7 @@ namespace EchoesOfTheRuins
             {
                 new CorePlacement("courtyard-core", RuinZone.Courtyard, new Vector3(0f, 1.25f, -27f)),
                 new CorePlacement("shadow-gallery-core", RuinZone.ShadowGallery, new Vector3(-16f, 1.25f, 2f)),
-                new CorePlacement("altar-core", RuinZone.Altar, new Vector3(0f, 1.25f, 32f))
+                new CorePlacement("altar-core", RuinZone.Altar, new Vector3(16f, 1.25f, 12f))
             };
             var guardians = new[]
             {

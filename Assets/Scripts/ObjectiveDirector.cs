@@ -16,7 +16,6 @@ namespace EchoesOfTheRuins
         private bool moved;
         private bool sprinted;
         private bool startReceived;
-        private Coroutine altarHintRoutine;
 
         public static ObjectiveDirector Active { get; private set; }
         public ObjectiveTracker Tracker { get; private set; }
@@ -110,17 +109,11 @@ namespace EchoesOfTheRuins
         private void OnEchoStoneUsed() => Tracker.Notify(ObjectiveSignal.UsedEchoStone, worldPosition: PositionOf(FindNextCoreTarget()));
         private void OnCoreCountChanged(int count, int _)
         {
-            Tracker.Notify(ObjectiveSignal.CoreCountChanged, count, PositionOf(FindNextCoreTarget()));
-            if (altarHintRoutine != null) StopCoroutine(altarHintRoutine);
-            if (count == 2) altarHintRoutine = StartCoroutine(ShowAltarHintIfStillNeeded());
-        }
-
-        private IEnumerator ShowAltarHintIfStillNeeded()
-        {
-            yield return new WaitForSeconds(20f);
-            if (GameManager.Instance != null && GameManager.Instance.GameState.CollectedCoreCount == 2)
-                RouteHint?.Invoke("FOLLOW THE CYAN BEACON TO THE ALTAR");
-            altarHintRoutine = null;
+            Vector3 nextCorePosition = PositionOf(FindNextCoreTarget());
+            if (Tracker.Current.Stage != ObjectiveStage.CollectCores && Tracker.Current.Stage != ObjectiveStage.ReachExit && Tracker.Current.Stage != ObjectiveStage.Complete)
+                Tracker.Advance(ObjectiveStage.CollectCores, count, nextCorePosition);
+            else
+                Tracker.Notify(ObjectiveSignal.CoreCountChanged, count, nextCorePosition);
         }
         private void OnExitUnlocked()
         {
@@ -165,7 +158,6 @@ namespace EchoesOfTheRuins
 
         private void OnDestroy()
         {
-            if (altarHintRoutine != null) StopCoroutine(altarHintRoutine);
             if (Active == this) Active = null;
             if (Tracker != null) Tracker.Changed -= OnObjectiveChanged;
             if (player != null)

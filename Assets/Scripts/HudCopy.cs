@@ -18,5 +18,18 @@ namespace EchoesOfTheRuins
             ObjectiveStage.Complete => "ESCAPED THE RUINS",
             _ => "MISSION BRIEFING\nCOLLECT 3 CORES, THEN ESCAPE NORTH"
         };
+
+        public static string ResultSummary(string rank, int score, RunStats stats)
+        {
+            stats ??= new RunStats();
+            return "ESCAPED THE RUINS\n\n" +
+                $"RANK  {rank}     SCORE  {score}\n" +
+                $"TIME  {FormatTime(stats.CompletionSeconds)}\n" +
+                $"ALERTS  {stats.Alerts}     CAPTURES  {stats.Captures}\n" +
+                $"ECHO STONES  {stats.EchoStonesUsed}     RELICS  {stats.RelicsCollected}/2";
+        }
+
+        private static string FormatTime(float seconds) =>
+            $"{UnityEngine.Mathf.FloorToInt(seconds / 60f):00}:{UnityEngine.Mathf.FloorToInt(seconds % 60f):00}";
     }
 }

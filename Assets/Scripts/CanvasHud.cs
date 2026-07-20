@@ -72,6 +72,9 @@ namespace EchoesOfTheRuins
 
         private void Start()
         {
+            objectiveText.text = "MISSION";
+            Text missionRule = transform.Find("Objective Zone/Mission Rule")?.GetComponent<Text>();
+            if (missionRule != null) missionRule.text = HudCopy.MissionRule;
             objectives = ObjectiveDirector.Active ?? FindFirstObjectByType<ObjectiveDirector>();
             threat = FindFirstObjectByType<ThreatCoordinator>();
             if (threat == null) threat = new GameObject("Threat Coordinator").AddComponent<ThreatCoordinator>();
@@ -268,6 +271,16 @@ namespace EchoesOfTheRuins
 
         private void OnVictory()
         {
+            if (Application.isPlaying)
+            {
+                GameManager liveManager = GameManager.Instance;
+                RunStats liveStats = liveManager.LastRunStats ?? new RunStats();
+                resultText.text = HudCopy.ResultSummary(liveManager.LastScoreResult.Rank, liveManager.LastScoreResult.Score, liveStats);
+                resultPanel.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                return;
+            }
             GameManager manager = GameManager.Instance;
             RunStats stats = manager.LastRunStats ?? new RunStats();
             resultText.text = "ESCAPED THE RUINS  /  成功逃离\n\n" +

@@ -49,7 +49,8 @@ namespace EchoesOfTheRuins
     /// <summary>Selects the closest nearby interaction and exposes one consistent E-key prompt.</summary>
     public sealed class PlayerInteractor : MonoBehaviour
     {
-        [SerializeField, Min(.5f)] private float interactionRange = 3f;
+        // Slightly forgiving radius makes prompt discovery reliable around detailed core and gate meshes.
+        [SerializeField, Min(.5f)] private float interactionRange = 3.75f;
         private readonly Collider[] overlapBuffer = new Collider[32];
         private readonly List<IInteractable> nearby = new List<IInteractable>();
         private IInteractable current;

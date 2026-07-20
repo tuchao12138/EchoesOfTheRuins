@@ -76,15 +76,15 @@ namespace EchoesOfTheRuins
             if (beacon != null)
             {
                 beacon.color = unlocked ? new Color(.08f, .9f, 1f) : new Color(1f, .45f, .12f);
-                beacon.range = unlocked ? 16f : 7f;
-                beacon.intensity = unlocked ? 5f : 1.2f;
+                beacon.range = unlocked ? 30f : 10f;
+                beacon.intensity = unlocked ? 6.5f : 1.5f;
             }
         }
 
         private void Update()
         {
             if (!unlocked || beacon == null) return;
-            beacon.intensity = 4.5f + Mathf.Sin(Time.time * 3.5f) * .8f;
+            beacon.intensity = 6f + Mathf.Sin(Time.time * 3.5f) * 1.1f;
         }
 
         private void OnTriggerEnter(Collider other)

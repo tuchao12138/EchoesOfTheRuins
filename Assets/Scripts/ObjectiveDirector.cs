@@ -16,10 +16,12 @@ namespace EchoesOfTheRuins
         private bool moved;
         private bool sprinted;
         private bool startReceived;
+        private Coroutine altarHintRoutine;
 
         public static ObjectiveDirector Active { get; private set; }
         public ObjectiveTracker Tracker { get; private set; }
         public event Action<ObjectiveData> ObjectiveChanged;
+        public event Action<string> RouteHint;
         public PlayerController Player => player;
         public Transform FirstCoreTarget => firstCoreTarget;
         public Transform ExitTarget => exitTarget;
@@ -106,7 +108,20 @@ namespace EchoesOfTheRuins
         private void OnCrouchChanged(bool crouched) { if (crouched && player != null && player.IsInShadow) Tracker.Notify(ObjectiveSignal.CrouchedInShadow, worldPosition: PositionOf(firstCoreTarget)); }
         private void OnShadowChanged(bool shadowed) { if (shadowed && player != null && player.IsCrouching) Tracker.Notify(ObjectiveSignal.CrouchedInShadow, worldPosition: PositionOf(firstCoreTarget)); }
         private void OnEchoStoneUsed() => Tracker.Notify(ObjectiveSignal.UsedEchoStone, worldPosition: PositionOf(FindNextCoreTarget()));
-        private void OnCoreCountChanged(int count, int _) => Tracker.Notify(ObjectiveSignal.CoreCountChanged, count, PositionOf(FindNextCoreTarget()));
+        private void OnCoreCountChanged(int count, int _)
+        {
+            Tracker.Notify(ObjectiveSignal.CoreCountChanged, count, PositionOf(FindNextCoreTarget()));
+            if (altarHintRoutine != null) StopCoroutine(altarHintRoutine);
+            if (count == 2) altarHintRoutine = StartCoroutine(ShowAltarHintIfStillNeeded());
+        }
+
+        private IEnumerator ShowAltarHintIfStillNeeded()
+        {
+            yield return new WaitForSeconds(20f);
+            if (GameManager.Instance != null && GameManager.Instance.GameState.CollectedCoreCount == 2)
+                RouteHint?.Invoke("FOLLOW THE CYAN BEACON TO THE ALTAR");
+            altarHintRoutine = null;
+        }
         private void OnExitUnlocked()
         {
             if (Tracker == null) return;
@@ -150,6 +165,7 @@ namespace EchoesOfTheRuins
 
         private void OnDestroy()
         {
+            if (altarHintRoutine != null) StopCoroutine(altarHintRoutine);
             if (Active == this) Active = null;
             if (Tracker != null) Tracker.Changed -= OnObjectiveChanged;
             if (player != null)

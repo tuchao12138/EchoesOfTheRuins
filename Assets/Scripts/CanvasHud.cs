@@ -81,6 +81,7 @@ namespace EchoesOfTheRuins
             if (objectives != null)
             {
                 objectives.ObjectiveChanged += OnObjective;
+                objectives.RouteHint += OnRouteHint;
                 if (objectives.Tracker != null) OnObjective(objectives.Tracker.Current);
             }
             threat.Changed += OnThreat;
@@ -135,7 +136,8 @@ namespace EchoesOfTheRuins
         {
             currentObjective = data;
             objectiveText.text = HudCopy.Objective(data);
-            coreText.text = "CORES  " + data.ProgressCurrent + " / " + data.ProgressRequired;
+            if (data.ProgressRequired > 0)
+                coreText.text = "CORES  " + data.ProgressCurrent + " / " + data.ProgressRequired;
         }
 
         private void Update()
@@ -153,6 +155,8 @@ namespace EchoesOfTheRuins
         }
 
         private void OnCoreCount(int count, int required) => coreText.text = "CORES  " + count + " / " + required;
+
+        private void OnRouteHint(string message) => ShowFeedback(message, 5f);
 
         private void OnCoreFeedback(int count, string zone)
         {
@@ -325,6 +329,7 @@ namespace EchoesOfTheRuins
         private void OnDestroy()
         {
             if (objectives != null) objectives.ObjectiveChanged -= OnObjective;
+            if (objectives != null) objectives.RouteHint -= OnRouteHint;
             if (threat != null) threat.Changed -= OnThreat;
             if (tutorial != null) tutorial.PresentationChanged -= OnTutorialPresentation;
             if (player != null) player.EchoStoneCountChanged -= OnEchoes;

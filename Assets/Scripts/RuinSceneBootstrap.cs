@@ -133,6 +133,11 @@ namespace EchoesOfTheRuins
             foreach (CorePlacement core in layout.Cores)
             {
                 Transform coreTarget = CreateCore($"Core {coreNumber++} - {core.Zone}", core.Position, core.Id, accent);
+                if (core.Zone == RuinZone.Altar)
+                {
+                    Light altarBeacon = CreateLight("Altar Core Cyan Beacon", core.Position + Vector3.up * 5f, Accent, 12f, 3.2f);
+                    altarBeacon.transform.SetParent(coreTarget, true);
+                }
                 if (firstCoreTarget == null) firstCoreTarget = coreTarget;
             }
             CreateRelic("Moon Tablet Relic", new Vector3(-20f, 1.1f, 10f), "moon-tablet", warning);

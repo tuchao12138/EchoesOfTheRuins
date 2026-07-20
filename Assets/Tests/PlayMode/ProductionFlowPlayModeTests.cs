@@ -88,6 +88,7 @@ namespace EchoesOfTheRuins.Tests
         [UnityTest]
         public IEnumerator ProductionRuins_LoadsCompletePlayableVerticalSlice()
         {
+            new SaveService().Delete();
             yield return SceneManager.LoadSceneAsync("ProductionRuins", LoadSceneMode.Single);
             yield return null;
 
@@ -99,6 +100,46 @@ namespace EchoesOfTheRuins.Tests
                 Has.Length.EqualTo(3));
             Assert.That(Object.FindFirstObjectByType<ExitGate>(), Is.Not.Null);
             Assert.That(Object.FindFirstObjectByType<CanvasHud>(), Is.Not.Null);
+            Assert.That(GameObject.Find("Core Progress").GetComponent<UnityEngine.UI.Text>().text,
+                Is.EqualTo("CORES  0 / 3"),
+                "Briefing objectives must not overwrite the live three-core progress with 0 / 0.");
+
+            yield return SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
+            new SaveService().Delete();
+        }
+
+        [UnityTest]
+        public IEnumerator ProductionRuins_AdvancesWorldMarkerFromEachCoreToTheNorthGate()
+        {
+            new SaveService().Delete();
+            yield return SceneManager.LoadSceneAsync("ProductionRuins", LoadSceneMode.Single);
+            yield return null;
+
+            GameManager manager = Object.FindFirstObjectByType<GameManager>();
+            ObjectiveDirector director = Object.FindFirstObjectByType<ObjectiveDirector>();
+            WorldObjectiveMarker marker = Object.FindFirstObjectByType<WorldObjectiveMarker>();
+            Assert.That(manager, Is.Not.Null);
+            Assert.That(director, Is.Not.Null);
+            Assert.That(marker, Is.Not.Null);
+
+            director.Tracker.Advance(ObjectiveStage.CollectCores, 0);
+            yield return null;
+            Assert.That(marker.Target.name, Does.Contain("Courtyard"));
+
+            Assert.That(manager.CollectCore("courtyard-core"), Is.True);
+            yield return null;
+            Assert.That(marker.Target.name, Does.Contain("ShadowGallery"));
+
+            Assert.That(manager.CollectCore("shadow-gallery-core"), Is.True);
+            yield return null;
+            Assert.That(marker.Target.name, Does.Contain("Altar"));
+
+            Assert.That(manager.CollectCore("altar-core"), Is.True);
+            yield return null;
+            Assert.That(marker.Target.name, Does.Contain("Sealed Exit Gate"));
+
+            yield return SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
+            new SaveService().Delete();
         }
 
         [UnityTest]

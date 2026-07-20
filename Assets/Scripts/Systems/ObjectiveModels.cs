@@ -69,9 +69,31 @@ namespace EchoesOfTheRuins
                 ObjectiveStage.Observe => new ObjectiveData { Stage = stage, Title = "OBSERVE", Body = "Watch the guardian before crossing.", ShowDistance = true, WorldPosition = worldPosition },
                 ObjectiveStage.Hide => new ObjectiveData { Stage = stage, Title = "HIDE", Body = "Crouch in deep shadow to stay hidden.", ShowDistance = true, WorldPosition = worldPosition },
                 ObjectiveStage.Distract => new ObjectiveData { Stage = stage, Title = "DISTRACT", Body = "Use an echo stone to draw the guardian away.", ShowDistance = true, WorldPosition = worldPosition },
-                ObjectiveStage.CollectCores => new ObjectiveData { Stage = stage, Title = "COLLECT 3 CORES", Body = "Collect 3 cores, then escape through the north gate.", ProgressCurrent = cores, ProgressRequired = RequiredCores, RemainingRequired = RequiredCores - cores, TargetLabel = "NEXT CORE", ShowDistance = true, WorldPosition = worldPosition },
+                ObjectiveStage.CollectCores => CreateCoreRouteObjective(cores, worldPosition),
                 ObjectiveStage.ReachExit => new ObjectiveData { Stage = stage, Title = "ESCAPE NORTH", Body = "All cores recovered. Reach the unsealed gate and press E.", ProgressCurrent = RequiredCores, ProgressRequired = RequiredCores, RemainingRequired = 0, TargetLabel = "EXIT", HighPriority = true, ShowDistance = true, WorldPosition = worldPosition },
                 _ => new ObjectiveData { Stage = ObjectiveStage.Complete, Title = "ESCAPED", Body = "You escaped the ruins." }
+            };
+        }
+
+        private static ObjectiveData CreateCoreRouteObjective(int collectedCores, Vector3 worldPosition)
+        {
+            (string title, string body, string targetLabel) = collectedCores switch
+            {
+                0 => ("CORE I - COURTYARD", "Reach the courtyard core and hold E for 1.5 seconds.", "COURTYARD"),
+                1 => ("CORE II - SHADOW GALLERY", "Follow the cyan marker through the shadow gallery.", "SHADOW GALLERY"),
+                _ => ("CORE III - ALTAR", "Follow the cyan beacon to the altar core.", "ALTAR")
+            };
+            return new ObjectiveData
+            {
+                Stage = ObjectiveStage.CollectCores,
+                Title = title,
+                Body = body,
+                ProgressCurrent = collectedCores,
+                ProgressRequired = RequiredCores,
+                RemainingRequired = RequiredCores - collectedCores,
+                TargetLabel = targetLabel,
+                ShowDistance = true,
+                WorldPosition = worldPosition
             };
         }
     }

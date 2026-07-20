@@ -55,5 +55,16 @@ namespace EchoesOfTheRuins.Tests
 
             Assert.That(Vector3.Distance(layout.PlayerSpawn, firstCore.Position), Is.InRange(20f, 32f));
         }
+
+        [Test]
+        public void DefaultLayout_PlacesAltarCoreGroundedOnTheMainRoute()
+        {
+            ProductionSceneLayout layout = ProductionSceneLayout.CreateDefault();
+            CorePlacement altarCore = layout.Cores.Single(core => core.Zone == RuinZone.Altar);
+
+            Assert.That(altarCore.Position.y, Is.LessThanOrEqualTo(1.25f));
+            Assert.That(Mathf.Abs(altarCore.Position.x), Is.LessThanOrEqualTo(2f));
+            Assert.That(altarCore.Position.z, Is.InRange(28f, 36f));
+        }
     }
 }

@@ -42,6 +42,18 @@ namespace EchoesOfTheRuins.Tests
             Assert.That(typeof(ObjectiveTracker).GetEvent("ObjectiveChanged"), Is.Null);
         }
 
+        [TestCase(0, "CORE I", "COURTYARD")]
+        [TestCase(1, "CORE II", "SHADOW GALLERY")]
+        [TestCase(2, "CORE III", "ALTAR")]
+        public void CoreObjectives_NameTheNextRouteDestination(int collectedCores, string coreNumber, string destination)
+        {
+            var tracker = new ObjectiveTracker(ObjectiveStage.CollectCores, collectedCores);
+
+            Assert.That(tracker.Current.Title, Does.Contain(coreNumber));
+            Assert.That(tracker.Current.Title, Does.Contain(destination));
+            Assert.That(tracker.Current.TargetLabel, Does.Contain(destination));
+        }
+
         [TestCase(0, "entrance", ObjectiveStage.Briefing)]
         [TestCase(1, "courtyard", ObjectiveStage.CollectCores)]
         [TestCase(3, "altar", ObjectiveStage.ReachExit)]

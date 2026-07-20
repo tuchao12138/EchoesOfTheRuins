@@ -131,7 +131,7 @@ namespace EchoesOfTheRuins
         private void OnObjective(ObjectiveData data)
         {
             currentObjective = data;
-            objectiveText.text = LocalizedObjective(data);
+            objectiveText.text = HudCopy.Objective(data);
             coreText.text = "CORES  " + data.ProgressCurrent + " / " + data.ProgressRequired;
         }
 
@@ -153,6 +153,17 @@ namespace EchoesOfTheRuins
 
         private void OnCoreFeedback(int count, string zone)
         {
+            if (Application.isPlaying)
+            {
+                string clearMessage = count switch
+                {
+                    1 => "CORE 1/3 - COURTYARD SEAL WEAKENED",
+                    2 => "CORE 2/3 - ALTAR ROUTE OPEN. GUARDIANS SEARCHING.",
+                    _ => "CORE 3/3 - EXIT UNSEALED. ESCAPE NORTH."
+                };
+                ShowFeedback(clearMessage + "  /  " + zone.Replace('_', ' '), count == 3 ? 4.5f : 3f);
+                return;
+            }
             string message = count switch
             {
                 1 => "CORE 1/3 — COURTYARD SEAL WEAKENED",
@@ -164,6 +175,14 @@ namespace EchoesOfTheRuins
 
         private void OnRunPhase(RunPhase phase)
         {
+            if (phase == RunPhase.Escape)
+            {
+                escapePhaseActive = true;
+                tutorialPanel.SetActive(false);
+                objectiveText.text = HudCopy.EscapeObjective;
+                ShowFeedback("ESCAPE PHASE - BOTH GUARDIANS ARE INTERCEPTING", 5f);
+                return;
+            }
             if (phase != RunPhase.Escape) return;
             escapePhaseActive = true;
             tutorialPanel.SetActive(false);
@@ -211,6 +230,13 @@ namespace EchoesOfTheRuins
 
         private void OnInteraction(InteractionViewData view)
         {
+            if (view.State == InteractionState.Interrupted)
+            {
+                OnPrompt(view.Prompt + "\n" + HudCopy.InteractionInterrupted);
+                holdFill.rectTransform.sizeDelta = new Vector2(588f * view.Progress01, 6f);
+                holdFill.color = new Color(1f, .3f, .2f);
+                return;
+            }
             string prompt = view.State == InteractionState.Interrupted
                 ? view.Prompt + "\nINTERRUPTED — BREAK LINE OF SIGHT / 已中断"
                 : view.Prompt;

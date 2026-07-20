@@ -542,7 +542,7 @@ namespace EchoesOfTheRuins
             visual.transform.localPosition = Vector3.zero;
             visual.transform.localRotation = Quaternion.Euler(0f, yaw, 0f);
             visual.transform.localScale = Vector3.one * scale;
-            Texture2D texture = Resources.Load<Texture2D>(assetId == CharacterAssetId.Explorer ? "Characters/Rogue_Texture" : "Characters/Warrior_Texture");
+            Texture2D texture = Resources.Load<Texture2D>(CharacterAssetCatalog.GetTexturePath(assetId));
             Material characterMaterial = RuntimeMaterialLibrary.CreateTextured(visualName + " Material", texture);
             foreach (Renderer renderer in visual.GetComponentsInChildren<Renderer>(true)) renderer.material = characterMaterial;
             foreach (Collider collider in visual.GetComponentsInChildren<Collider>(true)) collider.enabled = false;

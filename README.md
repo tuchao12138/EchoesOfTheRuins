@@ -2,7 +2,7 @@
 
 *Echoes of the Ruins* is a third-person, single-player stealth-exploration vertical slice built with Unity 6.3 LTS and URP. The player enters a moonlit citadel, uses shadow and limited echo stones to outsmart three stone guardians, restores three energy cores, and escapes through the rune-sealed north gate.
 
-![Production entrance preview](Evidence/production-preview.png)
+![Current production gameplay screenshot: Explorer approaching the altar route](Evidence/production-preview.png)
 
 ## Playable coursework build
 
@@ -26,8 +26,8 @@ Controls: `WASD` move, mouse look, `Space` jump, `Shift` sprint, `C` crouch, `Q`
 
 ## Verification
 
-- EditMode: **156 passed, 0 failed**.
-- PlayMode: **14 passed, 0 failed**, including menu input, production-scene loading, guardian attacks and the three-core/exit completion flow.
+- EditMode: **162 passed, 0 failed**.
+- PlayMode: **15 passed, 0 failed**, including menu input, production-scene loading, guardian attacks and the three-core/exit completion flow.
 - XML results are stored in `Evidence/TestResults-EditMode.xml` and `Evidence/TestResults-PlayMode.xml`.
 - The three final Windows playthroughs are tracked in [PLAYTEST.md](PLAYTEST.md) and must be signed off before submission.
 

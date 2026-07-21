@@ -133,12 +133,18 @@ namespace EchoesOfTheRuins.Tests
             yield return SceneManager.LoadSceneAsync("ProductionRuins", LoadSceneMode.Single);
             yield return null;
 
+            Bounds entryOpening = new Bounds(new Vector3(0f, 3f, -29.5f), new Vector3(12f, 5.5f, 3f));
+            Renderer[] curtainBlockers = GameObject.Find("Citadel Backdrop").GetComponentsInChildren<Renderer>()
+                .Where(item => item.bounds.Intersects(entryOpening))
+                .ToArray();
             Transform[] centralWalls = Object.FindObjectsByType<Transform>(FindObjectsSortMode.None)
                 .Where(item => item.parent == null
                     && item.name.StartsWith("Backdrop South Wall")
                     && Mathf.Abs(item.position.x) < 8f)
                 .ToArray();
 
+            Assert.That(curtainBlockers, Is.Empty,
+                "The south curtain must contain a visible opening aligned with the entry corridor.");
             Assert.That(centralWalls, Is.Empty,
                 "The entry route must use a visible opening instead of requiring the player to pass through backdrop wall meshes.");
         }
@@ -149,12 +155,18 @@ namespace EchoesOfTheRuins.Tests
             yield return SceneManager.LoadSceneAsync("ProductionRuins", LoadSceneMode.Single);
             yield return null;
 
+            Bounds northOpening = new Bounds(new Vector3(0f, 3f, 29.5f), new Vector3(12f, 5.5f, 3f));
+            Renderer[] curtainBlockers = GameObject.Find("Citadel Backdrop").GetComponentsInChildren<Renderer>()
+                .Where(item => item.bounds.Intersects(northOpening))
+                .ToArray();
             Transform[] centralWalls = Object.FindObjectsByType<Transform>(FindObjectsSortMode.None)
                 .Where(item => item.parent == null
                     && item.name.StartsWith("Backdrop North Wall")
                     && Mathf.Abs(item.position.x) < 8f)
                 .ToArray();
 
+            Assert.That(curtainBlockers, Is.Empty,
+                "The north curtain must contain a visible opening aligned with the north-gate route.");
             Assert.That(centralWalls, Is.Empty,
                 "The north route must use a visible opening instead of requiring the player to pass through backdrop wall meshes.");
         }

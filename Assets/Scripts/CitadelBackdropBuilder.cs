@@ -2,15 +2,17 @@ using UnityEngine;
 
 namespace EchoesOfTheRuins
 {
-    /// <summary>Creates the continuous outer silhouette that hides the playable map boundary.</summary>
+    /// <summary>Creates the outer silhouette while preserving the authored south entry and north exit routes.</summary>
     public static class CitadelBackdropBuilder
     {
         public static GameObject Create(Material material)
         {
             GameObject root = new GameObject("Citadel Backdrop");
 
-            Add(root.transform, "North Curtain", new Vector3(0f, 3.1f, 29.5f), new Vector3(60f, 6.2f, 1.4f), material);
-            Add(root.transform, "South Curtain", new Vector3(0f, 3.1f, -29.5f), new Vector3(60f, 6.2f, 1.4f), material);
+            Add(root.transform, "North Curtain Left", new Vector3(-18.5f, 3.1f, 29.5f), new Vector3(23f, 6.2f, 1.4f), material);
+            Add(root.transform, "North Curtain Right", new Vector3(18.5f, 3.1f, 29.5f), new Vector3(23f, 6.2f, 1.4f), material);
+            Add(root.transform, "South Curtain Left", new Vector3(-18.5f, 3.1f, -29.5f), new Vector3(23f, 6.2f, 1.4f), material);
+            Add(root.transform, "South Curtain Right", new Vector3(18.5f, 3.1f, -29.5f), new Vector3(23f, 6.2f, 1.4f), material);
             Add(root.transform, "East Curtain", new Vector3(29.5f, 3.1f, 0f), new Vector3(1.4f, 6.2f, 60f), material);
             Add(root.transform, "West Curtain", new Vector3(-29.5f, 3.1f, 0f), new Vector3(1.4f, 6.2f, 60f), material);
 

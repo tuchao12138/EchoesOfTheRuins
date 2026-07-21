@@ -120,7 +120,7 @@ namespace EchoesOfTheRuins
                 })
             };
             return new ProductionSceneLayout(
-                new Vector3(0f, 0f, -53f),
+                new Vector3(0f, 0f, -49f),
                 new Vector3(0f, 2f, 55f),
                 zoneOrder,
                 cores,

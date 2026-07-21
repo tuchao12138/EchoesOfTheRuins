@@ -57,6 +57,14 @@ namespace EchoesOfTheRuins.Tests
         }
 
         [Test]
+        public void DefaultLayout_SpawnsInsideTheOpenEntryCorridor()
+        {
+            ProductionSceneLayout layout = ProductionSceneLayout.CreateDefault();
+
+            Assert.That(layout.PlayerSpawn, Is.EqualTo(new Vector3(0f, 0f, -49f)));
+        }
+
+        [Test]
         public void DefaultLayout_PlacesAltarCoreGroundedInsideTheReachableAltarRoom()
         {
             ProductionSceneLayout layout = ProductionSceneLayout.CreateDefault();

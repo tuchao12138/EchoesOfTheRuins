@@ -109,6 +109,25 @@ namespace EchoesOfTheRuins.Tests
         }
 
         [UnityTest]
+        public IEnumerator ProductionRuins_EntryAndNorthGateApproachesAreNotBlockedByWalls()
+        {
+            new SaveService().Delete();
+            yield return SceneManager.LoadSceneAsync("ProductionRuins", LoadSceneMode.Single);
+            yield return null;
+            Physics.SyncTransforms();
+
+            bool startBlocked = Physics.RaycastAll(new Vector3(0f, 1f, -49f), Vector3.forward, 16f, ~0, QueryTriggerInteraction.Ignore)
+                .Any(hit => hit.collider.GetComponentInParent<PlayerController>() == null);
+            Assert.That(startBlocked, Is.False,
+                "The start corridor must have a clear forward route into the citadel.");
+            Assert.That(Physics.Raycast(new Vector3(0f, 1f, 30f), Vector3.forward, 22f, ~0, QueryTriggerInteraction.Ignore), Is.False,
+                "The north-gate causeway must be reachable without crossing the altar perimeter wall.");
+
+            yield return SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
+            new SaveService().Delete();
+        }
+
+        [UnityTest]
         public IEnumerator ProductionRuins_CoreCollectionForcesRouteObjectiveAndAdvancesMarkerToNorthGate()
         {
             new SaveService().Delete();

@@ -170,7 +170,8 @@ namespace EchoesOfTheRuins
             CreateMasonryBarrier("North Processional East", new Vector3(12f, 2.8f, 30f), new Vector3(1f, 5.6f, 24f), darkStone);
             CreateMasonryBarrier("Altar Perimeter West", new Vector3(-23f, 2.8f, 33f), new Vector3(1f, 5.6f, 22f), wallStone);
             CreateMasonryBarrier("Altar Perimeter East", new Vector3(23f, 2.8f, 33f), new Vector3(1f, 5.6f, 22f), wallStone);
-            CreateMasonryBarrier("Altar North Broken Wall", new Vector3(0f, 2.6f, 43f), new Vector3(34f, 5.2f, 1f), wallStone);
+            CreateMasonryBarrier("Altar North Gate Wall Left", new Vector3(-12f, 2.6f, 43f), new Vector3(10f, 5.2f, 1f), wallStone);
+            CreateMasonryBarrier("Altar North Gate Wall Right", new Vector3(12f, 2.6f, 43f), new Vector3(10f, 5.2f, 1f), wallStone);
             ProductionRuinBuilder.CreateModule("Altar Monumental Arch", QuaterniusRuinAssetId.ArchGothic,
                 new Vector3(0f, 0f, 43f), Quaternion.identity, Vector3.one * 2.4f, wallStone);
 
@@ -178,6 +179,7 @@ namespace EchoesOfTheRuins
             CreateMasonryBarrier("Exit Causeway East", new Vector3(7f, 2.8f, 50f), new Vector3(1f, 5.6f, 14f), darkStone);
             ProductionRuinBuilder.CreateModule("North Gate Monument", QuaterniusRuinAssetId.ArchGothic,
                 new Vector3(0f, 0f, 55f), Quaternion.identity, Vector3.one * 2.8f, warning);
+            CreateLight("North Gate Guide Beacon", new Vector3(0f, 6f, 50f), Accent, 16f, 2.4f);
 
             for (int index = 0; index < 6; index++)
             {

@@ -128,6 +128,38 @@ namespace EchoesOfTheRuins.Tests
         }
 
         [UnityTest]
+        public IEnumerator ProductionRuins_EntryRouteHasNoCentralBackdropWallVisuals()
+        {
+            yield return SceneManager.LoadSceneAsync("ProductionRuins", LoadSceneMode.Single);
+            yield return null;
+
+            Transform[] centralWalls = Object.FindObjectsByType<Transform>(FindObjectsSortMode.None)
+                .Where(item => item.parent == null
+                    && item.name.StartsWith("Backdrop South Wall")
+                    && Mathf.Abs(item.position.x) < 8f)
+                .ToArray();
+
+            Assert.That(centralWalls, Is.Empty,
+                "The entry route must use a visible opening instead of requiring the player to pass through backdrop wall meshes.");
+        }
+
+        [UnityTest]
+        public IEnumerator ProductionRuins_NorthRouteHasNoCentralBackdropWallVisuals()
+        {
+            yield return SceneManager.LoadSceneAsync("ProductionRuins", LoadSceneMode.Single);
+            yield return null;
+
+            Transform[] centralWalls = Object.FindObjectsByType<Transform>(FindObjectsSortMode.None)
+                .Where(item => item.parent == null
+                    && item.name.StartsWith("Backdrop North Wall")
+                    && Mathf.Abs(item.position.x) < 8f)
+                .ToArray();
+
+            Assert.That(centralWalls, Is.Empty,
+                "The north route must use a visible opening instead of requiring the player to pass through backdrop wall meshes.");
+        }
+
+        [UnityTest]
         public IEnumerator ProductionRuins_CoreCollectionForcesRouteObjectiveAndAdvancesMarkerToNorthGate()
         {
             new SaveService().Delete();

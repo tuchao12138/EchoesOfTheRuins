@@ -308,6 +308,8 @@ namespace EchoesOfTheRuins
 
             for (int x = -20; x <= 20; x += 8)
             {
+                if (Mathf.Abs(x) < 8f) continue;
+
                 ProductionRuinBuilder.CreateModule($"Backdrop North Wall {++index}", QuaterniusRuinAssetId.OvergrownWall,
                     new Vector3(x, 0f, 27f), Quaternion.identity, Vector3.one * 3.25f, darkStone);
                 ProductionRuinBuilder.CreateModule($"Backdrop South Wall {++index}", QuaterniusRuinAssetId.Wall,
